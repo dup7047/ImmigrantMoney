@@ -2,6 +2,7 @@ import "./globals.css";
 import type {Metadata, Viewport} from "next";
 import {Fraunces, Inter} from "next/font/google";
 import type {ReactNode} from "react";
+import {Analytics} from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,7 +53,10 @@ export const viewport: Viewport = {
 export default function RootLayout({children}: {children: ReactNode}) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
