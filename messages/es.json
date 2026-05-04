@@ -293,7 +293,14 @@
       "fee": "Mensualidad",
       "minBalance": "Saldo mínimo",
       "requirementsVary": "La aprobación no está garantizada. Los requisitos varían por sucursal e institución.",
-      "checkCasher": "Cambiar un cheque de $500 por una tarifa de $10–$15 puede costar $120–$180 al año si se hace mensualmente."
+      "checkCasher": "Cambiar un cheque de $500 por una tarifa de $10–$15 puede costar $120–$180 al año si se hace mensualmente.",
+      "matchAccepts": "Acepta tu {id}",
+      "matchAccount": "Cuentas {type}",
+      "matchTransfers": "Transferencias internacionales",
+      "matchSpanish": "Atención en español",
+      "noMatches": "Ningún banco cumple todos tus filtros",
+      "adjustFilters": "Prueba quitar la opción de transferencias internacionales, cambiar el idioma a Ambos, o elegir otro tipo de cuenta.",
+      "mobile": "Calificación móvil"
     },
     "credit": {
       "visa": "Tipo de visa o estatus",

@@ -293,7 +293,14 @@
       "fee": "月费",
       "minBalance": "最低余额",
       "requirementsVary": "并不保证一定通过。具体要求因分行和机构而异。",
-      "checkCasher": "用 10–15 美元的费用兑现一张 500 美元的支票，如果每月都做，一年大约要花 120–180 美元。"
+      "checkCasher": "用 10–15 美元的费用兑现一张 500 美元的支票，如果每月都做，一年大约要花 120–180 美元。",
+      "matchAccepts": "接受你的{id}",
+      "matchAccount": "提供{type}账户",
+      "matchTransfers": "支持国际汇款",
+      "matchSpanish": "提供西班牙语服务",
+      "noMatches": "没有银行匹配你的全部筛选条件",
+      "adjustFilters": "可以尝试取消勾选国际汇款，将语言偏好改回「两者都可以」，或更换账户类型。",
+      "mobile": "手机端评分"
     },
     "credit": {
       "visa": "签证或身份类型",

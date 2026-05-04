@@ -293,7 +293,14 @@
       "fee": "Monthly fee",
       "minBalance": "Minimum balance",
       "requirementsVary": "Approval is not guaranteed. Requirements vary by branch and institution.",
-      "checkCasher": "Cashing a $500 check for a $10–$15 fee can cost about $120–$180 per year if done monthly."
+      "checkCasher": "Cashing a $500 check for a $10–$15 fee can cost about $120–$180 per year if done monthly.",
+      "matchAccepts": "Accepts your {id}",
+      "matchAccount": "{type} accounts",
+      "matchTransfers": "International transfers",
+      "matchSpanish": "Spanish-language support",
+      "noMatches": "No banks matched all of your filters",
+      "adjustFilters": "Try unchecking the international-transfers option, switching the language preference back to Both, or selecting a different account type.",
+      "mobile": "Mobile rating"
     },
     "credit": {
       "visa": "Visa or status type",

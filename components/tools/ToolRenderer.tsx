@@ -619,11 +619,13 @@ const bankSchema = z.object({
 
 type BankForm = z.infer<typeof bankSchema>;
 
+type BankMatch = {bank: (typeof bankOptions)[number]; reasons: string[]};
+
 function BankFinderTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [ids, setIds] = useState<BankIdType[]>(["passport"]);
-  const [result, setResult] = useState<typeof bankOptions>([]);
+  const [result, setResult] = useState<BankMatch[] | null>(null);
   const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<BankForm>({
     resolver: zodResolver(bankSchema),
@@ -647,15 +649,34 @@ function BankFinderTool() {
         className="grid gap-5"
         onSubmit={handleSubmit((data) => {
           track("tool_complete", {tool: "bank-without-ssn", locale});
-          setResult(
-            bankOptions.filter((bank) => {
-              const idMatch = ids.some((id) => bank.acceptedIds.includes(id));
-              const accountMatch = bank.accountTypes.includes(data.accountType) || bank.accountTypes.includes("both");
-              const transferMatch = !data.sendsMoney || bank.internationalTransfers;
-              const languageMatch = data.language !== "es" || bank.spanishSupport;
-              return idMatch && accountMatch && transferMatch && languageMatch;
-            })
-          );
+          const matches: BankMatch[] = [];
+          for (const bank of bankOptions) {
+            const matchedIds = ids.filter((id) => bank.acceptedIds.includes(id));
+            const idMatch = matchedIds.length > 0;
+            const accountMatch =
+              bank.accountTypes.includes(data.accountType) || bank.accountTypes.includes("both");
+            const transferMatch = !data.sendsMoney || bank.internationalTransfers;
+            const languageMatch = data.language !== "es" || bank.spanishSupport;
+            if (!(idMatch && accountMatch && transferMatch && languageMatch)) continue;
+
+            const reasons: string[] = [];
+            for (const id of matchedIds) {
+              reasons.push(t("tools.bank.matchAccepts", {id: idLabels[id]}));
+            }
+            reasons.push(
+              t("tools.bank.matchAccount", {
+                type: t(`tools.bank.${data.accountType}`)
+              })
+            );
+            if (data.sendsMoney && bank.internationalTransfers) {
+              reasons.push(t("tools.bank.matchTransfers"));
+            }
+            if (data.language === "es" && bank.spanishSupport) {
+              reasons.push(t("tools.bank.matchSpanish"));
+            }
+            matches.push({bank, reasons});
+          }
+          setResult(matches);
         })}
       >
         <div>
@@ -693,26 +714,45 @@ function BankFinderTool() {
         <Checkbox label={t("tools.bank.sendMoney")} {...register("sendsMoney")} />
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
-      {result.length > 0 ? (
+      {result !== null && result.length === 0 ? (
+        <div ref={resultRef} className="grid gap-3 rounded-xl border border-caution-200 bg-caution-50 p-5">
+          <h2 className="text-heading-3 text-ink-900">{t("tools.bank.noMatches")}</h2>
+          <p className="text-sm text-ink-700">{t("tools.bank.adjustFilters")}</p>
+        </div>
+      ) : null}
+      {result && result.length > 0 ? (
         <div ref={resultRef} className="grid gap-4">
           <WarningList items={[t("tools.bank.requirementsVary"), t("tools.bank.checkCasher")]} />
           <h2 className="font-display text-heading-1 text-ink-900">{t("tools.bank.matches")}</h2>
           <div className="grid gap-3">
-            {result.map((bank) => (
+            {result.map(({bank, reasons}) => (
               <Panel key={bank.id}>
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <h3 className="text-lg font-bold">{bank.name}</h3>
-                    <p className="mt-1 text-sm text-slate-600">{bank.features[locale].join(" · ")}</p>
+                    <p className="mt-1 text-sm text-ink-600">{bank.features[locale].join(" · ")}</p>
                   </div>
                   <a className="text-sm font-bold text-brand-600 hover:text-brand-700" href={bank.sourceUrl} rel="noreferrer" target="_blank">
                     {t("common.learnMore")}
                   </a>
                 </div>
-                <div className="mt-4 grid gap-2 text-sm md:grid-cols-3">
+                {reasons.length > 0 ? (
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                    {reasons.map((reason) => (
+                      <li
+                        className="inline-flex items-center gap-1 rounded-full border border-positive-200 bg-positive-50 px-2.5 py-1 text-caption font-semibold text-positive-700"
+                        key={reason}
+                      >
+                        <span aria-hidden="true">✓</span>
+                        {reason}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                <div className="mt-4 grid gap-2 text-sm text-ink-600 md:grid-cols-3">
                   <span>{t("tools.bank.fee")}: {formatCurrencyPrecise(bank.monthlyFee, locale)}</span>
                   <span>{t("tools.bank.minBalance")}: {formatCurrency(bank.minBalance, locale)}</span>
-                  <span>Mobile: {bank.mobileRating}/5</span>
+                  <span>{t("tools.bank.mobile")}: {bank.mobileRating}/5</span>
                 </div>
               </Panel>
             ))}
