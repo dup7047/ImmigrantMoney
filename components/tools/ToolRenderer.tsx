@@ -131,7 +131,12 @@ function WageTheftTool() {
     }
   });
   const stateCode = watch("stateCode");
+  const employmentType = watch("employmentType") as EmploymentType;
   const board = stateLaborBoards.find((item) => item.code === stateCode);
+  const isHourly = employmentType === "hourly" || employmentType === "tipped" || employmentType === "cash";
+  const isSalaried = employmentType === "salaried";
+  const isTipped = employmentType === "tipped";
+  const tracksOvertime = employmentType === "hourly" || employmentType === "tipped";
 
   const deductionLabels: Record<DeductionType, string> = {
     federalTax: "Federal income tax",
@@ -162,6 +167,16 @@ function WageTheftTool() {
         })}
       >
         <FormGrid>
+          {/* 1. Employment type first — drives everything else */}
+          <FieldShell label={t("tools.wage.employmentType")} error={errors.employmentType?.message as string | undefined}>
+            <Select {...register("employmentType")}>
+              <option value="hourly">{t("tools.wage.hourly")}</option>
+              <option value="salaried">{t("tools.wage.salaried")}</option>
+              <option value="tipped">{t("tools.wage.tipped")}</option>
+              <option value="cash">{t("tools.wage.cash")}</option>
+            </Select>
+          </FieldShell>
+          {/* 2. State — needed for minimum-wage lookup */}
           <FieldShell label={t("fields.state")} error={errors.stateCode?.message as string | undefined}>
             <Select {...register("stateCode")}>
               {usStates.map((state) => (
@@ -171,29 +186,36 @@ function WageTheftTool() {
               ))}
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.wage.employmentType")} error={errors.employmentType?.message as string | undefined}>
-            <Select {...register("employmentType")}>
-              <option value="hourly">{t("tools.wage.hourly")}</option>
-              <option value="salaried">{t("tools.wage.salaried")}</option>
-              <option value="tipped">{t("tools.wage.tipped")}</option>
-              <option value="cash">{t("tools.wage.cash")}</option>
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.wage.hoursWorked")} error={errors.hoursWorked?.message as string | undefined}>
-            <Input type="number" step="0.25" {...register("hoursWorked")} />
-          </FieldShell>
-          <FieldShell label={t("tools.wage.overtimeHours")} error={errors.overtimeHours?.message as string | undefined}>
-            <Input type="number" step="0.25" {...register("overtimeHours")} />
-          </FieldShell>
-          <FieldShell label={t("tools.wage.hourlyRate")} error={errors.hourlyRate?.message as string | undefined}>
-            <MoneyInput step="0.01" unit="/ hr" {...register("hourlyRate")} />
-          </FieldShell>
-          <FieldShell label={t("tools.wage.weeklySalary")} error={errors.weeklySalary?.message as string | undefined}>
-            <MoneyInput step="0.01" unit="/ week" {...register("weeklySalary")} />
-          </FieldShell>
-          <FieldShell label={t("tools.wage.tips")} error={errors.tips?.message as string | undefined}>
-            <MoneyInput step="0.01" unit="/ week" {...register("tips")} />
-          </FieldShell>
+          {/* 3. Pay basis — conditional on type */}
+          {isHourly ? (
+            <FieldShell label={t("tools.wage.hourlyRate")} error={errors.hourlyRate?.message as string | undefined}>
+              <MoneyInput step="0.01" unit="/ hr" {...register("hourlyRate")} />
+            </FieldShell>
+          ) : null}
+          {isSalaried ? (
+            <FieldShell label={t("tools.wage.weeklySalary")} error={errors.weeklySalary?.message as string | undefined}>
+              <MoneyInput step="0.01" unit="/ week" {...register("weeklySalary")} />
+            </FieldShell>
+          ) : null}
+          {/* 4. Hours worked — only relevant for non-salaried */}
+          {isHourly ? (
+            <FieldShell label={t("tools.wage.hoursWorked")} error={errors.hoursWorked?.message as string | undefined}>
+              <Input type="number" step="0.25" {...register("hoursWorked")} />
+            </FieldShell>
+          ) : null}
+          {/* 5. Overtime — only hourly/tipped track it */}
+          {tracksOvertime ? (
+            <FieldShell label={t("tools.wage.overtimeHours")} error={errors.overtimeHours?.message as string | undefined}>
+              <Input type="number" step="0.25" {...register("overtimeHours")} />
+            </FieldShell>
+          ) : null}
+          {/* 6. Tips — only tipped */}
+          {isTipped ? (
+            <FieldShell label={t("tools.wage.tips")} error={errors.tips?.message as string | undefined}>
+              <MoneyInput step="0.01" unit="/ week" {...register("tips")} />
+            </FieldShell>
+          ) : null}
+          {/* 7. What was actually received — always asked */}
           <FieldShell label={t("tools.wage.actualPay")} error={errors.actualPay?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ week" {...register("actualPay")} />
           </FieldShell>
