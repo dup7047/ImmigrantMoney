@@ -411,6 +411,24 @@
       "totalDuration": "Estimated total time",
       "totalDurationValue": "{months} months",
       "months": "months",
+      "steps": {
+        "status": {
+          "title": "Your status",
+          "description": "Visa or status type and how long you've been in the U.S. — these change which products are open to you."
+        },
+        "banking": {
+          "title": "Identity & banking",
+          "description": "An SSN or ITIN plus a U.S. bank account opens up most credit-builder products."
+        },
+        "history": {
+          "title": "Your credit history",
+          "description": "Where you stand today shapes the first phase of the roadmap."
+        },
+        "budget": {
+          "title": "Monthly budget",
+          "description": "How much you can put toward building credit each month — even $25 works to start."
+        }
+      },
       "methodology": "Phases come from CFPB credit-building research. Each phase assumes on-time payments and consistent credit-bureau reporting. Total time stacks the phase durations. No score increase is guaranteed — actual results depend on issuer approvals, utilization, and reporting cadence."
     },
     "remit": {

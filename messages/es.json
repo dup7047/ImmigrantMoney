@@ -411,6 +411,24 @@
       "totalDuration": "Tiempo total estimado",
       "totalDurationValue": "{months} meses",
       "months": "meses",
+      "steps": {
+        "status": {
+          "title": "Tu estatus",
+          "description": "Tipo de visa o estatus y cuánto tiempo llevas en EE. UU. — esto cambia qué productos están a tu alcance."
+        },
+        "banking": {
+          "title": "Identidad y banco",
+          "description": "Tener SSN o ITIN más una cuenta bancaria en EE. UU. abre la mayoría de los productos para construir crédito."
+        },
+        "history": {
+          "title": "Tu historial de crédito",
+          "description": "Dónde estás hoy define la primera fase de la ruta."
+        },
+        "budget": {
+          "title": "Presupuesto mensual",
+          "description": "Cuánto puedes destinar mensualmente a construir crédito — incluso $25 sirve para empezar."
+        }
+      },
       "methodology": "Las fases provienen de investigación del CFPB sobre construcción de crédito. Cada fase asume pagos a tiempo y reporte consistente a las agencias de crédito. El tiempo total suma las duraciones por fase. No se garantiza ningún aumento de puntaje — los resultados dependen de aprobaciones, uso del crédito y la frecuencia de los reportes."
     },
     "remit": {

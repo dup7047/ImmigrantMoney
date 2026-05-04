@@ -1011,8 +1011,9 @@ function CreditRoadmapTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof buildCreditRoadmap> | null>(null);
+  const [lastStep, setLastStep] = useState(0);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, watch, formState: {errors}} = useForm<CreditForm>({
+  const form = useForm<CreditForm>({
     resolver: zodResolver(creditSchema),
     defaultValues: {
       visaType: "other",
@@ -1024,44 +1025,65 @@ function CreditRoadmapTool() {
       hasForeignCredit: false
     }
   });
+  const {register, watch, formState: {errors}} = form;
   const budget = watch("budget");
   const totalMonths = result?.phases.reduce((sum, p) => sum + p.durationMonths, 0) ?? 0;
 
-  return (
-    <Panel className="grid gap-6">
-      <form
-        className="grid gap-5"
-        onSubmit={handleSubmit((data) => {
-          track("tool_complete", {tool: "credit-builder-roadmap", locale});
-          setResult(buildCreditRoadmap(data));
-        })}
-      >
-        <FormGrid>
-          <FieldShell label={t("tools.credit.visa")} error={errors.visaType?.message as string | undefined}>
-            <Select {...register("visaType")}>
-              {["DACA", "TPS", "H-1B", "H-2A", "F-1", "Green Card", "Other"].map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.credit.time")} error={errors.timeInUs?.message as string | undefined}>
-            <Select {...register("timeInUs")}>
-              <option value="lt6">Less than 6 months</option>
-              <option value="6to12">6-12 months</option>
-              <option value="1to2">1-2 years</option>
-              <option value="2to5">2-5 years</option>
-              <option value="over5">Over 5 years</option>
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.credit.tin")} error={errors.tin?.message as string | undefined}>
-            <Select {...register("tin")}>
-              <option value="ssn">SSN</option>
-              <option value="itin">ITIN</option>
-              <option value="neither">Neither</option>
-            </Select>
-          </FieldShell>
+  const steps = useMemo<WizardStepDef<CreditForm>[]>(
+    () => [
+      {
+        id: "status",
+        title: t("tools.credit.steps.status.title"),
+        description: t("tools.credit.steps.status.description"),
+        fieldNames: ["visaType", "timeInUs"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.credit.visa")} error={errors.visaType?.message as string | undefined}>
+              <Select {...register("visaType")}>
+                {["DACA", "TPS", "H-1B", "H-2A", "F-1", "Green Card", "Other"].map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </Select>
+            </FieldShell>
+            <FieldShell label={t("tools.credit.time")} error={errors.timeInUs?.message as string | undefined}>
+              <Select {...register("timeInUs")}>
+                <option value="lt6">Less than 6 months</option>
+                <option value="6to12">6-12 months</option>
+                <option value="1to2">1-2 years</option>
+                <option value="2to5">2-5 years</option>
+                <option value="over5">Over 5 years</option>
+              </Select>
+            </FieldShell>
+          </FormGrid>
+        )
+      },
+      {
+        id: "banking",
+        title: t("tools.credit.steps.banking.title"),
+        description: t("tools.credit.steps.banking.description"),
+        fieldNames: ["tin", "hasBankAccount", "hasForeignCredit"],
+        render: (
+          <div className="grid gap-4">
+            <FieldShell label={t("tools.credit.tin")} error={errors.tin?.message as string | undefined}>
+              <Select {...register("tin")}>
+                <option value="ssn">SSN</option>
+                <option value="itin">ITIN</option>
+                <option value="neither">Neither</option>
+              </Select>
+            </FieldShell>
+            <Checkbox label={t("tools.credit.bank")} {...register("hasBankAccount")} />
+            <Checkbox label={t("tools.credit.foreignCredit")} {...register("hasForeignCredit")} />
+          </div>
+        )
+      },
+      {
+        id: "history",
+        title: t("tools.credit.steps.history.title"),
+        description: t("tools.credit.steps.history.description"),
+        fieldNames: ["scoreStatus"],
+        render: (
           <FieldShell label={t("tools.credit.score")} error={errors.scoreStatus?.message as string | undefined}>
             <Select {...register("scoreStatus")}>
               <option value="none">No score yet</option>
@@ -1071,6 +1093,14 @@ function CreditRoadmapTool() {
               <option value="740plus">740+</option>
             </Select>
           </FieldShell>
+        )
+      },
+      {
+        id: "budget",
+        title: t("tools.credit.steps.budget.title"),
+        description: t("tools.credit.steps.budget.description"),
+        fieldNames: ["budget"],
+        render: (
           <FieldShell
             label={`${t("tools.credit.budget")} — $${budget ?? 0}/mo`}
             error={errors.budget?.message as string | undefined}
@@ -1084,13 +1114,27 @@ function CreditRoadmapTool() {
               <span>$300</span>
             </div>
           </FieldShell>
-        </FormGrid>
-        <Checkbox label={t("tools.credit.bank")} {...register("hasBankAccount")} />
-        <Checkbox label={t("tools.credit.foreignCredit")} {...register("hasForeignCredit")} />
-        <Button type="submit">{t("common.calculate")}</Button>
-      </form>
+        )
+      }
+    ],
+    [t, register, errors, budget]
+  );
+
+  function handleWizardSubmit(data: CreditForm) {
+    track("tool_complete", {tool: "credit-builder-roadmap", locale});
+    setResult(buildCreditRoadmap(data));
+  }
+
+  return (
+    <Panel className="grid gap-6">
       {result ? (
         <div ref={resultRef} className="grid gap-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 className="text-heading-3 text-ink-900">{t("common.results")}</h3>
+            <Button onClick={() => setResult(null)} type="button" variant="secondary">
+              {t("common.editAnswers")}
+            </Button>
+          </div>
           <WarningList items={[t("tools.credit.noGuarantee")]} />
           <Stat
             label={t("tools.credit.totalDuration")}
@@ -1126,7 +1170,16 @@ function CreditRoadmapTool() {
             <p>{t("tools.credit.methodology")}</p>
           </MethodologyNote>
         </div>
-      ) : null}
+      ) : (
+        <Wizard
+          form={form}
+          steps={steps}
+          onSubmit={handleWizardSubmit}
+          submitLabel={t("common.calculate")}
+          initialStep={lastStep}
+          onStepChange={setLastStep}
+        />
+      )}
     </Panel>
   );
 }

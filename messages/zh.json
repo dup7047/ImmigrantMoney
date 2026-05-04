@@ -411,6 +411,24 @@
       "totalDuration": "预计总时长",
       "totalDurationValue": "{months} 个月",
       "months": "个月",
+      "steps": {
+        "status": {
+          "title": "你的身份",
+          "description": "签证类型和你来美国的时间——这会决定哪些产品你能申请。"
+        },
+        "banking": {
+          "title": "证件与银行",
+          "description": "有 SSN 或 ITIN，再加一个美国银行账户，就能用上大多数信用建立产品。"
+        },
+        "history": {
+          "title": "你的信用情况",
+          "description": "目前的状况决定路线图的第一阶段。"
+        },
+        "budget": {
+          "title": "每月预算",
+          "description": "每个月愿意花多少钱来建立信用——哪怕 $25 也够起步。"
+        }
+      },
       "methodology": "各阶段来自 CFPB 关于建立信用的研究。每个阶段假设按时还款且征信机构能够稳定收到上报。总时长是各阶段时长的累加。分数能否提高没有保证 — 实际结果取决于审批、使用率和上报频率。"
     },
     "remit": {
