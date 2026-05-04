@@ -104,7 +104,7 @@ All optional — the app runs entirely client-side without any of them. Configur
 
 | Variable | Purpose |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (used for sitemaps, OG, hreflang). Defaults to `https://immigrantmoney.example`. |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (used for sitemaps, OG, hreflang). Defaults to `https://immigrantmoney.us`. |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL — only needed if email capture is wired up. |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Service role key (server-side only) for the `/api/leads` route. |

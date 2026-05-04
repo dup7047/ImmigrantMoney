@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import type {Locale, ToolMetadata} from "@/lib/types";
 import {locales, routing} from "@/i18n/routing";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.example";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.us";
 
 /**
  * Build localized canonical + hreflang alternates.

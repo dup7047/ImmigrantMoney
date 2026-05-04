@@ -3,7 +3,7 @@ import {categories} from "@/data/categories";
 import {toolsMetadata} from "@/data/tools-metadata";
 import {locales} from "@/i18n/routing";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.example";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.us";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = ["", "/start", "/privacy-policy", "/terms-of-service"];

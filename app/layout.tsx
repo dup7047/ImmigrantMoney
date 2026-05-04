@@ -17,7 +17,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.example"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.us"),
   title: {
     default: "ImmigrantMoney",
     template: "%s | ImmigrantMoney"

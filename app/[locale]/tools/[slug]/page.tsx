@@ -37,7 +37,7 @@ export default async function ToolPage({params}: {params: Promise<{locale: Local
     notFound();
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.example";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.us";
 
   return (
     <>

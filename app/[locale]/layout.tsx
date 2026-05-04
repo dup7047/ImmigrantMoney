@@ -32,7 +32,7 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const t = await getTranslations({locale, namespace: "nav"});
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.example";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.us";
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
   return (
