@@ -30,6 +30,7 @@
     "allTools": "All tools",
     "categories": "Categories",
     "start": "Start",
+    "startAriaLabel": "Start the 3-question guided journey to find your tool",
     "privacy": "Privacy",
     "terms": "Terms",
     "language": "Language",

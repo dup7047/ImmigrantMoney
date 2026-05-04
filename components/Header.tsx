@@ -39,7 +39,7 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
-          <Link href="/start">
+          <Link aria-label={tNav("startAriaLabel")} href="/start">
             <Button size="md">
               <Sparkles aria-hidden="true" className="h-4 w-4" />
               {tNav("start")}
