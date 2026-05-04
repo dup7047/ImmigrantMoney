@@ -341,7 +341,10 @@
       "roadmap": "你的学习路线图",
       "timeline": "情景时间表",
       "products": "可对比的产品建议",
-      "noGuarantee": "不能保证分数一定会上升。结果取决于审批、还款、使用率和上报情况。"
+      "noGuarantee": "不能保证分数一定会上升。结果取决于审批、还款、使用率和上报情况。",
+      "totalDuration": "预计总时长",
+      "totalDurationValue": "{months} 个月",
+      "months": "个月"
     },
     "remit": {
       "amount": "汇出金额",

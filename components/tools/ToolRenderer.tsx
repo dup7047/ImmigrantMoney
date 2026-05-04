@@ -831,7 +831,7 @@ function CreditRoadmapTool() {
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof buildCreditRoadmap> | null>(null);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, formState: {errors}} = useForm<CreditForm>({
+  const {register, handleSubmit, watch, formState: {errors}} = useForm<CreditForm>({
     resolver: zodResolver(creditSchema),
     defaultValues: {
       visaType: "other",
@@ -843,6 +843,8 @@ function CreditRoadmapTool() {
       hasForeignCredit: false
     }
   });
+  const budget = watch("budget");
+  const totalMonths = result?.phases.reduce((sum, p) => sum + p.durationMonths, 0) ?? 0;
 
   return (
     <Panel className="grid gap-6">
@@ -888,8 +890,18 @@ function CreditRoadmapTool() {
               <option value="740plus">740+</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.credit.budget")} error={errors.budget?.message as string | undefined}>
-            <Input type="range" min="0" max="300" {...register("budget")} />
+          <FieldShell
+            label={`${t("tools.credit.budget")} — $${budget ?? 0}/mo`}
+            error={errors.budget?.message as string | undefined}
+          >
+            <Input type="range" min="0" max="300" step="5" {...register("budget")} />
+            <div className="flex justify-between text-caption text-ink-500" aria-hidden="true">
+              <span>$0</span>
+              <span>$50</span>
+              <span>$100</span>
+              <span>$200</span>
+              <span>$300</span>
+            </div>
           </FieldShell>
         </FormGrid>
         <Checkbox label={t("tools.credit.bank")} {...register("hasBankAccount")} />
@@ -899,13 +911,17 @@ function CreditRoadmapTool() {
       {result ? (
         <div ref={resultRef} className="grid gap-5">
           <WarningList items={[t("tools.credit.noGuarantee")]} />
+          <Stat
+            label={t("tools.credit.totalDuration")}
+            value={t("tools.credit.totalDurationValue", {months: totalMonths})}
+          />
           <section>
             <h2 className="font-display text-heading-1 text-ink-900">{t("tools.credit.roadmap")}</h2>
             <div className="mt-3 grid gap-3 md:grid-cols-4">
               {result.phases.map((phase) => (
                 <Panel key={phase.id}>
                   <h3 className="font-bold capitalize">{phase.id}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{phase.durationMonths} months · {phase.impact}</p>
+                  <p className="mt-2 text-sm text-ink-600">{phase.durationMonths} {t("tools.credit.months")} · {phase.impact}</p>
                 </Panel>
               ))}
             </div>

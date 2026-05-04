@@ -341,7 +341,10 @@
       "roadmap": "Your educational roadmap",
       "timeline": "Scenario timeline",
       "products": "Product ideas to compare",
-      "noGuarantee": "No score increase is guaranteed. Results depend on approvals, payments, utilization, and reporting."
+      "noGuarantee": "No score increase is guaranteed. Results depend on approvals, payments, utilization, and reporting.",
+      "totalDuration": "Estimated total time",
+      "totalDurationValue": "{months} months",
+      "months": "months"
     },
     "remit": {
       "amount": "Amount to send",

@@ -341,7 +341,10 @@
       "roadmap": "Tu hoja de ruta educativa",
       "timeline": "Escenario de tiempo",
       "products": "Ideas de productos para comparar",
-      "noGuarantee": "No se garantiza ningún aumento de puntaje. Depende de aprobaciones, pagos, uso y reportes."
+      "noGuarantee": "No se garantiza ningún aumento de puntaje. Depende de aprobaciones, pagos, uso y reportes.",
+      "totalDuration": "Tiempo total estimado",
+      "totalDurationValue": "{months} meses",
+      "months": "meses"
     },
     "remit": {
       "amount": "Cantidad a enviar",
