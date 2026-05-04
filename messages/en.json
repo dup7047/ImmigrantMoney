@@ -184,7 +184,7 @@
   },
   "legal": {
     "privacyTitle": "Privacy Policy",
-    "privacyBody": "ImmigrantMoney is designed to keep calculator inputs in your browser. We do not require accounts. If you voluntarily submit your email for the roadmap or waitlist, we store your email, locale, source tool, and submission time. We may use privacy-friendly analytics and ad technology when configured. Do not enter sensitive legal documents or immigration case details into optional forms.",
+    "privacyBody": "ImmigrantMoney is designed to keep calculator inputs in your browser. We do not require accounts. If you voluntarily submit your email for the roadmap or waitlist, we store your email, locale, source tool, and submission time. Do not enter sensitive legal documents or immigration case details into optional forms.\n\nWe use Google AdSense to display ads. Google and its partners may use cookies and similar technologies to serve ads based on your visits to this and other websites. Personalized advertising can be controlled at https://adssettings.google.com, and you can learn more about how Google uses information at https://policies.google.com/technologies/ads. We also use Vercel Analytics and Speed Insights, which collect aggregated, cookie-free traffic and performance data.",
     "termsTitle": "Terms of Service",
     "termsBody": "ImmigrantMoney provides general educational information. It is not legal, tax, financial, or immigration advice. Calculators use static datasets and simplified assumptions. You are responsible for verifying current rules, fees, eligibility, and product terms before making decisions."
   },

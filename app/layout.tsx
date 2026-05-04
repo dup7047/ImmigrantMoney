@@ -1,6 +1,7 @@
 import "./globals.css";
 import type {Metadata, Viewport} from "next";
 import {Fraunces, Inter} from "next/font/google";
+import Script from "next/script";
 import type {ReactNode} from "react";
 import {Analytics} from "@vercel/analytics/next";
 import {SpeedInsights} from "@vercel/speed-insights/next";
@@ -52,12 +53,26 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({children}: {children: ReactNode}) {
+  // AdSense client is the publisher ID (ca-pub-...). Setting it loads the
+  // adsbygoogle.js script — needed for AdSense to verify ownership during
+  // application review, and to serve ads once the site is approved.
+  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans antialiased">
         {children}
         <Analytics />
         <SpeedInsights />
+        {adsenseClient ? (
+          <Script
+            async
+            crossOrigin="anonymous"
+            id="adsense-script"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

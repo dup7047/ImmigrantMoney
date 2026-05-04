@@ -184,7 +184,7 @@
   },
   "legal": {
     "privacyTitle": "隐私政策",
-    "privacyBody": "ImmigrantMoney 的设计原则是把计算器中的输入保留在您的浏览器里。我们不要求注册账号。如果您主动为路线图或候补名单提交邮箱，我们会保存您的邮箱、语言、来源工具和提交时间。在配置后，我们可能会使用尊重隐私的分析和广告技术。请不要在可选表单中输入敏感的法律文件或移民案件细节。",
+    "privacyBody": "ImmigrantMoney 的设计原则是把计算器中的输入保留在您的浏览器里。我们不要求注册账号。如果您主动为路线图或候补名单提交邮箱，我们会保存您的邮箱、语言、来源工具和提交时间。请不要在可选表单中输入敏感的法律文件或移民案件细节。\n\n我们使用 Google AdSense 投放广告。Google 及其合作伙伴可能会使用 cookie 等技术，根据您对本网站及其他网站的访问来展示广告。您可以在 https://adssettings.google.com 控制个性化广告，并通过 https://policies.google.com/technologies/ads 了解 Google 如何使用相关信息。我们还使用 Vercel Analytics 和 Speed Insights，这些工具采集的是不依赖 cookie 的聚合流量和性能数据。",
     "termsTitle": "服务条款",
     "termsBody": "ImmigrantMoney 提供一般性教育信息。它不构成法律、税务、财务或移民方面的建议。计算器使用的是静态数据集和简化假设。在做决定前，您有责任核实当前的规定、费用、资格和产品条款。"
   },

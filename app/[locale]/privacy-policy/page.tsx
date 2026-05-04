@@ -21,7 +21,7 @@ export default async function PrivacyPage({params}: {params: Promise<{locale: Lo
   return (
     <main className="container-pad mx-auto max-w-3xl py-16">
       <h1 className="font-display text-display-2 tracking-tight text-ink-900">{t("privacyTitle")}</h1>
-      <p className="mt-6 text-body-lg text-ink-600">{t("privacyBody")}</p>
+      <p className="mt-6 whitespace-pre-line text-body-lg text-ink-600">{t("privacyBody")}</p>
     </main>
   );
 }

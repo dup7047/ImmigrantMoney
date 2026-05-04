@@ -184,7 +184,7 @@
   },
   "legal": {
     "privacyTitle": "Política de Privacidad",
-    "privacyBody": "ImmigrantMoney está diseñado para mantener los datos de calculadoras en tu navegador. No exigimos cuentas. Si envías voluntariamente tu email para la hoja de ruta o lista de espera, guardamos tu email, idioma, herramienta de origen y hora de envío. Podemos usar analítica respetuosa de privacidad y tecnología publicitaria cuando esté configurada. No escribas documentos legales sensibles ni detalles de tu caso migratorio en formularios opcionales.",
+    "privacyBody": "ImmigrantMoney está diseñado para mantener los datos de calculadoras en tu navegador. No exigimos cuentas. Si envías voluntariamente tu email para la hoja de ruta o lista de espera, guardamos tu email, idioma, herramienta de origen y hora de envío. No escribas documentos legales sensibles ni detalles de tu caso migratorio en formularios opcionales.\n\nUsamos Google AdSense para mostrar anuncios. Google y sus socios pueden usar cookies y tecnologías similares para mostrar anuncios basados en tus visitas a este y otros sitios. Puedes controlar la publicidad personalizada en https://adssettings.google.com y aprender más sobre cómo Google usa la información en https://policies.google.com/technologies/ads. También usamos Vercel Analytics y Speed Insights, que recopilan datos agregados de tráfico y rendimiento sin cookies.",
     "termsTitle": "Términos de Servicio",
     "termsBody": "ImmigrantMoney ofrece información educativa general. No es asesoría legal, tributaria, financiera ni migratoria. Las calculadoras usan datos estáticos y supuestos simplificados. Tú eres responsable de verificar reglas, tarifas, elegibilidad y términos actuales antes de tomar decisiones."
   },
