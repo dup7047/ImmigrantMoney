@@ -35,6 +35,8 @@
     "startAriaLabel": "Take the 3-question quiz to find your starting tool",
     "privacy": "Privacy",
     "terms": "Terms",
+    "about": "About",
+    "contact": "Contact",
     "language": "Language",
     "menu": "Menu",
     "skipToContent": "Skip to content"
@@ -42,19 +44,23 @@
   "categories": {
     "earn-protect": {
       "label": "Earn & Protect Pay",
-      "description": "Catch wage theft and spot scams before they cost you."
+      "description": "Catch wage theft and spot scams before they cost you.",
+      "intro": "Working in the U.S. as an immigrant often means navigating wage rules, deductions, and high-pressure financial offers that don't match anything explained in onboarding. Tipped pay, overtime thresholds, and \"convenience\" deductions for tools or uniforms have specific federal and state rules — and many violations go unreported because workers don't know what to check. The tools below help you spot a short paycheck, recognize loan scams that target immigrant communities, and understand which state agency to contact if something feels off."
     },
     "bank-credit": {
       "label": "Bank & Build Credit",
-      "description": "Open accounts without an SSN and build U.S. credit from zero."
+      "description": "Open accounts without an SSN and build U.S. credit from zero.",
+      "intro": "Most U.S. credit-building products were designed assuming you arrive with an SSN and a thin credit file. Newcomers often have neither — but you can still open insured bank accounts using a passport, matrícula consular, or ITIN, and there are deliberate steps to build a U.S. credit score from scratch. The tools below match you to banks that accept the IDs you actually have, and lay out a 12–24 month credit-building roadmap based on your starting point."
     },
     "send-spend": {
       "label": "Send & Spend Smart",
-      "description": "Compare remittance costs and budget for life with immigrant realities."
+      "description": "Compare remittance costs and budget for life with immigrant realities.",
+      "intro": "Sending money home and renting in a U.S. city are two of the largest recurring costs many immigrant households face — and both have hidden math. Remittance fees vary by 5×+ across providers for the same corridor; rent affordability rules of thumb (like \"30% of income\") rarely account for monthly remittances, immigration savings, or healthcare. The tools below surface the cheapest remittance route for your destination and help you build a realistic monthly budget that includes the costs other planners ignore."
     },
     "taxes-immigration": {
       "label": "Taxes & Immigration",
-      "description": "Plan ITIN filings and budget for USCIS fees with confidence."
+      "description": "Plan ITIN filings and budget for USCIS fees with confidence.",
+      "intro": "USCIS fees, ITIN filings, and tax-credit eligibility shift frequently — and the rules that apply to you depend on your status, household composition, and which state you're in. Filing without an SSN is legal and supported through the ITIN program, but it has specific privacy and credit implications. The tools below estimate USCIS application costs (including fee waivers you may qualify for), help you decide whether and how to file taxes with an ITIN, and link to verified IRS and USCIS sources for every figure used."
     }
   },
   "categoryPage": {
@@ -181,6 +187,31 @@
     "body": "The link may be old or mistyped. Try the guided journey or browse all tools.",
     "primaryCta": "Start the guided journey",
     "secondaryCta": "Browse all tools"
+  },
+  "about": {
+    "title": "About ImmigrantMoney",
+    "intro": "ImmigrantMoney is a free, trilingual financial toolkit built for immigrants navigating life in the United States — work, banking, taxes, immigration filings, remittances, and rent. Every tool is designed to give a clear answer in under three minutes, in English, Spanish, or Simplified Chinese, with the source links you'd want before making a real decision.",
+    "missionTitle": "Why this exists",
+    "missionBody": "Immigrant households in the U.S. face financial decisions that mainstream tools rarely model: wage rules that depend on your state and tipped status, banking that accepts a passport or matrícula instead of an SSN, USCIS fee waivers, ITIN filings, remittance corridors with hidden markups, and credit-building from zero. The same questions come up over and over in workers' centers, legal aid clinics, and online forums. We built ImmigrantMoney so the math behind those questions is one click away — for free, in plain language, in your own language, without an account.",
+    "methodologyTitle": "How the tools work",
+    "methodologyBody": "Every calculator runs entirely in your browser. We never send your inputs to a server, and we don't use them for analytics. Each tool ships with cited sources (U.S. Department of Labor, IRS, USCIS, CFPB, World Bank Remittance Prices, and state labor boards), a methodology note explaining the assumptions, and a \"last reviewed\" date. Numbers come from static datasets we update on a published schedule — not live scraping — so what you see in the tool matches what we've actually verified.",
+    "privacyTitle": "Privacy & data",
+    "privacyBody": "Tool inputs stay in your browser. We never log them, never sell them, and never share them with employers, landlords, or government agencies. The only personal data we store is the email address you optionally submit for the roadmap waitlist, along with your locale and which tool you used to sign up. You can read the full disclosure on our privacy page.",
+    "updatesTitle": "Updates & corrections",
+    "updatesBody": "Rules change. Fees change. Provider lists change. We review each tool on a quarterly cadence at minimum and re-publish with a fresh \"last reviewed\" date. If you spot something out of date or wrong, please email us — corrections from readers are how we keep the tools honest."
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Questions, corrections, partnership ideas, or a tool that's not behaving the way you expected — we want to hear from you. ImmigrantMoney is built for the people who use it, and reader feedback is how we improve.",
+    "emailLabel": "Email us",
+    "response": "We typically reply within 2–3 business days. For urgent privacy or abuse reports, please mark the subject line with \"URGENT\".",
+    "useTitle": "What to write us about",
+    "useReport": "Tool bugs, calculation errors, or content that looks out of date",
+    "useCorrection": "Corrections to fees, rules, or provider lists with a source we can verify",
+    "usePartnership": "Partnership and content collaboration inquiries from nonprofits, legal aid clinics, and worker centers",
+    "usePrivacy": "Privacy questions or requests to delete an email address you submitted",
+    "notTitle": "What we can't help with",
+    "notBody": "We don't provide individual legal, tax, immigration, or financial advice. The tools and articles on ImmigrantMoney are general education — for questions about your specific case, please consult a licensed attorney, accountant, or accredited representative. We can't review your specific paycheck, USCIS form, or tax return."
   },
   "legal": {
     "privacyTitle": "Privacy Policy",

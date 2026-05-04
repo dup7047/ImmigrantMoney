@@ -19,6 +19,12 @@ export async function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap items-center justify-start gap-3 md:justify-end">
+          <Link className="font-semibold transition hover:text-brand-700" href="/about">
+            {t("nav.about")}
+          </Link>
+          <Link className="font-semibold transition hover:text-brand-700" href="/contact">
+            {t("nav.contact")}
+          </Link>
           <Link className="font-semibold transition hover:text-brand-700" href="/privacy-policy">
             {t("nav.privacy")}
           </Link>

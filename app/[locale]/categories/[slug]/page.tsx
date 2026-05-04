@@ -59,6 +59,10 @@ export default async function CategoryPage({
         <p className="text-body-lg text-ink-600">{t(`categories.${category.key}.description`)}</p>
       </header>
 
+      <section className="max-w-3xl">
+        <p className="text-body leading-8 text-ink-600">{t(`categories.${category.key}.intro`)}</p>
+      </section>
+
       <div className="grid gap-4 sm:grid-cols-2">
         {tools.map((tool) => (
           <ToolCard key={tool.slug} locale={locale} tool={tool} />

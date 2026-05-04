@@ -35,6 +35,8 @@
     "startAriaLabel": "Hacer el cuestionario de 3 preguntas para encontrar tu herramienta",
     "privacy": "Privacidad",
     "terms": "Términos",
+    "about": "Acerca de",
+    "contact": "Contacto",
     "language": "Idioma",
     "menu": "Menú",
     "skipToContent": "Saltar al contenido"
@@ -42,19 +44,23 @@
   "categories": {
     "earn-protect": {
       "label": "Gana y Protege Tu Pago",
-      "description": "Detecta robo de salario y estafas antes de que te cuesten."
+      "description": "Detecta robo de salario y estafas antes de que te cuesten.",
+      "intro": "Trabajar en EE. UU. siendo inmigrante implica navegar reglas de salario, deducciones y ofertas financieras de alta presión que rara vez te explican al empezar. Las propinas, los umbrales de horas extra y las deducciones por «conveniencia» (uniformes, herramientas) tienen reglas federales y estatales específicas — y muchas violaciones nunca se reportan porque las personas no saben qué revisar. Las herramientas de abajo te ayudan a detectar un cheque corto, reconocer estafas de préstamos que apuntan a comunidades inmigrantes, y entender a qué agencia estatal acudir si algo no cuadra."
     },
     "bank-credit": {
       "label": "Banca y Crédito",
-      "description": "Abre cuentas sin SSN y construye crédito en EE.UU. desde cero."
+      "description": "Abre cuentas sin SSN y construye crédito en EE.UU. desde cero.",
+      "intro": "La mayoría de los productos para construir crédito en EE. UU. fueron diseñados asumiendo que llegas con SSN y un historial crediticio mínimo. Los recién llegados rara vez tienen ambos — pero aun así puedes abrir cuentas bancarias aseguradas usando pasaporte, matrícula consular o ITIN, y existen pasos concretos para construir un puntaje de crédito desde cero. Las herramientas de abajo te conectan con bancos que aceptan los IDs que realmente tienes, y trazan una ruta de 12–24 meses para construir crédito según tu punto de partida."
     },
     "send-spend": {
       "label": "Envía y Gasta Inteligente",
-      "description": "Compara costos de remesas y presupuesta con realidades inmigrantes."
+      "description": "Compara costos de remesas y presupuesta con realidades inmigrantes.",
+      "intro": "Mandar dinero a casa y rentar en una ciudad de EE. UU. son dos de los mayores costos recurrentes que enfrentan muchos hogares inmigrantes — y ambos esconden matemáticas no obvias. Las tarifas de remesas varían más de 5× entre proveedores para el mismo corredor; las reglas tipo «30% del ingreso para vivienda» rara vez consideran remesas mensuales, ahorros migratorios o atención médica. Las herramientas de abajo identifican la ruta de remesa más barata para tu destino y te ayudan a armar un presupuesto mensual realista que incluye los costos que otras calculadoras ignoran."
     },
     "taxes-immigration": {
       "label": "Impuestos y Migración",
-      "description": "Planea declaraciones con ITIN y tarifas de USCIS con confianza."
+      "description": "Planea declaraciones con ITIN y tarifas de USCIS con confianza.",
+      "intro": "Las tarifas de USCIS, las declaraciones con ITIN y la elegibilidad para créditos fiscales cambian con frecuencia — y las reglas que te aplican dependen de tu estatus, composición del hogar y estado donde vives. Declarar sin SSN es legal a través del programa ITIN, pero tiene implicaciones específicas de privacidad y crédito. Las herramientas de abajo estiman costos de aplicación a USCIS (incluyendo exenciones a las que podrías calificar), te ayudan a decidir si y cómo declarar impuestos con ITIN, y enlazan a fuentes verificadas del IRS y USCIS para cada cifra utilizada."
     }
   },
   "categoryPage": {
@@ -181,6 +187,31 @@
     "body": "El enlace puede estar viejo o mal escrito. Prueba la guía o explora todas las herramientas.",
     "primaryCta": "Empezar la guía",
     "secondaryCta": "Ver todas las herramientas"
+  },
+  "about": {
+    "title": "Acerca de ImmigrantMoney",
+    "intro": "ImmigrantMoney es un kit de herramientas financieras gratuito y trilingüe creado para inmigrantes que navegan la vida en Estados Unidos — trabajo, banca, impuestos, trámites migratorios, remesas y vivienda. Cada herramienta está diseñada para darte una respuesta clara en menos de tres minutos, en inglés, español o chino simplificado, con los enlaces de fuentes que querrías antes de tomar una decisión real.",
+    "missionTitle": "Por qué existe",
+    "missionBody": "Los hogares inmigrantes en EE. UU. enfrentan decisiones financieras que las herramientas convencionales rara vez modelan: reglas de salario que dependen del estado y del trabajo con propinas, banca que acepta pasaporte o matrícula en lugar de SSN, exenciones de tarifas de USCIS, declaraciones con ITIN, corredores de remesas con sobrecostos ocultos, y cómo construir crédito desde cero. Las mismas preguntas surgen una y otra vez en centros de trabajadores, clínicas de ayuda legal y foros en línea. Construimos ImmigrantMoney para que las matemáticas detrás de esas preguntas estén a un clic — gratis, en lenguaje sencillo, en tu idioma, sin necesidad de cuenta.",
+    "methodologyTitle": "Cómo funcionan las herramientas",
+    "methodologyBody": "Cada calculadora se ejecuta enteramente en tu navegador. Nunca enviamos tus datos a un servidor ni los usamos para análisis. Cada herramienta incluye fuentes citadas (Departamento de Trabajo de EE. UU., IRS, USCIS, CFPB, World Bank Remittance Prices y juntas laborales estatales), una nota de metodología que explica los supuestos, y una fecha de «última revisión». Los números provienen de conjuntos de datos estáticos que actualizamos según un calendario publicado — no de scraping en vivo — para que lo que ves coincida con lo que verificamos.",
+    "privacyTitle": "Privacidad y datos",
+    "privacyBody": "Los datos de las herramientas se quedan en tu navegador. Nunca los registramos, vendemos ni compartimos con empleadores, arrendadores ni agencias gubernamentales. Los únicos datos personales que guardamos son el correo electrónico que opcionalmente envías para la lista de espera de la hoja de ruta, junto con tu idioma y la herramienta desde donde te registraste. Puedes leer la divulgación completa en nuestra página de privacidad.",
+    "updatesTitle": "Actualizaciones y correcciones",
+    "updatesBody": "Las reglas cambian. Las tarifas cambian. Las listas de proveedores cambian. Revisamos cada herramienta al menos cada tres meses y la republicamos con una fecha fresca de «última revisión». Si encuentras algo desactualizado o incorrecto, escríbenos — las correcciones de los lectores son cómo mantenemos las herramientas honestas."
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "Preguntas, correcciones, ideas de colaboración o una herramienta que no funciona como esperabas — queremos saber de ti. ImmigrantMoney se construye para las personas que lo usan, y los comentarios de lectores son cómo mejoramos.",
+    "emailLabel": "Escríbenos",
+    "response": "Normalmente respondemos en 2–3 días hábiles. Para reportes urgentes de privacidad o abuso, marca el asunto con «URGENTE».",
+    "useTitle": "Para qué escribirnos",
+    "useReport": "Errores en herramientas, cálculos incorrectos o contenido que parece desactualizado",
+    "useCorrection": "Correcciones a tarifas, reglas o listas de proveedores con una fuente que podamos verificar",
+    "usePartnership": "Colaboraciones con organizaciones sin fines de lucro, clínicas de ayuda legal y centros de trabajadores",
+    "usePrivacy": "Preguntas de privacidad o solicitudes para borrar un correo que enviaste",
+    "notTitle": "En qué no podemos ayudar",
+    "notBody": "No ofrecemos asesoría legal, tributaria, migratoria o financiera individual. Las herramientas y artículos de ImmigrantMoney son educación general — para preguntas sobre tu caso específico, consulta a un abogado licenciado, contador o representante acreditado. No podemos revisar tu cheque, formulario de USCIS o declaración de impuestos en particular."
   },
   "legal": {
     "privacyTitle": "Política de Privacidad",
