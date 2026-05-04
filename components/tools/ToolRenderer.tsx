@@ -25,6 +25,7 @@ import {formatCurrency, formatCurrencyPrecise} from "@/lib/utils";
 import {Button} from "../ui/Button";
 import {Checkbox, FieldShell, Input, MoneyInput, Select} from "../ui/Field";
 import {Panel, Stat} from "../ui/Panel";
+import {useResultScroll} from "./useResultScroll";
 
 const CreditTimelineChart = dynamic(
   () => import("./CreditTimelineChart").then((module) => module.CreditTimelineChart),
@@ -112,6 +113,7 @@ function WageTheftTool() {
   const locale = useLocale() as Locale;
   const [deductions, setDeductions] = useState<DeductionType[]>([]);
   const [result, setResult] = useState<ReturnType<typeof calculateWage> | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, watch, formState: {errors}} = useForm<WageForm>({
     resolver: zodResolver(wageSchema),
     defaultValues: {
@@ -221,7 +223,7 @@ function WageTheftTool() {
       </form>
 
       {result ? (
-        <div className="grid gap-5">
+        <div ref={resultRef} className="grid gap-5">
           <div className="grid gap-3 md:grid-cols-3">
             <Stat label={t("tools.wage.expectedGross")} value={formatCurrencyPrecise(result.expectedGross, locale)} />
             <Stat label={t("tools.wage.expectedNet")} value={formatCurrencyPrecise(result.expectedNetKnownDeductions, locale)} />
@@ -284,6 +286,7 @@ function ItinTaxGuide() {
   const locale = useLocale() as Locale;
   const [step, setStep] = useState(0);
   const [result, setResult] = useState<ItinForm | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<ItinForm>({
     resolver: zodResolver(itinSchema),
     defaultValues: {status: "undocumented", tin: "itin", worked: "w2", withheld: "notSure", children: "no", stateCode: "CA"}
@@ -366,7 +369,7 @@ function ItinTaxGuide() {
         </div>
       </form>
       {result ? (
-        <div className="grid gap-4">
+        <div ref={resultRef} className="grid gap-4">
           <h2 className="font-display text-heading-1 text-ink-900">{t("tools.itin.verdict")}</h2>
           <div className="grid gap-4 md:grid-cols-2">
             <Panel className="border-brand-100 bg-brand-50">
@@ -413,6 +416,7 @@ function UscisFeeTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof calculateUscisFees> | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<UscisForm>({
     resolver: zodResolver(uscisSchema),
     defaultValues: {
@@ -463,7 +467,7 @@ function UscisFeeTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (
-        <div className="grid gap-4">
+        <div ref={resultRef} className="grid gap-4">
           <div className="grid gap-3 md:grid-cols-3">
             <Stat label={t("tools.uscis.totalCost")} value={formatCurrency(result.totalCost, locale)} />
             <Stat label={t("tools.uscis.gap")} value={formatCurrency(result.gap, locale)} tone={result.gap > 0 ? "warning" : "success"} />
@@ -495,6 +499,7 @@ function ScamDetectorTool() {
   const locale = useLocale() as Locale;
   const [flags, setFlags] = useState<string[]>([]);
   const [result, setResult] = useState<ReturnType<typeof calculateScamRisk> | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, watch, formState: {errors}} = useForm<ScamForm>({
     resolver: zodResolver(scamSchema),
     defaultValues: {category: "loan", apr: 36}
@@ -563,7 +568,7 @@ function ScamDetectorTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (
-        <div className="grid gap-4">
+        <div ref={resultRef} className="grid gap-4">
           <Stat
             label={t("tools.scam.score")}
             tone={result.level === "high" ? "danger" : result.level === "caution" ? "warning" : "success"}
@@ -597,6 +602,7 @@ function BankFinderTool() {
   const locale = useLocale() as Locale;
   const [ids, setIds] = useState<BankIdType[]>(["passport"]);
   const [result, setResult] = useState<typeof bankOptions>([]);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<BankForm>({
     resolver: zodResolver(bankSchema),
     defaultValues: {accountType: "checking", income: "1000-2500", sendsMoney: false, language: "both"}
@@ -666,7 +672,7 @@ function BankFinderTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result.length > 0 ? (
-        <div className="grid gap-4">
+        <div ref={resultRef} className="grid gap-4">
           <WarningList items={[t("tools.bank.requirementsVary"), t("tools.bank.checkCasher")]} />
           <h2 className="font-display text-heading-1 text-ink-900">{t("tools.bank.matches")}</h2>
           <div className="grid gap-3">
@@ -711,6 +717,7 @@ function CreditRoadmapTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof buildCreditRoadmap> | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<CreditForm>({
     resolver: zodResolver(creditSchema),
     defaultValues: {
@@ -777,7 +784,7 @@ function CreditRoadmapTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (
-        <div className="grid gap-5">
+        <div ref={resultRef} className="grid gap-5">
           <WarningList items={[t("tools.credit.noGuarantee")]} />
           <section>
             <h2 className="font-display text-heading-1 text-ink-900">{t("tools.credit.roadmap")}</h2>
@@ -824,6 +831,7 @@ function RemittanceTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof compareRemittances> | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<RemittanceForm>({
     resolver: zodResolver(remittanceSchema),
     defaultValues: {amount: 300, country: "Mexico", method: "any", frequency: "monthly"}
@@ -878,7 +886,7 @@ function RemittanceTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (
-        <div className="grid gap-4">
+        <div ref={resultRef} className="grid gap-4">
           <WarningList items={[t("tools.remit.static")]} />
           <Stat label={t("tools.remit.annualSavings")} value={formatCurrencyPrecise(result.annualSavings, locale)} tone="success" />
           <div className="overflow-x-auto">
@@ -932,6 +940,7 @@ function AffordabilityTool() {
   const locale = useLocale() as Locale;
   const [statusInput, setStatusInput] = useState<ImmigrationStatusForBenefits>("mixed");
   const [result, setResult] = useState<ReturnType<typeof calculateAffordability> | null>(null);
+  const resultRef = useResultScroll(result);
   const {register, handleSubmit, formState: {errors}} = useForm<AffordabilityForm>({
     resolver: zodResolver(affordabilitySchema),
     defaultValues: {
@@ -1013,7 +1022,7 @@ function AffordabilityTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (
-        <div className="grid gap-5">
+        <div ref={resultRef} className="grid gap-5">
           <Stat
             label={t("common.results")}
             tone={result.status === "workable" ? "success" : result.status === "tight" ? "warning" : "danger"}
