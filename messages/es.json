@@ -1,0 +1,350 @@
+{
+  "common": {
+    "appName": "ImmigrantMoney",
+    "privacyPromise": "Tus datos de las herramientas nunca salen de tu navegador",
+    "emailPromise": "El email solo se guarda si eliges recibir la hoja de ruta/lista de espera.",
+    "lastReviewed": "Última revisión",
+    "sources": "Fuentes",
+    "verify": "Verifica reglas actuales antes de tomar una decisión legal, tributaria, migratoria o financiera.",
+    "calculate": "Calcular",
+    "reset": "Reiniciar",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "results": "Resultados",
+    "learnMore": "Aprender más",
+    "estimated": "Estimado",
+    "notAdvice": "Esta herramienta ofrece información general solamente y no es asesoría financiera, legal, tributaria ni migratoria.",
+    "affiliateDisclosure": "ImmigrantMoney puede ganar una comisión por enlaces abajo. Esto nunca afecta nuestras recomendaciones.",
+    "trustBadge": "No guardamos datos personales. Todos los cálculos ocurren en tu navegador.",
+    "optionalEmailTitle": "Recibe una hoja de ruta financiera gratis para inmigrantes",
+    "optionalEmailText": "Opcional: escribe tu email para la hoja de ruta/lista de espera. Los datos de la herramienta no se envían.",
+    "email": "Email",
+    "consent": "Acepto recibir el email de la hoja de ruta/lista de espera.",
+    "submit": "Enviar",
+    "saved": "Guardado. Revisa tu correo cuando la hoja de ruta esté lista.",
+    "skipped": "La captura de email aún no está configurada.",
+    "error": "Algo salió mal. Inténtalo otra vez."
+  },
+  "nav": {
+    "tools": "Herramientas",
+    "allTools": "Todas las herramientas",
+    "categories": "Categorías",
+    "start": "Empezar",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "language": "Idioma",
+    "menu": "Menú",
+    "skipToContent": "Saltar al contenido"
+  },
+  "categories": {
+    "earn-protect": {
+      "label": "Gana y Protege Tu Pago",
+      "description": "Detecta robo de salario y estafas antes de que te cuesten."
+    },
+    "bank-credit": {
+      "label": "Banca y Crédito",
+      "description": "Abre cuentas sin SSN y construye crédito en EE.UU. desde cero."
+    },
+    "send-spend": {
+      "label": "Envía y Gasta Inteligente",
+      "description": "Compara costos de remesas y presupuesta con realidades inmigrantes."
+    },
+    "taxes-immigration": {
+      "label": "Impuestos y Migración",
+      "description": "Planea declaraciones con ITIN y tarifas de USCIS con confianza."
+    }
+  },
+  "categoryPage": {
+    "eyebrow": "Categoría",
+    "browseAll": "Ver todas las categorías"
+  },
+  "journey": {
+    "teaserEyebrow": "¿No sabes por dónde empezar?",
+    "teaserTitle": "Haz el cuestionario de 3 preguntas",
+    "teaserSubtitle": "Cuéntanos tu situación. Te indicamos las herramientas que encajan — sin registro, sin guardar datos.",
+    "howItWorks": {
+      "label": "Cómo funciona",
+      "step1": "Cuéntanos tu situación",
+      "step2": "Te recomendamos una herramienta",
+      "step3": "Úsala gratis en tu navegador"
+    },
+    "startCta": "Empezar el cuestionario",
+    "orPickPrompt": "O elige una situación que se parezca a ti:",
+    "cards": {
+      "paycheck": {
+        "title": "Acabo de recibir un cheque",
+        "subtitle": "Revisa horas extra, propinas y deducciones riesgosas."
+      },
+      "send": {
+        "title": "Quiero enviar dinero a casa",
+        "subtitle": "Compara tarifas, tipo de cambio y costo total."
+      },
+      "filing": {
+        "title": "Estoy planeando un trámite USCIS",
+        "subtitle": "Estima tarifas, brechas de ahorro y exenciones."
+      }
+    },
+    "intake": {
+      "title": "Encuentra tu herramienta inicial",
+      "subtitle": "Unas preguntas rápidas. Sin cuenta, sin guardar datos.",
+      "submit": "Ver mi recomendación",
+      "q1": {
+        "label": "¿Qué te trae aquí hoy?",
+        "options": {
+          "protectPay": "Proteger mi pago en el trabajo",
+          "bankCredit": "Abrir cuenta o construir crédito",
+          "usciTaxes": "Planear un trámite USCIS o impuestos",
+          "sendMoney": "Enviar dinero a la familia",
+          "budget": "Crear un presupuesto realista"
+        }
+      },
+      "q2": {
+        "label": "Tu estatus hoy",
+        "options": {
+          "ssn": "Tengo SSN",
+          "itin": "Tengo ITIN",
+          "neither": "Aún no tengo ninguno",
+          "notSure": "No estoy seguro/a"
+        }
+      },
+      "q3": {
+        "label": "¿Cuál es tu prioridad principal ahora?",
+        "options": {
+          "pocket": "Más dinero en el bolsillo",
+          "avoidScams": "Evitar estafas y ofertas riesgosas",
+          "bigExpense": "Planear un gasto grande"
+        }
+      }
+    },
+    "results": {
+      "eyebrow": "Tu punto de inicio",
+      "primaryHeading": "Empieza aquí",
+      "secondaryHeading": "Luego revisa estas",
+      "whyHeading": "Por qué te lo sugerimos",
+      "browseAll": "Ver todas las herramientas",
+      "restart": "Cambiar mis respuestas"
+    },
+    "rationale": {
+      "protectPay": "El robo de salario es común y reversible — revisar tu último cheque es la victoria más rápida.",
+      "bankCredit": "El acceso bancario y un crédito inicial se acumulan con el tiempo. Empieza con lo que coincida con tus IDs.",
+      "usciTaxes": "Planea costos y decisiones tributarias antes de las fechas límite. Estas herramientas lo aclaran todo.",
+      "sendMoney": "Las tarifas y márgenes cambiarios varían mucho. Una comparación de 10 minutos puede ahorrar cientos al año.",
+      "budget": "Un presupuesto con remesas, salud y ahorro migratorio es la base de todo."
+    }
+  },
+  "wizard": {
+    "progress": "Paso",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "reviewTitle": "Revisa tus respuestas",
+    "changeAnswer": "Cambiar"
+  },
+  "footer": {
+    "disclaimer": "Esto es información general solamente — no asesoría legal, tributaria ni migratoria. Consulta siempre a un profesional con licencia.",
+    "built": "Creado con cuidado para comunidades inmigrantes"
+  },
+  "home": {
+    "headline": "Herramientas Financieras Gratuitas para Inmigrantes en EE.UU.",
+    "subheadline": "Sin cuenta. Sin guardar tus datos. Solo herramientas que ayudan de verdad.",
+    "stats": "Usado por inmigrantes en los 50 estados · Disponible en English, Español & 中文 · 100% gratis · Sin registrarse",
+    "primaryCta": "Encuentra mi herramienta inicial",
+    "secondaryCta": "Ver todas las herramientas",
+    "heroQuizHint": "3 preguntas rápidas · cerca de 30 segundos · sin registro",
+    "toolsEyebrow": "Todas las herramientas",
+    "toolsTitle": "Herramientas gratis, sin registro",
+    "toolsSubtitle": "Elige lo que se ajuste a tu situación. Los datos quedan en tu navegador.",
+    "aboutEyebrow": "Por qué existe",
+    "seoParagraph": "Los inmigrantes en Estados Unidos enfrentan decisiones financieras que suelen ser más complicadas que un presupuesto normal: cheques con horas extra faltantes, preguntas tributarias con ITIN, tarifas altas de USCIS, costos de remesas, barreras bancarias, invisibilidad crediticia, estafas y presión de renta. ImmigrantMoney reúne estos temas en una caja de herramientas bilingüe con calculadoras en lenguaje claro, fuentes visibles y diseño centrado en privacidad. Las herramientas son educativas y funcionan del lado del cliente, para explorar opciones sin crear cuenta ni enviar detalles financieros sensibles a un servidor.",
+    "faqTitle": "Preguntas frecuentes",
+    "faq": {
+      "q1": "¿Necesito una cuenta?",
+      "a1": "No. Todas las herramientas son gratis y se usan sin iniciar sesión.",
+      "q2": "¿Es asesoría legal o tributaria?",
+      "a2": "No. La app ofrece educación general y no reemplaza a un profesional con licencia.",
+      "q3": "¿Mis datos salen de mi navegador?",
+      "a3": "Los datos de las herramientas se quedan en tu navegador. El email solo se guarda si aceptas.",
+      "q4": "¿Las herramientas están en otros idiomas?",
+      "a4": "Sí. Cada herramienta y página está totalmente traducida al inglés, español y chino simplificado.",
+      "q5": "¿Las tarifas y tasas son en vivo?",
+      "a5": "No. Los datos estáticos muestran fechas de última revisión y deben verificarse.",
+      "q6": "¿Cómo gana dinero el sitio?",
+      "a6": "El sitio puede usar anuncios y enlaces de afiliados, siempre con aviso."
+    }
+  },
+  "notFound": {
+    "eyebrow": "Página no encontrada",
+    "title": "No encontramos esa página",
+    "body": "El enlace puede estar viejo o mal escrito. Prueba la guía o explora todas las herramientas.",
+    "primaryCta": "Empezar la guía",
+    "secondaryCta": "Ver todas las herramientas"
+  },
+  "legal": {
+    "privacyTitle": "Política de Privacidad",
+    "privacyBody": "ImmigrantMoney está diseñado para mantener los datos de calculadoras en tu navegador. No exigimos cuentas. Si envías voluntariamente tu email para la hoja de ruta o lista de espera, guardamos tu email, idioma, herramienta de origen y hora de envío. Podemos usar analítica respetuosa de privacidad y tecnología publicitaria cuando esté configurada. No escribas documentos legales sensibles ni detalles de tu caso migratorio en formularios opcionales.",
+    "termsTitle": "Términos de Servicio",
+    "termsBody": "ImmigrantMoney ofrece información educativa general. No es asesoría legal, tributaria, financiera ni migratoria. Las calculadoras usan datos estáticos y supuestos simplificados. Tú eres responsable de verificar reglas, tarifas, elegibilidad y términos actuales antes de tomar decisiones."
+  },
+  "toolLayout": {
+    "breadcrumbHome": "Inicio",
+    "related": "Herramientas relacionadas",
+    "sourcesIntro": "Esta página usa información estática con fuentes y cálculos simplificados.",
+    "adPlaceholder": "Espacio de anuncio"
+  },
+  "fields": {
+    "state": "Estado",
+    "yes": "Sí",
+    "no": "No",
+    "notSure": "No sé",
+    "amount": "Cantidad",
+    "monthly": "Mensual",
+    "select": "Selecciona una opción"
+  },
+  "tools": {
+    "wage": {
+      "employmentType": "Tipo de empleo",
+      "hourly": "Por hora",
+      "salaried": "Salario fijo",
+      "tipped": "Con propinas",
+      "cash": "Efectivo / sin talón",
+      "hoursWorked": "Horas trabajadas esta semana",
+      "hourlyRate": "Pago por hora",
+      "weeklySalary": "Salario semanal",
+      "overtimeHours": "Horas extra",
+      "tips": "Propinas recibidas esta semana",
+      "actualPay": "Pago real recibido",
+      "withholding": "Retenciones de impuestos en el talón",
+      "benefits": "Deducciones de salud/beneficios",
+      "deductions": "Deducciones en el talón de pago",
+      "unlisted": "¿Hubo deducciones que no aparecen en tu talón?",
+      "expectedGross": "Pago bruto esperado",
+      "expectedNet": "Pago esperado después de deducciones conocidas",
+      "underpaid": "Podrías haber recibido menos por",
+      "appearsCorrect": "Tu pago parece cercano según la información ingresada.",
+      "annualLoss": "Si esto pasa cada semana, la pérdida anual es",
+      "illegalFlags": "Deducciones con señales de riesgo",
+      "resources": "Cómo reportar robo de salario",
+      "nlrb": "Junta Nacional de Relaciones Laborales",
+      "cashNoStub": "El trabajo en efectivo sin talón puede hacer más difícil documentar violaciones. Guarda tus propios registros.",
+      "unlistedDeductions": "Deducciones no listadas son una señal de alerta. Pide un estado de pago detallado si puedes.",
+      "tipCreditGap": "En trabajo con propinas, propinas más salario en efectivo generalmente deben llegar al salario mínimo aplicable."
+    },
+    "itin": {
+      "status": "¿Cuál es tu estatus migratorio?",
+      "tin": "¿Tienes SSN o ITIN?",
+      "worked": "¿Trabajaste y ganaste dinero en EE.UU. este año?",
+      "withheld": "¿Tu empleador retuvo impuestos?",
+      "children": "¿Tienes hijos nacidos en EE.UU.?",
+      "verdict": "Según tus respuestas, esto podría significar declarar impuestos.",
+      "fileRisks": "Si declaras",
+      "dontFileRisks": "Si no declaras",
+      "possibleBenefits": "Posibles beneficios para preguntar a un preparador confiable",
+      "ssnRequired": "Muchos créditos y nuevas deducciones requieren un SSN válido. Un ITIN solo no califica para EITC y puede limitar CTC.",
+      "privacyVolatile": "La litigación y políticas sobre datos IRS/ICE están cambiando. Esta página es una revisión de fecha específica.",
+      "vita": "Busca un sitio VITA confiable o preparador certificado para ITIN."
+    },
+    "uscis": {
+      "application": "Tipo de solicitud",
+      "familyMembers": "Número de familiares que aplican",
+      "savings": "Ahorros apartados",
+      "monthlySavings": "Cantidad mensual que puedes ahorrar",
+      "publicBenefit": "¿Recibes un beneficio público calificado?",
+      "lowIncome": "¿El ingreso del hogar está cerca de límites de exención?",
+      "hardship": "¿Tienes dificultad financiera?",
+      "totalCost": "Costo total estimado",
+      "gap": "Brecha de ahorro",
+      "months": "Meses para ahorrar",
+      "feeWaiver": "Podrías tener una ruta de exención de tarifa para revisar.",
+      "noFeeWaiver": "No se ve una exención clara con estas respuestas.",
+      "danger": "Evita préstamos de día de pago cuando sea posible. Los costos pueden ser extremadamente altos.",
+      "verify": "Verifica siempre las tarifas en USCIS G-1055 antes de enviar."
+    },
+    "scam": {
+      "category": "Categoría",
+      "loan": "Prestamista / préstamo",
+      "immigration": "Ayudante migratorio",
+      "tax": "Preparador de impuestos",
+      "apr": "APR ofrecido",
+      "score": "Nivel de riesgo",
+      "likely": "Parece legítimo según estas respuestas",
+      "caution": "Procede con cuidado",
+      "high": "Alto riesgo de fraude",
+      "redFlags": "Señales de alerta detectadas",
+      "notario": "Advertencia de fraude notario: en EE.UU., los notarios no son abogados de inmigración.",
+      "aprWarning": "APR mayor de 36% es una señal de costo alto, aunque no sea ilegal en todos los estados.",
+      "report": "Reportar fraude"
+    },
+    "bank": {
+      "ids": "¿Qué identificación tienes?",
+      "passport": "Pasaporte",
+      "matricula": "Matrícula Consular",
+      "foreignId": "ID nacional extranjero",
+      "itin": "ITIN",
+      "stateId": "ID estatal de EE.UU.",
+      "accountType": "Tipo de cuenta",
+      "checking": "Corriente",
+      "savings": "Ahorros",
+      "both": "Ambas",
+      "income": "Rango de ingreso mensual",
+      "sendMoney": "¿Envías dinero internacionalmente?",
+      "language": "Preferencia de idioma",
+      "matches": "Opciones posibles",
+      "fee": "Mensualidad",
+      "minBalance": "Saldo mínimo",
+      "requirementsVary": "La aprobación no está garantizada. Los requisitos varían por sucursal e institución.",
+      "checkCasher": "Cambiar un cheque de $500 por una tarifa de $10–$15 puede costar $120–$180 al año si se hace mensualmente."
+    },
+    "credit": {
+      "visa": "Tipo de visa o estatus",
+      "time": "Tiempo en EE.UU.",
+      "bank": "¿Tienes cuenta bancaria en EE.UU.?",
+      "tin": "¿Tienes SSN o ITIN?",
+      "score": "Puntaje o estado de crédito actual",
+      "budget": "Presupuesto mensual para construir crédito",
+      "foreignCredit": "¿Tienes historial de crédito extranjero?",
+      "roadmap": "Tu hoja de ruta educativa",
+      "timeline": "Escenario de tiempo",
+      "products": "Ideas de productos para comparar",
+      "noGuarantee": "No se garantiza ningún aumento de puntaje. Depende de aprobaciones, pagos, uso y reportes."
+    },
+    "remit": {
+      "amount": "Cantidad a enviar",
+      "country": "Enviar a",
+      "method": "Método de entrega",
+      "bank": "Depósito bancario",
+      "wallet": "Billetera móvil",
+      "cash": "Recoger efectivo",
+      "any": "Cualquiera",
+      "frequency": "¿Con qué frecuencia envías?",
+      "once": "Una vez",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "biweekly": "Cada 2 semanas",
+      "comparison": "Comparación ordenada",
+      "fee": "Tarifa",
+      "rate": "Tipo de cambio",
+      "received": "Cantidad recibida",
+      "totalCost": "Costo total",
+      "annualSavings": "Ahorro anual estimado al elegir la opción de menor costo sobre la de mayor costo",
+      "static": "Estimados estáticos solamente. Revisa el proveedor antes de enviar."
+    },
+    "afford": {
+      "city": "Ciudad / área metro",
+      "income": "Ingreso mensual neto",
+      "household": "Tamaño del hogar",
+      "remittances": "Remesas mensuales",
+      "health": "Seguro médico",
+      "children": "¿Hijos en la escuela?",
+      "status": "Estatus migratorio del hogar",
+      "debt": "Pagos mensuales de deuda",
+      "goal": "Meta de ahorro migratorio",
+      "months": "Meses para llegar a la meta",
+      "budget": "Presupuesto mensual recomendado",
+      "lease": "Efectivo estimado necesario antes de firmar contrato",
+      "workable": "Este presupuesto parece viable.",
+      "tight": "Este presupuesto está ajustado.",
+      "shortfall": "Este presupuesto tiene déficit.",
+      "resources": "Puntos de inicio para recursos gratis"
+    }
+  }
+}

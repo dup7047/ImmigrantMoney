@@ -1,0 +1,350 @@
+{
+  "common": {
+    "appName": "ImmigrantMoney",
+    "privacyPromise": "您在工具中输入的信息从不离开您的浏览器",
+    "emailPromise": "只有在您选择加入路线图/候补名单时，邮箱才会被保存。",
+    "lastReviewed": "最近一次审核",
+    "sources": "信息来源",
+    "verify": "在做出报税、法律、税务或财务决定前，请先核实当前规定。",
+    "calculate": "计算",
+    "reset": "重置",
+    "next": "下一步",
+    "back": "上一步",
+    "results": "结果",
+    "learnMore": "了解更多",
+    "estimated": "估算",
+    "notAdvice": "本工具仅提供一般性信息，不构成财务、法律、税务或移民方面的建议。",
+    "affiliateDisclosure": "ImmigrantMoney 可能会从下方链接获得佣金。这从不影响我们的排名。",
+    "trustBadge": "不存储任何个人数据。所有计算都在您的浏览器中完成。",
+    "optionalEmailTitle": "获取一份免费的个性化移民理财路线图",
+    "optionalEmailText": "可选：留下您的邮箱以加入路线图/候补名单。工具中的输入不会被发送。",
+    "email": "邮箱",
+    "consent": "我同意接收路线图/候补名单的邮件。",
+    "submit": "提交",
+    "saved": "已保存。路线图准备好后请查收邮箱。",
+    "skipped": "邮箱收集功能尚未配置。",
+    "error": "出了点问题。请再试一次。"
+  },
+  "nav": {
+    "tools": "工具",
+    "allTools": "所有工具",
+    "categories": "分类",
+    "start": "开始",
+    "privacy": "隐私",
+    "terms": "条款",
+    "language": "语言",
+    "menu": "菜单",
+    "skipToContent": "跳到正文"
+  },
+  "categories": {
+    "earn-protect": {
+      "label": "赚钱与保护工资",
+      "description": "在被克扣或骗走之前，先发现工资问题和骗局。"
+    },
+    "bank-credit": {
+      "label": "银行与建立信用",
+      "description": "无 SSN 也能开户，从零开始建立美国信用记录。"
+    },
+    "send-spend": {
+      "label": "汇款与精明消费",
+      "description": "比较汇款成本，按移民现实做预算。"
+    },
+    "taxes-immigration": {
+      "label": "税务与移民",
+      "description": "自信地规划 ITIN 报税和 USCIS 费用预算。"
+    }
+  },
+  "categoryPage": {
+    "eyebrow": "分类",
+    "browseAll": "浏览所有分类"
+  },
+  "journey": {
+    "teaserEyebrow": "不知道从哪开始?",
+    "teaserTitle": "做一个 3 题小测试",
+    "teaserSubtitle": "告诉我们你的情况，我们帮你找到合适的工具 — 无需注册，不存储任何数据。",
+    "howItWorks": {
+      "label": "使用方式",
+      "step1": "告诉我们你的情况",
+      "step2": "我们为你推荐一个工具",
+      "step3": "在浏览器里免费使用"
+    },
+    "startCta": "开始 3 题小测试",
+    "orPickPrompt": "或者选择一个最像你的情景：",
+    "cards": {
+      "paycheck": {
+        "title": "我刚收到工资",
+        "subtitle": "检查加班费、小费和有风险的扣款。"
+      },
+      "send": {
+        "title": "我想给家里寄钱",
+        "subtitle": "比较手续费、汇率和总成本。"
+      },
+      "filing": {
+        "title": "我正在准备 USCIS 申请",
+        "subtitle": "估算费用、储蓄缺口和减免途径。"
+      }
+    },
+    "intake": {
+      "title": "找到你的起点工具",
+      "subtitle": "几道简短问题。无需账号，不存储任何数据。",
+      "submit": "查看推荐",
+      "q1": {
+        "label": "你今天来这里主要想做什么？",
+        "options": {
+          "protectPay": "保护我的工作工资",
+          "bankCredit": "开银行账户或建立信用",
+          "usciTaxes": "规划 USCIS 申请或税务",
+          "sendMoney": "给家人汇款",
+          "budget": "做一份贴近现实的预算"
+        }
+      },
+      "q2": {
+        "label": "你目前的身份状态",
+        "options": {
+          "ssn": "我有 SSN",
+          "itin": "我有 ITIN",
+          "neither": "两者都还没有",
+          "notSure": "我不确定"
+        }
+      },
+      "q3": {
+        "label": "现在你最想优先解决什么？",
+        "options": {
+          "pocket": "口袋里多留点钱",
+          "avoidScams": "避开骗局和高风险方案",
+          "bigExpense": "为一笔大开支做准备"
+        }
+      }
+    },
+    "results": {
+      "eyebrow": "你的起点",
+      "primaryHeading": "从这里开始",
+      "secondaryHeading": "然后再看看这些",
+      "whyHeading": "为什么我们这样建议",
+      "browseAll": "浏览所有工具",
+      "restart": "修改我的回答"
+    },
+    "rationale": {
+      "protectPay": "工资被克扣很常见，也可以追回 — 检查最近的工资单是最快的胜利。",
+      "bankCredit": "银行使用和初步信用记录会随时间累积。先从匹配你身份证件的选项开始。",
+      "usciTaxes": "在最后期限前规划好申请费用和税务决定。这些工具可以帮你理清两件事。",
+      "sendMoney": "手续费和汇率加价差异很大。花 10 分钟比较一下，每年可能省下数百美元。",
+      "budget": "把汇款、医疗支出和移民储蓄都纳入考量的预算，是一切的基础。"
+    }
+  },
+  "wizard": {
+    "progress": "步骤",
+    "back": "上一步",
+    "next": "下一步",
+    "submit": "提交",
+    "reviewTitle": "确认你的回答",
+    "changeAnswer": "修改"
+  },
+  "footer": {
+    "disclaimer": "这只是一般性信息 — 不构成法律、税务或移民方面的建议。请始终咨询持照专业人士。",
+    "built": "用心为移民社区打造"
+  },
+  "home": {
+    "headline": "为美国移民打造的免费理财工具",
+    "subheadline": "无需注册，不存储数据，只是真的能帮上忙的工具。",
+    "stats": "全美 50 个州的移民都在用 · 提供 English & Español & 中文 · 100% 免费 · 无需注册",
+    "primaryCta": "找到我的起点工具",
+    "secondaryCta": "浏览所有工具",
+    "heroQuizHint": "3 道简短问题 · 大约 30 秒 · 无需注册",
+    "toolsEyebrow": "所有工具",
+    "toolsTitle": "免费工具，无需注册",
+    "toolsSubtitle": "选择最适合你情况的工具。所有输入都留在你的浏览器里。",
+    "aboutEyebrow": "为什么有这个网站",
+    "seoParagraph": "美国的移民经常面临比普通预算表更复杂的财务决定：工资单可能少了加班费、关于 ITIN 的税务问题、高昂的 USCIS 费用、汇款成本、银行准入门槛、看不见的信用记录、各种骗局，以及房租压力。ImmigrantMoney 把这些问题整合到一个多语言工具包里，配以通俗语言的计算器、注明出处的资料，以及隐私优先的设计。这些工具都是教育性的，并完全在客户端运行，因此用户可以在不开户、不向服务器发送敏感财务信息的情况下探索各种选项。",
+    "faqTitle": "大家常问的问题",
+    "faq": {
+      "q1": "我需要注册账号吗？",
+      "a1": "不需要。所有工具都免费，且无需登录就能使用。",
+      "q2": "这是法律或税务方面的建议吗？",
+      "a2": "不是。本应用提供一般性教育内容，不能代替持照专业人士的建议。",
+      "q3": "我的数据会离开浏览器吗？",
+      "a3": "工具中的输入只留在您的浏览器里。只有在您主动选择时，邮箱才会被保存。",
+      "q4": "这些工具有其他语言版本吗？",
+      "a4": "有。每个工具和页面都完整翻译成了英文、西班牙文和简体中文。",
+      "q5": "费用和汇率是实时的吗？",
+      "a5": "不是。静态数据集都注明了最近一次审核的日期，使用前请自行核实。",
+      "q6": "这个网站如何盈利？",
+      "a6": "网站可能使用广告和联盟营销链接，并始终明确披露。"
+    }
+  },
+  "notFound": {
+    "eyebrow": "找不到页面",
+    "title": "我们没找到这个页面",
+    "body": "链接可能已过期或拼写有误。试试引导式问答，或者浏览所有工具。",
+    "primaryCta": "开始引导式问答",
+    "secondaryCta": "浏览所有工具"
+  },
+  "legal": {
+    "privacyTitle": "隐私政策",
+    "privacyBody": "ImmigrantMoney 的设计原则是把计算器中的输入保留在您的浏览器里。我们不要求注册账号。如果您主动为路线图或候补名单提交邮箱，我们会保存您的邮箱、语言、来源工具和提交时间。在配置后，我们可能会使用尊重隐私的分析和广告技术。请不要在可选表单中输入敏感的法律文件或移民案件细节。",
+    "termsTitle": "服务条款",
+    "termsBody": "ImmigrantMoney 提供一般性教育信息。它不构成法律、税务、财务或移民方面的建议。计算器使用的是静态数据集和简化假设。在做决定前，您有责任核实当前的规定、费用、资格和产品条款。"
+  },
+  "toolLayout": {
+    "breadcrumbHome": "首页",
+    "related": "相关工具",
+    "sourcesIntro": "本页面使用静态、有出处的资料和简化的计算。",
+    "adPlaceholder": "广告位"
+  },
+  "fields": {
+    "state": "州",
+    "yes": "是",
+    "no": "否",
+    "notSure": "不确定",
+    "amount": "金额",
+    "monthly": "每月",
+    "select": "请选择"
+  },
+  "tools": {
+    "wage": {
+      "employmentType": "雇佣类型",
+      "hourly": "按小时计酬",
+      "salaried": "固定工资",
+      "tipped": "靠小费",
+      "cash": "现金 / 没有工资单",
+      "hoursWorked": "本周工作小时数",
+      "hourlyRate": "每小时工资",
+      "weeklySalary": "每周工资",
+      "overtimeHours": "加班小时数",
+      "tips": "本周收到的小费",
+      "actualPay": "实际收到的工资",
+      "withholding": "工资单上注明的税款扣除",
+      "benefits": "已知的医疗 / 福利扣款",
+      "deductions": "工资单上列出的扣款",
+      "unlisted": "是否有未列在工资单上的扣款？",
+      "expectedGross": "应得的总工资",
+      "expectedNet": "扣除已知扣款后应得的工资",
+      "underpaid": "你可能被少发了",
+      "appearsCorrect": "根据你提供的信息，工资看起来基本相符。",
+      "annualLoss": "如果每周都这样，全年损失约为",
+      "illegalFlags": "可疑扣款提示",
+      "resources": "如何举报工资被克扣",
+      "nlrb": "美国国家劳工关系委员会（NLRB）",
+      "cashNoStub": "拿现金且没有工资单的工作更难举证违法。请自己保留书面记录。",
+      "unlistedDeductions": "未列出的扣款是危险信号。如有可能，请要求一份逐项的工资明细。",
+      "tipCreditGap": "对于靠小费的工作，小费加现金工资通常仍需达到适用的最低工资标准。"
+    },
+    "itin": {
+      "status": "你的移民身份是？",
+      "tin": "你有 SSN 还是 ITIN？",
+      "worked": "今年你在美国工作并赚到钱了吗？",
+      "withheld": "雇主给你扣了税吗？",
+      "children": "你有在美国出生的孩子吗？",
+      "verdict": "根据你的回答，下面是报税可能意味着什么。",
+      "fileRisks": "如果你报税",
+      "dontFileRisks": "如果你不报税",
+      "possibleBenefits": "可以向可信任的报税员询问的潜在福利",
+      "ssnRequired": "许多抵免和新的扣除需要有效的 SSN。仅有 ITIN 不符合 EITC 资格，并可能限制 CTC 资格。",
+      "privacyVolatile": "IRS/ICE 之间的数据共享诉讼和政策正在变化。本页面是某一时点的快照。",
+      "vita": "请寻找可信赖的 VITA 服务点或具备 ITIN 认证的报税员。"
+    },
+    "uscis": {
+      "application": "申请类型",
+      "familyMembers": "一同申请的家庭成员人数",
+      "savings": "已存下的金额",
+      "monthlySavings": "每月可以存的金额",
+      "publicBenefit": "你是否领取符合条件的公共福利？",
+      "lowIncome": "家庭收入是否接近费用减免的上限？",
+      "hardship": "你是否存在财务困难？",
+      "totalCost": "估算总费用",
+      "gap": "储蓄缺口",
+      "months": "需要存几个月",
+      "feeWaiver": "你可能有可以申请的费用减免途径。",
+      "noFeeWaiver": "根据这些回答，看不到明显的费用减免途径。",
+      "danger": "尽量避免发薪日贷款。这类贷款的成本可能极高。",
+      "verify": "提交前请始终在 USCIS 的 G-1055 上核实费用。"
+    },
+    "scam": {
+      "category": "类别",
+      "loan": "贷款方 / 贷款",
+      "immigration": "移民帮办",
+      "tax": "报税员",
+      "apr": "标注的 APR",
+      "score": "风险评分",
+      "likely": "根据这些回答，看起来基本可信",
+      "caution": "请谨慎进行",
+      "high": "存在较高的欺诈风险",
+      "redFlags": "发现的危险信号",
+      "notario": "公证人欺诈警示：在美国，公证人不是移民律师。",
+      "aprWarning": "APR 超过 36% 是高成本的警示信号，即便在某些州并不违法。",
+      "report": "举报欺诈"
+    },
+    "bank": {
+      "ids": "你有哪些身份证件？",
+      "passport": "护照",
+      "matricula": "领事馆身份证（Matrícula Consular）",
+      "foreignId": "外国身份证",
+      "itin": "ITIN",
+      "stateId": "美国州身份证",
+      "accountType": "账户类型",
+      "checking": "支票账户",
+      "savings": "储蓄账户",
+      "both": "两者都要",
+      "income": "月收入区间",
+      "sendMoney": "你会进行国际汇款吗？",
+      "language": "语言偏好",
+      "matches": "可能匹配的选项",
+      "fee": "月费",
+      "minBalance": "最低余额",
+      "requirementsVary": "并不保证一定通过。具体要求因分行和机构而异。",
+      "checkCasher": "用 10–15 美元的费用兑现一张 500 美元的支票，如果每月都做，一年大约要花 120–180 美元。"
+    },
+    "credit": {
+      "visa": "签证或身份类型",
+      "time": "在美国的时间",
+      "bank": "你有美国银行账户吗？",
+      "tin": "你有 SSN 还是 ITIN？",
+      "score": "目前的信用分数或状态",
+      "budget": "用于建立信用的月预算",
+      "foreignCredit": "你有国外的信用记录吗？",
+      "roadmap": "你的学习路线图",
+      "timeline": "情景时间表",
+      "products": "可对比的产品建议",
+      "noGuarantee": "不能保证分数一定会上升。结果取决于审批、还款、使用率和上报情况。"
+    },
+    "remit": {
+      "amount": "汇出金额",
+      "country": "汇至",
+      "method": "到账方式",
+      "bank": "银行存款",
+      "wallet": "移动钱包",
+      "cash": "现金提取",
+      "any": "任意",
+      "frequency": "你多久汇一次？",
+      "once": "仅一次",
+      "weekly": "每周",
+      "monthly": "每月",
+      "biweekly": "每两周",
+      "comparison": "排序对比",
+      "fee": "手续费",
+      "rate": "汇率",
+      "received": "收款金额",
+      "totalCost": "总成本",
+      "annualSavings": "选择最低成本方案而非最高成本方案的年度估算节省",
+      "static": "仅为静态估算。汇款前请查询服务商的实时信息。"
+    },
+    "afford": {
+      "city": "城市 / 都市区",
+      "income": "每月到手收入",
+      "household": "家庭人数",
+      "remittances": "每月汇款",
+      "health": "医疗保险",
+      "children": "有在上学的孩子吗？",
+      "status": "家庭的移民身份",
+      "debt": "每月债务还款",
+      "goal": "移民储蓄目标",
+      "months": "几个月内达到目标",
+      "budget": "建议的月度预算",
+      "lease": "签租约前估计需要的现金",
+      "workable": "这份预算看起来是可行的。",
+      "tight": "这份预算比较紧。",
+      "shortfall": "这份预算存在缺口。",
+      "resources": "免费的资源起点"
+    }
+  }
+}

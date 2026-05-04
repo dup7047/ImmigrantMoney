@@ -1,0 +1,350 @@
+{
+  "common": {
+    "appName": "ImmigrantMoney",
+    "privacyPromise": "Your tool inputs never leave your browser",
+    "emailPromise": "Email is stored only if you opt into the roadmap/waitlist.",
+    "lastReviewed": "Last reviewed",
+    "sources": "Sources",
+    "verify": "Verify current rules before making a filing, legal, tax, or financial decision.",
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "next": "Next",
+    "back": "Back",
+    "results": "Results",
+    "learnMore": "Learn more",
+    "estimated": "Estimated",
+    "notAdvice": "This tool provides general information only and is not financial, legal, tax, or immigration advice.",
+    "affiliateDisclosure": "ImmigrantMoney may earn a commission on links below. This never affects our rankings.",
+    "trustBadge": "No personal data stored. All calculations happen in your browser.",
+    "optionalEmailTitle": "Get a free personalized immigrant financial roadmap",
+    "optionalEmailText": "Optional: enter your email to join the roadmap/waitlist. Tool inputs are not sent.",
+    "email": "Email",
+    "consent": "I agree to receive the roadmap/waitlist email.",
+    "submit": "Submit",
+    "saved": "Saved. Check your inbox when the roadmap is ready.",
+    "skipped": "Email capture is not configured yet.",
+    "error": "Something went wrong. Please try again."
+  },
+  "nav": {
+    "tools": "Tools",
+    "allTools": "All tools",
+    "categories": "Categories",
+    "start": "Start",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "language": "Language",
+    "menu": "Menu",
+    "skipToContent": "Skip to content"
+  },
+  "categories": {
+    "earn-protect": {
+      "label": "Earn & Protect Pay",
+      "description": "Catch wage theft and spot scams before they cost you."
+    },
+    "bank-credit": {
+      "label": "Bank & Build Credit",
+      "description": "Open accounts without an SSN and build U.S. credit from zero."
+    },
+    "send-spend": {
+      "label": "Send & Spend Smart",
+      "description": "Compare remittance costs and budget for life with immigrant realities."
+    },
+    "taxes-immigration": {
+      "label": "Taxes & Immigration",
+      "description": "Plan ITIN filings and budget for USCIS fees with confidence."
+    }
+  },
+  "categoryPage": {
+    "eyebrow": "Category",
+    "browseAll": "Browse all categories"
+  },
+  "journey": {
+    "teaserEyebrow": "Not sure where to start?",
+    "teaserTitle": "Take the 3-question quiz",
+    "teaserSubtitle": "Tell us your situation. We'll point to the tools that fit — no signup, no data stored.",
+    "howItWorks": {
+      "label": "How it works",
+      "step1": "Tell us your situation",
+      "step2": "We recommend a tool",
+      "step3": "Use it free, in your browser"
+    },
+    "startCta": "Start the 3-question quiz",
+    "orPickPrompt": "Or pick a situation that sounds like you:",
+    "cards": {
+      "paycheck": {
+        "title": "I just got a paycheck",
+        "subtitle": "Check overtime, tips, and risky deductions."
+      },
+      "send": {
+        "title": "I want to send money home",
+        "subtitle": "Compare fees, exchange rates, and total cost."
+      },
+      "filing": {
+        "title": "I'm planning a USCIS filing",
+        "subtitle": "Estimate fees, savings gaps, and waiver paths."
+      }
+    },
+    "intake": {
+      "title": "Find your starting tool",
+      "subtitle": "A few quick questions. No account, no data stored.",
+      "submit": "See my recommendation",
+      "q1": {
+        "label": "What brings you here today?",
+        "options": {
+          "protectPay": "Protect my pay at work",
+          "bankCredit": "Open a bank account or build credit",
+          "usciTaxes": "Plan a USCIS filing or taxes",
+          "sendMoney": "Send money to family",
+          "budget": "Build a realistic budget"
+        }
+      },
+      "q2": {
+        "label": "Your status today",
+        "options": {
+          "ssn": "I have an SSN",
+          "itin": "I have an ITIN",
+          "neither": "I don't have either yet",
+          "notSure": "I'm not sure"
+        }
+      },
+      "q3": {
+        "label": "What's your top priority right now?",
+        "options": {
+          "pocket": "More money in my pocket",
+          "avoidScams": "Avoid scams and risky offers",
+          "bigExpense": "Plan for a big expense"
+        }
+      }
+    },
+    "results": {
+      "eyebrow": "Your starting point",
+      "primaryHeading": "Start here",
+      "secondaryHeading": "Then check these",
+      "whyHeading": "Why we suggested this",
+      "browseAll": "Browse all tools",
+      "restart": "Change my answers"
+    },
+    "rationale": {
+      "protectPay": "Wage theft is common and reversible — checking your last paycheck is the fastest win.",
+      "bankCredit": "Banking access and a starter credit history compound over time. Begin with what matches your IDs.",
+      "usciTaxes": "Plan filing costs and tax decisions before deadlines hit. These tools demystify both.",
+      "sendMoney": "Fees and exchange markups vary widely. A 10-minute comparison can save hundreds per year.",
+      "budget": "A budget that accounts for remittances, health costs, and immigration savings is the foundation."
+    }
+  },
+  "wizard": {
+    "progress": "Step",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "reviewTitle": "Review your answers",
+    "changeAnswer": "Change"
+  },
+  "footer": {
+    "disclaimer": "This is general information only — not legal, tax, or immigration advice. Always consult a licensed professional.",
+    "built": "Built with care for immigrant communities"
+  },
+  "home": {
+    "headline": "Free Financial Tools for Immigrants in the U.S.",
+    "subheadline": "No account needed. No data stored. Just tools that actually help.",
+    "stats": "Used by immigrants in all 50 states · Available in English, Español & 中文 · 100% free · No sign-up required",
+    "primaryCta": "Find my starting tool",
+    "secondaryCta": "Browse all tools",
+    "heroQuizHint": "3 quick questions · about 30 seconds · no signup",
+    "toolsEyebrow": "All tools",
+    "toolsTitle": "Free tools, no signup",
+    "toolsSubtitle": "Pick what fits your situation. Inputs stay in your browser.",
+    "aboutEyebrow": "Why this exists",
+    "seoParagraph": "Immigrants in the United States face financial decisions that are often more complicated than a typical budget spreadsheet: paychecks that may be missing overtime, tax questions involving ITINs, high USCIS fees, remittance costs, banking barriers, credit invisibility, scams, and rent pressure. ImmigrantMoney brings these issues into one bilingual toolkit with plain-language calculators, source notes, and privacy-first design. The tools are educational and client-side, so users can explore options without creating an account or sending sensitive financial details to a server.",
+    "faqTitle": "Questions people ask",
+    "faq": {
+      "q1": "Do I need an account?",
+      "a1": "No. All tools are free and can be used without signing in.",
+      "q2": "Is this legal or tax advice?",
+      "a2": "No. The app provides general education and should not replace a licensed professional.",
+      "q3": "Does my data leave my browser?",
+      "a3": "Tool inputs stay in your browser. Email is stored only if you opt in.",
+      "q4": "Are the tools available in other languages?",
+      "a4": "Yes. Every tool and page is fully translated to English, Spanish, and Simplified Chinese.",
+      "q5": "Are rates and fees live?",
+      "a5": "No. Static datasets are labeled with last-reviewed dates and should be verified.",
+      "q6": "How does the site make money?",
+      "a6": "The site may use ads and affiliate links, always disclosed."
+    }
+  },
+  "notFound": {
+    "eyebrow": "Page not found",
+    "title": "We couldn't find that page",
+    "body": "The link may be old or mistyped. Try the guided journey or browse all tools.",
+    "primaryCta": "Start the guided journey",
+    "secondaryCta": "Browse all tools"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "privacyBody": "ImmigrantMoney is designed to keep calculator inputs in your browser. We do not require accounts. If you voluntarily submit your email for the roadmap or waitlist, we store your email, locale, source tool, and submission time. We may use privacy-friendly analytics and ad technology when configured. Do not enter sensitive legal documents or immigration case details into optional forms.",
+    "termsTitle": "Terms of Service",
+    "termsBody": "ImmigrantMoney provides general educational information. It is not legal, tax, financial, or immigration advice. Calculators use static datasets and simplified assumptions. You are responsible for verifying current rules, fees, eligibility, and product terms before making decisions."
+  },
+  "toolLayout": {
+    "breadcrumbHome": "Home",
+    "related": "Related tools",
+    "sourcesIntro": "This page uses static source-backed information and simplified calculations.",
+    "adPlaceholder": "Advertisement placeholder"
+  },
+  "fields": {
+    "state": "State",
+    "yes": "Yes",
+    "no": "No",
+    "notSure": "Not sure",
+    "amount": "Amount",
+    "monthly": "Monthly",
+    "select": "Select an option"
+  },
+  "tools": {
+    "wage": {
+      "employmentType": "Employment type",
+      "hourly": "Hourly",
+      "salaried": "Salaried",
+      "tipped": "Tipped",
+      "cash": "Cash / no pay stub",
+      "hoursWorked": "Hours worked this week",
+      "hourlyRate": "Hourly rate",
+      "weeklySalary": "Weekly salary",
+      "overtimeHours": "Overtime hours",
+      "tips": "Tips received this week",
+      "actualPay": "Actual pay received",
+      "withholding": "Known tax withholding listed on pay stub",
+      "benefits": "Known health/benefit deductions",
+      "deductions": "Deductions listed on pay stub",
+      "unlisted": "Were any deductions not listed on your pay stub?",
+      "expectedGross": "Expected gross pay",
+      "expectedNet": "Expected pay after known deductions",
+      "underpaid": "You may have been underpaid by",
+      "appearsCorrect": "Your pay appears close based on the information entered.",
+      "annualLoss": "If this happens every week, the yearly loss is",
+      "illegalFlags": "Risky deduction flags",
+      "resources": "How to report wage theft",
+      "nlrb": "National Labor Relations Board",
+      "cashNoStub": "Cash work without a pay stub can make wage violations harder to document. Keep your own written records.",
+      "unlistedDeductions": "Unlisted deductions are a red flag. Ask for an itemized pay statement when possible.",
+      "tipCreditGap": "For tipped work, tips plus cash wages generally must still reach the applicable minimum wage."
+    },
+    "itin": {
+      "status": "What is your immigration status?",
+      "tin": "Do you have an SSN or ITIN?",
+      "worked": "Did you work and earn money in the U.S. this year?",
+      "withheld": "Did your employer withhold taxes?",
+      "children": "Do you have U.S.-born children?",
+      "verdict": "Based on your answers, here is what filing may mean.",
+      "fileRisks": "If you file",
+      "dontFileRisks": "If you do not file",
+      "possibleBenefits": "Possible benefits to ask a trusted preparer about",
+      "ssnRequired": "Many credits and new deductions require a valid SSN. An ITIN alone does not qualify for EITC and may limit CTC eligibility.",
+      "privacyVolatile": "IRS/ICE data-sharing litigation and policies are changing. This page is a last-reviewed snapshot.",
+      "vita": "Look for a trusted VITA site or ITIN-certified preparer."
+    },
+    "uscis": {
+      "application": "Application type",
+      "familyMembers": "Number of family members applying",
+      "savings": "Savings set aside",
+      "monthlySavings": "Monthly amount you can save",
+      "publicBenefit": "Do you receive a qualifying public benefit?",
+      "lowIncome": "Is household income near fee waiver limits?",
+      "hardship": "Do you have a financial hardship?",
+      "totalCost": "Estimated total cost",
+      "gap": "Savings gap",
+      "months": "Months to save",
+      "feeWaiver": "You may have a fee waiver path to review.",
+      "noFeeWaiver": "A fee waiver is not obvious from these answers.",
+      "danger": "Avoid payday loans when possible. Costs can be extremely high.",
+      "verify": "Always verify fees on USCIS G-1055 before filing."
+    },
+    "scam": {
+      "category": "Category",
+      "loan": "Lender / loan",
+      "immigration": "Immigration helper",
+      "tax": "Tax preparer",
+      "apr": "APR offered",
+      "score": "Risk score",
+      "likely": "Likely legitimate based on these answers",
+      "caution": "Proceed with caution",
+      "high": "High risk of fraud",
+      "redFlags": "Red flags detected",
+      "notario": "Notario fraud warning: in the U.S., notaries are not immigration lawyers.",
+      "aprWarning": "APR over 36% is a high-cost warning sign, even when not illegal in every state.",
+      "report": "Report fraud"
+    },
+    "bank": {
+      "ids": "What ID do you have?",
+      "passport": "Passport",
+      "matricula": "Matrícula Consular",
+      "foreignId": "Foreign national ID",
+      "itin": "ITIN",
+      "stateId": "U.S. State ID",
+      "accountType": "Account type",
+      "checking": "Checking",
+      "savings": "Savings",
+      "both": "Both",
+      "income": "Monthly income range",
+      "sendMoney": "Do you send money internationally?",
+      "language": "Language preference",
+      "matches": "Possible matches",
+      "fee": "Monthly fee",
+      "minBalance": "Minimum balance",
+      "requirementsVary": "Approval is not guaranteed. Requirements vary by branch and institution.",
+      "checkCasher": "Cashing a $500 check for a $10–$15 fee can cost about $120–$180 per year if done monthly."
+    },
+    "credit": {
+      "visa": "Visa or status type",
+      "time": "Time in the U.S.",
+      "bank": "Do you have a U.S. bank account?",
+      "tin": "Do you have an SSN or ITIN?",
+      "score": "Current credit score or status",
+      "budget": "Monthly budget to build credit",
+      "foreignCredit": "Do you have foreign credit history?",
+      "roadmap": "Your educational roadmap",
+      "timeline": "Scenario timeline",
+      "products": "Product ideas to compare",
+      "noGuarantee": "No score increase is guaranteed. Results depend on approvals, payments, utilization, and reporting."
+    },
+    "remit": {
+      "amount": "Amount to send",
+      "country": "Send to",
+      "method": "Delivery method",
+      "bank": "Bank deposit",
+      "wallet": "Mobile wallet",
+      "cash": "Cash pickup",
+      "any": "Any",
+      "frequency": "How often do you send?",
+      "once": "Once",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "biweekly": "Every 2 weeks",
+      "comparison": "Ranked comparison",
+      "fee": "Fee",
+      "rate": "Exchange rate",
+      "received": "Amount received",
+      "totalCost": "Total cost",
+      "annualSavings": "Estimated annual savings choosing the lowest-cost option over the highest-cost option",
+      "static": "Static estimates only. Check the provider before sending."
+    },
+    "afford": {
+      "city": "City / metro",
+      "income": "Monthly take-home income",
+      "household": "Household size",
+      "remittances": "Monthly remittances",
+      "health": "Health insurance",
+      "children": "Children in school?",
+      "status": "Household immigration status",
+      "debt": "Monthly debt payments",
+      "goal": "Immigration savings goal",
+      "months": "Months to reach goal",
+      "budget": "Recommended monthly budget",
+      "lease": "Estimated cash needed before signing a lease",
+      "workable": "This budget appears workable.",
+      "tight": "This budget is tight.",
+      "shortfall": "This budget has a shortfall.",
+      "resources": "Free resource starting points"
+    }
+  }
+}
