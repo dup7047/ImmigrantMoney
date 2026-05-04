@@ -1,7 +1,6 @@
 import "./globals.css";
 import type {Metadata, Viewport} from "next";
 import {Fraunces, Inter} from "next/font/google";
-import Script from "next/script";
 import type {ReactNode} from "react";
 import {Analytics} from "@vercel/analytics/next";
 import {SpeedInsights} from "@vercel/speed-insights/next";
@@ -62,16 +61,17 @@ export default function RootLayout({children}: {children: ReactNode}) {
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <head>
         <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
-        {/* AdSense verification script must be in the SSR'd HTML so the
-            AdSense crawler can find it without executing JavaScript.
-            next/script with strategy="afterInteractive" only injects the
-            tag client-side, which is why the original verification failed. */}
-        <Script
-          async
+        {/* AdSense verification snippet. React 19 hoists <script async/defer>
+            tags into a <link rel=preload> only — the actual <script src>
+            doesn't appear in the SSR'd HTML, so AdSense's HTML crawler can't
+            find it. Without async/defer, React renders the script tag inline,
+            which is what AdSense's verification needs to see. The synchronous
+            load adds a small parse delay; the no-sync-scripts lint rule is
+            disabled here intentionally for this trade. */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script
           crossOrigin="anonymous"
-          id="adsense-script"
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-          strategy="beforeInteractive"
         />
       </head>
       <body className="font-sans antialiased">
