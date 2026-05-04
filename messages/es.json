@@ -241,8 +241,38 @@
       "dontFileRisks": "Si no declaras",
       "possibleBenefits": "Posibles beneficios para preguntar a un preparador confiable",
       "ssnRequired": "Muchos créditos y nuevas deducciones requieren un SSN válido. Un ITIN solo no califica para EITC y puede limitar CTC.",
+      "ssnEligible": "Ingresaste SSN: pregunta a un preparador confiable sobre EITC, CTC, propinas y horas extra.",
       "privacyVolatile": "La litigación y políticas sobre datos IRS/ICE están cambiando. Esta página es una revisión de fecha específica.",
-      "vita": "Busca un sitio VITA confiable o preparador certificado para ITIN."
+      "vita": "Busca un sitio VITA confiable o preparador certificado para ITIN.",
+      "summaryHeading": "Tus respuestas",
+      "statusOptions": {
+        "undocumented": "Indocumentado/a",
+        "daca": "Beneficiario/a de DACA",
+        "tps": "Beneficiario/a de TPS",
+        "workVisa": "Visa de trabajo (H-1B, L-1, etc.)",
+        "student": "Visa de estudiante (F-1, J-1)",
+        "greenCard": "Residente permanente",
+        "other": "Otro / no estoy seguro"
+      },
+      "tinOptions": {
+        "ssn": "SSN",
+        "itin": "ITIN",
+        "neither": "Aún no tengo ninguno",
+        "notSure": "No estoy seguro"
+      },
+      "workedOptions": {
+        "w2": "Sí — empleo W-2",
+        "cash": "Sí — efectivo o gig",
+        "no": "No"
+      },
+      "fileBenefit": {
+        "withheld": "Podrías reclamar impuestos retenidos en exceso.",
+        "compliance": "Podrías documentar tu historial de cumplimiento tributario."
+      },
+      "dontFile": {
+        "losesRefund": "Podrías perder un reembolso si se retuvieron impuestos.",
+        "complianceIssue": "No declarar puede generar problemas de cumplimiento si tenías la obligación de declarar."
+      }
     },
     "uscis": {
       "application": "Tipo de solicitud",

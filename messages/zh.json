@@ -241,8 +241,38 @@
       "dontFileRisks": "如果你不报税",
       "possibleBenefits": "可以向可信任的报税员询问的潜在福利",
       "ssnRequired": "许多抵免和新的扣除需要有效的 SSN。仅有 ITIN 不符合 EITC 资格，并可能限制 CTC 资格。",
+      "ssnEligible": "已填写 SSN：请向可信任的报税员询问 EITC、CTC、小费及加班相关的资格。",
       "privacyVolatile": "IRS/ICE 之间的数据共享诉讼和政策正在变化。本页面是某一时点的快照。",
-      "vita": "请寻找可信赖的 VITA 服务点或具备 ITIN 认证的报税员。"
+      "vita": "请寻找可信赖的 VITA 服务点或具备 ITIN 认证的报税员。",
+      "summaryHeading": "你的回答",
+      "statusOptions": {
+        "undocumented": "无证身份",
+        "daca": "DACA 持有者",
+        "tps": "TPS 持有者",
+        "workVisa": "工作签证（H-1B、L-1 等）",
+        "student": "学生签证（F-1、J-1）",
+        "greenCard": "绿卡持有者",
+        "other": "其他 / 不确定"
+      },
+      "tinOptions": {
+        "ssn": "SSN",
+        "itin": "ITIN",
+        "neither": "两者都还没有",
+        "notSure": "不确定"
+      },
+      "workedOptions": {
+        "w2": "是 — W-2 工作",
+        "cash": "是 — 现金或零工",
+        "no": "没有"
+      },
+      "fileBenefit": {
+        "withheld": "你可能可以申请退还多扣的税款。",
+        "compliance": "你可以为自己留下报税合规记录。"
+      },
+      "dontFile": {
+        "losesRefund": "如果之前被扣过税，不报税可能会损失这笔退税。",
+        "complianceIssue": "如果原本有报税义务，不报税可能带来合规问题。"
+      }
     },
     "uscis": {
       "application": "申请类型",

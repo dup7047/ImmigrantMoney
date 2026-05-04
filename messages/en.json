@@ -241,8 +241,38 @@
       "dontFileRisks": "If you do not file",
       "possibleBenefits": "Possible benefits to ask a trusted preparer about",
       "ssnRequired": "Many credits and new deductions require a valid SSN. An ITIN alone does not qualify for EITC and may limit CTC eligibility.",
+      "ssnEligible": "SSN entered: ask a trusted preparer about EITC, CTC, tips, and overtime eligibility.",
       "privacyVolatile": "IRS/ICE data-sharing litigation and policies are changing. This page is a last-reviewed snapshot.",
-      "vita": "Look for a trusted VITA site or ITIN-certified preparer."
+      "vita": "Look for a trusted VITA site or ITIN-certified preparer.",
+      "summaryHeading": "Your answers",
+      "statusOptions": {
+        "undocumented": "Undocumented",
+        "daca": "DACA recipient",
+        "tps": "TPS holder",
+        "workVisa": "Work visa (H-1B, L-1, etc.)",
+        "student": "Student visa (F-1, J-1)",
+        "greenCard": "Green Card holder",
+        "other": "Other / not sure"
+      },
+      "tinOptions": {
+        "ssn": "SSN",
+        "itin": "ITIN",
+        "neither": "Neither yet",
+        "notSure": "Not sure"
+      },
+      "workedOptions": {
+        "w2": "Yes — W-2 job",
+        "cash": "Yes — cash or gig work",
+        "no": "No"
+      },
+      "fileBenefit": {
+        "withheld": "You may be able to claim over-withheld taxes.",
+        "compliance": "You may document tax compliance history."
+      },
+      "dontFile": {
+        "losesRefund": "You may lose a refund if taxes were withheld.",
+        "complianceIssue": "Not filing can create tax-compliance issues if you had a filing requirement."
+      }
     },
     "uscis": {
       "application": "Application type",

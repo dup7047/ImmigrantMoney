@@ -313,29 +313,38 @@ function ItinTaxGuide() {
     resolver: zodResolver(itinSchema),
     defaultValues: {status: "undocumented", tin: "itin", worked: "w2", withheld: "notSure", children: "no", stateCode: "CA"}
   });
+  const statusKeys = ["undocumented", "daca", "tps", "workVisa", "student", "greenCard", "other"] as const;
+  const tinKeys = ["ssn", "itin", "neither", "notSure"] as const;
+  const workedKeys = ["w2", "cash", "no"] as const;
+  const yesNoSureKeys = ["yes", "no", "notSure"] as const;
+  const yesNoKeys = ["yes", "no"] as const;
+
   const fields = [
-    <FieldShell key="status" label={t("tools.itin.status")}>
+    <FieldShell key="status" label={t("tools.itin.status")} error={errors.status?.message as string | undefined}>
       <Select {...register("status")}>
-        {["undocumented", "daca", "tps", "workVisa", "student", "greenCard", "other"].map((value) => (
+        {statusKeys.map((value) => (
           <option key={value} value={value}>
-            {value}
+            {t(`tools.itin.statusOptions.${value}`)}
           </option>
         ))}
       </Select>
     </FieldShell>,
-    <FieldShell key="tin" label={t("tools.itin.tin")}>
+    <FieldShell key="tin" label={t("tools.itin.tin")} error={errors.tin?.message as string | undefined}>
       <Select {...register("tin")}>
-        <option value="ssn">SSN</option>
-        <option value="itin">ITIN</option>
-        <option value="neither">Neither</option>
-        <option value="notSure">{t("fields.notSure")}</option>
+        {tinKeys.map((value) => (
+          <option key={value} value={value}>
+            {t(`tools.itin.tinOptions.${value}`)}
+          </option>
+        ))}
       </Select>
     </FieldShell>,
-    <FieldShell key="worked" label={t("tools.itin.worked")}>
+    <FieldShell key="worked" label={t("tools.itin.worked")} error={errors.worked?.message as string | undefined}>
       <Select {...register("worked")}>
-        <option value="w2">Yes - W-2 job</option>
-        <option value="cash">Yes - cash/gig work</option>
-        <option value="no">{t("fields.no")}</option>
+        {workedKeys.map((value) => (
+          <option key={value} value={value}>
+            {t(`tools.itin.workedOptions.${value}`)}
+          </option>
+        ))}
       </Select>
     </FieldShell>,
     <FieldShell key="withheld" label={t("tools.itin.withheld")}>
@@ -392,30 +401,64 @@ function ItinTaxGuide() {
       </form>
       {result ? (
         <div ref={resultRef} className="grid gap-4">
+          {/* Summary of what the user answered, so the verdict makes sense in context */}
+          <Panel className="border-ink-200 bg-ink-50">
+            <h3 className="text-heading-3 text-ink-900">{t("tools.itin.summaryHeading")}</h3>
+            <dl className="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+              <div className="flex justify-between gap-3">
+                <dt className="text-ink-500">{t("tools.itin.status")}</dt>
+                <dd className="text-right font-semibold text-ink-900">
+                  {t(`tools.itin.statusOptions.${result.status as typeof statusKeys[number]}`)}
+                </dd>
+              </div>
+              <div className="flex justify-between gap-3">
+                <dt className="text-ink-500">{t("tools.itin.tin")}</dt>
+                <dd className="text-right font-semibold text-ink-900">{t(`tools.itin.tinOptions.${result.tin}`)}</dd>
+              </div>
+              <div className="flex justify-between gap-3">
+                <dt className="text-ink-500">{t("tools.itin.worked")}</dt>
+                <dd className="text-right font-semibold text-ink-900">{t(`tools.itin.workedOptions.${result.worked}`)}</dd>
+              </div>
+              <div className="flex justify-between gap-3">
+                <dt className="text-ink-500">{t("tools.itin.withheld")}</dt>
+                <dd className="text-right font-semibold text-ink-900">{t(`fields.${result.withheld === "notSure" ? "notSure" : result.withheld}`)}</dd>
+              </div>
+              <div className="flex justify-between gap-3">
+                <dt className="text-ink-500">{t("tools.itin.children")}</dt>
+                <dd className="text-right font-semibold text-ink-900">{t(`fields.${result.children}`)}</dd>
+              </div>
+              <div className="flex justify-between gap-3">
+                <dt className="text-ink-500">{t("fields.state")}</dt>
+                <dd className="text-right font-semibold text-ink-900">{result.stateCode}</dd>
+              </div>
+            </dl>
+          </Panel>
           <h2 className="font-display text-heading-1 text-ink-900">{t("tools.itin.verdict")}</h2>
           <div className="grid gap-4 md:grid-cols-2">
             <Panel className="border-brand-100 bg-brand-50">
               <h3 className="font-bold text-brand-900">{t("tools.itin.fileRisks")}</h3>
               <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-brand-900">
-                <li>{result.withheld === "yes" ? "You may be able to claim over-withheld taxes." : "You may document tax compliance history."}</li>
+                <li>{result.withheld === "yes" ? t("tools.itin.fileBenefit.withheld") : t("tools.itin.fileBenefit.compliance")}</li>
                 <li>{t("tools.itin.privacyVolatile")}</li>
               </ul>
             </Panel>
             <Panel className="border-caution-200 bg-caution-50">
               <h3 className="font-bold text-caution-950">{t("tools.itin.dontFileRisks")}</h3>
               <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-caution-950">
-                <li>You may lose a refund if taxes were withheld.</li>
-                <li>Not filing can create tax compliance issues if you had a filing requirement.</li>
+                <li>{t("tools.itin.dontFile.losesRefund")}</li>
+                <li>{t("tools.itin.dontFile.complianceIssue")}</li>
               </ul>
             </Panel>
           </div>
           <WarningList
             items={[
-              result.tin === "ssn" ? "SSN entered: ask a trusted preparer about EITC, CTC, tips, and overtime eligibility." : t("tools.itin.ssnRequired"),
+              result.tin === "ssn" ? t("tools.itin.ssnEligible") : t("tools.itin.ssnRequired"),
               t("tools.itin.vita")
             ]}
           />
-          <p className="text-xs font-semibold text-slate-500">{t("common.lastReviewed")}: {new Date("2026-05-02").toLocaleDateString(locale)}</p>
+          <p className="text-caption font-semibold text-ink-500">
+            {t("common.lastReviewed")}: {new Date("2026-05-02").toLocaleDateString(locale)}
+          </p>
         </div>
       ) : null}
     </Panel>
