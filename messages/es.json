@@ -247,6 +247,10 @@
       "privacyVolatile": "La litigación y políticas sobre datos IRS/ICE están cambiando. Esta página es una revisión de fecha específica.",
       "vita": "Busca un sitio VITA confiable o preparador certificado para ITIN.",
       "summaryHeading": "Tus respuestas",
+      "tinHelp": {
+        "aria": "¿Qué es SSN vs ITIN?",
+        "body": "SSN = Número de Seguro Social (ciudadanos, residentes permanentes, inmigrantes con autorización de trabajo). ITIN = Número de Identificación Personal del Contribuyente, emitido por el IRS para personas que declaran impuestos pero no pueden tener SSN."
+      },
       "statusOptions": {
         "undocumented": "Indocumentado/a",
         "daca": "Beneficiario/a de DACA",
@@ -292,6 +296,10 @@
       "danger": "Evita préstamos de día de pago cuando sea posible. Los costos pueden ser extremadamente altos.",
       "verify": "Verifica siempre las tarifas en USCIS G-1055 antes de enviar.",
       "applicationHint": "Los números son códigos de formularios USCIS (p. ej. N-400 = naturalización).",
+      "applicationHelp": {
+        "aria": "¿Qué son estos números de formulario?",
+        "body": "USCIS usa códigos numéricos para sus formularios. N-400 = naturalización, I-485 = ajuste a residente permanente, I-765 = permiso de trabajo, I-130 = petición familiar. Cada formulario tiene su propia tarifa."
+      },
       "waiverHeading": "Elegibilidad para exención de tarifa — marca lo que aplique",
       "publicBenefitHint": "Recibes SNAP, Medicaid, TANF, SSI u otro beneficio basado en ingresos",
       "lowIncomeHint": "Ingreso del hogar igual o menor al 150% del nivel federal de pobreza",
@@ -313,6 +321,10 @@
       "notario": "Advertencia de fraude notario: en EE.UU., los notarios no son abogados de inmigración.",
       "aprWarning": "APR mayor de 36% es una señal de costo alto, aunque no sea ilegal en todos los estados.",
       "aprHint": "Los préstamos con APR sobre 36% suelen considerarse de alto costo.",
+      "aprHelp": {
+        "aria": "¿Qué es APR?",
+        "body": "APR (Tasa de Porcentaje Anual) es el costo anual del préstamo, incluyendo tarifas, expresado en porcentaje. Cuanto mayor sea el APR, más caro es el préstamo."
+      },
       "report": "Reportar fraude",
       "reportLinks": "Reporta fraude en ReportFraud.ftc.gov (FTC) o consumerfinance.gov/complaint (CFPB).",
       "methodology": "El nivel de riesgo pondera cada respuesta de alerta por gravedad. Para préstamos, un APR mayor a 36% añade una alerta de alto costo. Para inmigración, cualquier respuesta de 'notario' o 'garantía' activa una advertencia de fraude notario. Fuentes: reportes Sentinel de la FTC y alertas de USCIS sobre estafas.",

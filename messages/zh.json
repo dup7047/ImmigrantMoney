@@ -247,6 +247,10 @@
       "privacyVolatile": "IRS/ICE 之间的数据共享诉讼和政策正在变化。本页面是某一时点的快照。",
       "vita": "请寻找可信赖的 VITA 服务点或具备 ITIN 认证的报税员。",
       "summaryHeading": "你的回答",
+      "tinHelp": {
+        "aria": "SSN 和 ITIN 有什么区别？",
+        "body": "SSN = 社会安全号码（公民、永久居民及有工作许可的移民）。ITIN = 个人纳税人识别号码，由 IRS 颁发给需要报税但无法取得 SSN 的人。"
+      },
       "statusOptions": {
         "undocumented": "无证身份",
         "daca": "DACA 持有者",
@@ -292,6 +296,10 @@
       "danger": "尽量避免发薪日贷款。这类贷款的成本可能极高。",
       "verify": "提交前请始终在 USCIS 的 G-1055 上核实费用。",
       "applicationHint": "编号为 USCIS 表格代码（例如 N-400 = 入籍）。",
+      "applicationHelp": {
+        "aria": "这些表格编号是什么意思？",
+        "body": "USCIS 用编号代表不同表格。N-400 = 入籍；I-485 = 调整为永久居民；I-765 = 工作许可；I-130 = 家庭团聚申请。每张表格有各自的申请费。"
+      },
       "waiverHeading": "费用减免资格 — 勾选所有符合的项",
       "publicBenefitHint": "正在领取 SNAP、Medicaid、TANF、SSI 或其他按收入审核的福利",
       "lowIncomeHint": "家庭收入低于或等于联邦贫困线的 150%",
@@ -313,6 +321,10 @@
       "notario": "公证人欺诈警示：在美国，公证人不是移民律师。",
       "aprWarning": "APR 超过 36% 是高成本的警示信号，即便在某些州并不违法。",
       "aprHint": "APR 高于 36% 的贷款通常被视为高成本。",
+      "aprHelp": {
+        "aria": "什么是 APR？",
+        "body": "APR（年化利率）是贷款一年的总成本（包括手续费），以百分比表示。APR 越高，贷款越贵。"
+      },
       "report": "举报欺诈",
       "reportLinks": "可向 ReportFraud.ftc.gov（FTC）或 consumerfinance.gov/complaint（CFPB）举报欺诈。",
       "methodology": "风险评分会根据严重程度对每条危险信号加权。对于贷款，APR 高于 36% 会额外加一项高成本警示；对于移民服务，任何「公证人 (notario)」或「保证结果」的回答都会触发公证人欺诈警告。来源：FTC Sentinel 报告与 USCIS 关于骗局的提示。",

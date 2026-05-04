@@ -247,6 +247,10 @@
       "privacyVolatile": "IRS/ICE data-sharing litigation and policies are changing. This page is a last-reviewed snapshot.",
       "vita": "Look for a trusted VITA site or ITIN-certified preparer.",
       "summaryHeading": "Your answers",
+      "tinHelp": {
+        "aria": "What is SSN vs ITIN?",
+        "body": "SSN = Social Security Number (citizens, permanent residents, work-authorized immigrants). ITIN = Individual Taxpayer Identification Number, issued by the IRS to people who file taxes but can't get an SSN."
+      },
       "statusOptions": {
         "undocumented": "Undocumented",
         "daca": "DACA recipient",
@@ -292,6 +296,10 @@
       "danger": "Avoid payday loans when possible. Costs can be extremely high.",
       "verify": "Always verify fees on USCIS G-1055 before filing.",
       "applicationHint": "Form numbers are USCIS form codes (e.g., N-400 = naturalization).",
+      "applicationHelp": {
+        "aria": "What are these form numbers?",
+        "body": "USCIS uses code numbers to refer to immigration forms. N-400 = naturalization, I-485 = adjust to permanent resident, I-765 = work permit, I-130 = family petition. Each form has its own filing fee."
+      },
       "waiverHeading": "Fee waiver eligibility — check anything that applies",
       "publicBenefitHint": "Receive SNAP, Medicaid, TANF, SSI, or another means-tested benefit",
       "lowIncomeHint": "Household income at or below 150% of the federal poverty guidelines",
@@ -313,6 +321,10 @@
       "notario": "Notario fraud warning: in the U.S., notaries are not immigration lawyers.",
       "aprWarning": "APR over 36% is a high-cost warning sign, even when not illegal in every state.",
       "aprHint": "Loans above 36% APR are usually considered high-cost.",
+      "aprHelp": {
+        "aria": "What is APR?",
+        "body": "APR (Annual Percentage Rate) is the yearly cost of a loan including fees, expressed as a percentage. The higher the APR, the more expensive the loan."
+      },
       "report": "Report fraud",
       "reportLinks": "Report fraud at ReportFraud.ftc.gov (FTC) or consumerfinance.gov/complaint (CFPB).",
       "methodology": "Risk score weights each red-flag answer by severity. For loans, APR above 36% adds an extra high-cost flag. For immigration, any 'notario' or 'guarantee' answer triggers a notario fraud warning. Sources: FTC Sentinel reports and USCIS scam alerts.",

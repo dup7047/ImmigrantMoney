@@ -5,13 +5,17 @@ type FieldShellProps = {
   label: string;
   error?: string;
   hint?: string;
+  tooltip?: ReactNode;
   children: ReactNode;
 };
 
-export function FieldShell({label, error, hint, children}: FieldShellProps) {
+export function FieldShell({label, error, hint, tooltip, children}: FieldShellProps) {
   return (
     <label className="grid gap-2 text-sm font-medium text-ink-800">
-      <span>{label}</span>
+      <span className="inline-flex items-center gap-1.5">
+        {label}
+        {tooltip ? <span className="font-normal">{tooltip}</span> : null}
+      </span>
       {children}
       {hint && !error ? <span className="text-caption font-normal text-ink-500">{hint}</span> : null}
       {error ? <span className="text-caption font-medium text-critical-600">{error}</span> : null}

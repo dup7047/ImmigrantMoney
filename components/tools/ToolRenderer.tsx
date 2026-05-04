@@ -24,6 +24,7 @@ import type {Locale, ToolSlug} from "@/lib/types";
 import {formatCurrency, formatCurrencyPrecise} from "@/lib/utils";
 import {Button} from "../ui/Button";
 import {Checkbox, FieldShell, Input, MoneyInput, Select} from "../ui/Field";
+import {HelpTip} from "../ui/HelpTip";
 import {Panel, Stat} from "../ui/Panel";
 import {MethodologyNote} from "./MethodologyNote";
 import {useResultScroll} from "./useResultScroll";
@@ -333,7 +334,16 @@ function ItinTaxGuide() {
         ))}
       </Select>
     </FieldShell>,
-    <FieldShell key="tin" label={t("tools.itin.tin")} error={errors.tin?.message as string | undefined}>
+    <FieldShell
+      key="tin"
+      label={t("tools.itin.tin")}
+      tooltip={
+        <HelpTip ariaLabel={t("tools.itin.tinHelp.aria")}>
+          <p>{t("tools.itin.tinHelp.body")}</p>
+        </HelpTip>
+      }
+      error={errors.tin?.message as string | undefined}
+    >
       <Select {...register("tin")}>
         {tinKeys.map((value) => (
           <option key={value} value={value}>
@@ -512,6 +522,11 @@ function UscisFeeTool() {
           <FieldShell
             label={t("tools.uscis.application")}
             hint={t("tools.uscis.applicationHint")}
+            tooltip={
+              <HelpTip ariaLabel={t("tools.uscis.applicationHelp.aria")}>
+                <p>{t("tools.uscis.applicationHelp.body")}</p>
+              </HelpTip>
+            }
             error={errors.form?.message as string | undefined}
           >
             <Select {...register("form")}>
@@ -660,6 +675,11 @@ function ScamDetectorTool() {
             <FieldShell
               label={t("tools.scam.apr")}
               hint={t("tools.scam.aprHint")}
+              tooltip={
+                <HelpTip ariaLabel={t("tools.scam.aprHelp.aria")}>
+                  <p>{t("tools.scam.aprHelp.body")}</p>
+                </HelpTip>
+              }
               error={errors.apr?.message as string | undefined}
             >
               <Input type="number" {...register("apr")} />
