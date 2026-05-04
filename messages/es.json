@@ -258,7 +258,13 @@
       "feeWaiver": "Podrías tener una ruta de exención de tarifa para revisar.",
       "noFeeWaiver": "No se ve una exención clara con estas respuestas.",
       "danger": "Evita préstamos de día de pago cuando sea posible. Los costos pueden ser extremadamente altos.",
-      "verify": "Verifica siempre las tarifas en USCIS G-1055 antes de enviar."
+      "verify": "Verifica siempre las tarifas en USCIS G-1055 antes de enviar.",
+      "applicationHint": "Los números son códigos de formularios USCIS (p. ej. N-400 = naturalización).",
+      "waiverHeading": "Elegibilidad para exención de tarifa — marca lo que aplique",
+      "publicBenefitHint": "Recibes SNAP, Medicaid, TANF, SSI u otro beneficio basado en ingresos",
+      "lowIncomeHint": "Ingreso del hogar igual o menor al 150% del nivel federal de pobreza",
+      "hardshipHint": "Gasto médico mayor, discapacidad o desalojo inminente",
+      "verifyG1055": "Verifica las tarifas actuales en USCIS G-1055"
     },
     "scam": {
       "category": "Categoría",

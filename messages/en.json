@@ -258,7 +258,13 @@
       "feeWaiver": "You may have a fee waiver path to review.",
       "noFeeWaiver": "A fee waiver is not obvious from these answers.",
       "danger": "Avoid payday loans when possible. Costs can be extremely high.",
-      "verify": "Always verify fees on USCIS G-1055 before filing."
+      "verify": "Always verify fees on USCIS G-1055 before filing.",
+      "applicationHint": "Form numbers are USCIS form codes (e.g., N-400 = naturalization).",
+      "waiverHeading": "Fee waiver eligibility — check anything that applies",
+      "publicBenefitHint": "Receive SNAP, Medicaid, TANF, SSI, or another means-tested benefit",
+      "lowIncomeHint": "Household income at or below 150% of the federal poverty guidelines",
+      "hardshipHint": "Major medical, disability, or imminent eviction",
+      "verifyG1055": "Verify current fees on USCIS G-1055"
     },
     "scam": {
       "category": "Category",

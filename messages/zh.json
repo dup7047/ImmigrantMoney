@@ -258,7 +258,13 @@
       "feeWaiver": "你可能有可以申请的费用减免途径。",
       "noFeeWaiver": "根据这些回答，看不到明显的费用减免途径。",
       "danger": "尽量避免发薪日贷款。这类贷款的成本可能极高。",
-      "verify": "提交前请始终在 USCIS 的 G-1055 上核实费用。"
+      "verify": "提交前请始终在 USCIS 的 G-1055 上核实费用。",
+      "applicationHint": "编号为 USCIS 表格代码（例如 N-400 = 入籍）。",
+      "waiverHeading": "费用减免资格 — 勾选所有符合的项",
+      "publicBenefitHint": "正在领取 SNAP、Medicaid、TANF、SSI 或其他按收入审核的福利",
+      "lowIncomeHint": "家庭收入低于或等于联邦贫困线的 150%",
+      "hardshipHint": "重大医疗费用、残疾，或面临迫近的驱逐",
+      "verifyG1055": "在 USCIS G-1055 上核实当前费用"
     },
     "scam": {
       "category": "类别",

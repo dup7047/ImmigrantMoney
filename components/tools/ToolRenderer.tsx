@@ -462,7 +462,11 @@ function UscisFeeTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("tools.uscis.application")} error={errors.form?.message as string | undefined}>
+          <FieldShell
+            label={t("tools.uscis.application")}
+            hint={t("tools.uscis.applicationHint")}
+            error={errors.form?.message as string | undefined}
+          >
             <Select {...register("form")}>
               {uscisFees.map((fee) => (
                 <option key={fee.form} value={fee.form}>
@@ -481,10 +485,49 @@ function UscisFeeTool() {
             <MoneyInput unit="/ mo" {...register("monthlySavings")} />
           </FieldShell>
         </FormGrid>
-        <div className="grid gap-2">
-          <Checkbox label={t("tools.uscis.publicBenefit")} {...register("receivesPublicBenefit")} />
-          <Checkbox label={t("tools.uscis.lowIncome")} {...register("lowIncome")} />
-          <Checkbox label={t("tools.uscis.hardship")} {...register("financialHardship")} />
+        <div className="grid gap-3 rounded-xl border border-ink-200 bg-ink-50 p-4">
+          <p className="text-sm font-bold text-ink-900">{t("tools.uscis.waiverHeading")}</p>
+          <label className="flex items-start gap-2 text-sm text-ink-700">
+            <input
+              className="mt-1 h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-2 focus:ring-brand-100"
+              type="checkbox"
+              {...register("receivesPublicBenefit")}
+            />
+            <span>
+              <span className="font-semibold text-ink-900">{t("tools.uscis.publicBenefit")}</span>
+              <span className="block text-caption text-ink-500">{t("tools.uscis.publicBenefitHint")}</span>
+            </span>
+          </label>
+          <label className="flex items-start gap-2 text-sm text-ink-700">
+            <input
+              className="mt-1 h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-2 focus:ring-brand-100"
+              type="checkbox"
+              {...register("lowIncome")}
+            />
+            <span>
+              <span className="font-semibold text-ink-900">{t("tools.uscis.lowIncome")}</span>
+              <span className="block text-caption text-ink-500">{t("tools.uscis.lowIncomeHint")}</span>
+            </span>
+          </label>
+          <label className="flex items-start gap-2 text-sm text-ink-700">
+            <input
+              className="mt-1 h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-2 focus:ring-brand-100"
+              type="checkbox"
+              {...register("financialHardship")}
+            />
+            <span>
+              <span className="font-semibold text-ink-900">{t("tools.uscis.hardship")}</span>
+              <span className="block text-caption text-ink-500">{t("tools.uscis.hardshipHint")}</span>
+            </span>
+          </label>
+          <a
+            className="text-caption font-semibold text-brand-700 hover:text-brand-800"
+            href="https://www.uscis.gov/g-1055"
+            rel="noreferrer"
+            target="_blank"
+          >
+            {t("tools.uscis.verifyG1055")} →
+          </a>
         </div>
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
