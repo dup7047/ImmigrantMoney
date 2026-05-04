@@ -62,18 +62,22 @@ export default function RootLayout({children}: {children: ReactNode}) {
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <head>
         <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
-      </head>
-      <body className="font-sans antialiased">
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        {/* AdSense verification script must be in the SSR'd HTML so the
+            AdSense crawler can find it without executing JavaScript.
+            next/script with strategy="afterInteractive" only injects the
+            tag client-side, which is why the original verification failed. */}
         <Script
           async
           crossOrigin="anonymous"
           id="adsense-script"
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
