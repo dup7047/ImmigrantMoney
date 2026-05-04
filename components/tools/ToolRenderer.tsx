@@ -112,7 +112,7 @@ function WageTheftTool() {
   const locale = useLocale() as Locale;
   const [deductions, setDeductions] = useState<DeductionType[]>([]);
   const [result, setResult] = useState<ReturnType<typeof calculateWage> | null>(null);
-  const {register, handleSubmit, watch} = useForm<WageForm>({
+  const {register, handleSubmit, watch, formState: {errors}} = useForm<WageForm>({
     resolver: zodResolver(wageSchema),
     defaultValues: {
       stateCode: "CA",
@@ -160,7 +160,7 @@ function WageTheftTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("fields.state")}>
+          <FieldShell label={t("fields.state")} error={errors.stateCode?.message as string | undefined}>
             <Select {...register("stateCode")}>
               {usStates.map((state) => (
                 <option key={state.code} value={state.code}>
@@ -169,7 +169,7 @@ function WageTheftTool() {
               ))}
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.wage.employmentType")}>
+          <FieldShell label={t("tools.wage.employmentType")} error={errors.employmentType?.message as string | undefined}>
             <Select {...register("employmentType")}>
               <option value="hourly">{t("tools.wage.hourly")}</option>
               <option value="salaried">{t("tools.wage.salaried")}</option>
@@ -177,28 +177,28 @@ function WageTheftTool() {
               <option value="cash">{t("tools.wage.cash")}</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.wage.hoursWorked")}>
+          <FieldShell label={t("tools.wage.hoursWorked")} error={errors.hoursWorked?.message as string | undefined}>
             <Input type="number" step="0.25" {...register("hoursWorked")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.overtimeHours")}>
+          <FieldShell label={t("tools.wage.overtimeHours")} error={errors.overtimeHours?.message as string | undefined}>
             <Input type="number" step="0.25" {...register("overtimeHours")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.hourlyRate")}>
+          <FieldShell label={t("tools.wage.hourlyRate")} error={errors.hourlyRate?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ hr" {...register("hourlyRate")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.weeklySalary")}>
+          <FieldShell label={t("tools.wage.weeklySalary")} error={errors.weeklySalary?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ week" {...register("weeklySalary")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.tips")}>
+          <FieldShell label={t("tools.wage.tips")} error={errors.tips?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ week" {...register("tips")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.actualPay")}>
+          <FieldShell label={t("tools.wage.actualPay")} error={errors.actualPay?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ week" {...register("actualPay")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.withholding")}>
+          <FieldShell label={t("tools.wage.withholding")} error={errors.withholdingAmount?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ week" {...register("withholdingAmount")} />
           </FieldShell>
-          <FieldShell label={t("tools.wage.benefits")}>
+          <FieldShell label={t("tools.wage.benefits")} error={errors.benefitDeductions?.message as string | undefined}>
             <MoneyInput step="0.01" unit="/ week" {...register("benefitDeductions")} />
           </FieldShell>
         </FormGrid>
@@ -284,7 +284,7 @@ function ItinTaxGuide() {
   const locale = useLocale() as Locale;
   const [step, setStep] = useState(0);
   const [result, setResult] = useState<ItinForm | null>(null);
-  const {register, handleSubmit} = useForm<ItinForm>({
+  const {register, handleSubmit, formState: {errors}} = useForm<ItinForm>({
     resolver: zodResolver(itinSchema),
     defaultValues: {status: "undocumented", tin: "itin", worked: "w2", withheld: "notSure", children: "no", stateCode: "CA"}
   });
@@ -413,7 +413,7 @@ function UscisFeeTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof calculateUscisFees> | null>(null);
-  const {register, handleSubmit} = useForm<UscisForm>({
+  const {register, handleSubmit, formState: {errors}} = useForm<UscisForm>({
     resolver: zodResolver(uscisSchema),
     defaultValues: {
       form: "N-400",
@@ -436,7 +436,7 @@ function UscisFeeTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("tools.uscis.application")}>
+          <FieldShell label={t("tools.uscis.application")} error={errors.form?.message as string | undefined}>
             <Select {...register("form")}>
               {uscisFees.map((fee) => (
                 <option key={fee.form} value={fee.form}>
@@ -445,13 +445,13 @@ function UscisFeeTool() {
               ))}
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.uscis.familyMembers")}>
+          <FieldShell label={t("tools.uscis.familyMembers")} error={errors.familyMembers?.message as string | undefined}>
             <Input type="number" {...register("familyMembers")} />
           </FieldShell>
-          <FieldShell label={t("tools.uscis.savings")}>
+          <FieldShell label={t("tools.uscis.savings")} error={errors.savings?.message as string | undefined}>
             <MoneyInput {...register("savings")} />
           </FieldShell>
-          <FieldShell label={t("tools.uscis.monthlySavings")}>
+          <FieldShell label={t("tools.uscis.monthlySavings")} error={errors.monthlySavings?.message as string | undefined}>
             <MoneyInput unit="/ mo" {...register("monthlySavings")} />
           </FieldShell>
         </FormGrid>
@@ -495,7 +495,7 @@ function ScamDetectorTool() {
   const locale = useLocale() as Locale;
   const [flags, setFlags] = useState<string[]>([]);
   const [result, setResult] = useState<ReturnType<typeof calculateScamRisk> | null>(null);
-  const {register, handleSubmit, watch} = useForm<ScamForm>({
+  const {register, handleSubmit, watch, formState: {errors}} = useForm<ScamForm>({
     resolver: zodResolver(scamSchema),
     defaultValues: {category: "loan", apr: 36}
   });
@@ -535,7 +535,7 @@ function ScamDetectorTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("tools.scam.category")}>
+          <FieldShell label={t("tools.scam.category")} error={errors.category?.message as string | undefined}>
             <Select
               {...register("category")}
               onChange={(event) => {
@@ -550,7 +550,7 @@ function ScamDetectorTool() {
             </Select>
           </FieldShell>
           {category === "loan" ? (
-            <FieldShell label={t("tools.scam.apr")}>
+            <FieldShell label={t("tools.scam.apr")} error={errors.apr?.message as string | undefined}>
               <Input type="number" {...register("apr")} />
             </FieldShell>
           ) : null}
@@ -597,7 +597,7 @@ function BankFinderTool() {
   const locale = useLocale() as Locale;
   const [ids, setIds] = useState<BankIdType[]>(["passport"]);
   const [result, setResult] = useState<typeof bankOptions>([]);
-  const {register, handleSubmit} = useForm<BankForm>({
+  const {register, handleSubmit, formState: {errors}} = useForm<BankForm>({
     resolver: zodResolver(bankSchema),
     defaultValues: {accountType: "checking", income: "1000-2500", sendsMoney: false, language: "both"}
   });
@@ -639,14 +639,14 @@ function BankFinderTool() {
           </div>
         </div>
         <FormGrid>
-          <FieldShell label={t("tools.bank.accountType")}>
+          <FieldShell label={t("tools.bank.accountType")} error={errors.accountType?.message as string | undefined}>
             <Select {...register("accountType")}>
               <option value="checking">{t("tools.bank.checking")}</option>
               <option value="savings">{t("tools.bank.savings")}</option>
               <option value="both">{t("tools.bank.both")}</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.bank.income")}>
+          <FieldShell label={t("tools.bank.income")} error={errors.income?.message as string | undefined}>
             <Select {...register("income")}>
               <option value="under1000">Under $1,000</option>
               <option value="1000-2500">$1,000-$2,500</option>
@@ -654,7 +654,7 @@ function BankFinderTool() {
               <option value="over5000">Over $5,000</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.bank.language")}>
+          <FieldShell label={t("tools.bank.language")} error={errors.language?.message as string | undefined}>
             <Select {...register("language")}>
               <option value="both">Both</option>
               <option value="en">English</option>
@@ -711,7 +711,7 @@ function CreditRoadmapTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof buildCreditRoadmap> | null>(null);
-  const {register, handleSubmit} = useForm<CreditForm>({
+  const {register, handleSubmit, formState: {errors}} = useForm<CreditForm>({
     resolver: zodResolver(creditSchema),
     defaultValues: {
       visaType: "other",
@@ -734,7 +734,7 @@ function CreditRoadmapTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("tools.credit.visa")}>
+          <FieldShell label={t("tools.credit.visa")} error={errors.visaType?.message as string | undefined}>
             <Select {...register("visaType")}>
               {["DACA", "TPS", "H-1B", "H-2A", "F-1", "Green Card", "Other"].map((item) => (
                 <option key={item} value={item}>
@@ -743,7 +743,7 @@ function CreditRoadmapTool() {
               ))}
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.credit.time")}>
+          <FieldShell label={t("tools.credit.time")} error={errors.timeInUs?.message as string | undefined}>
             <Select {...register("timeInUs")}>
               <option value="lt6">Less than 6 months</option>
               <option value="6to12">6-12 months</option>
@@ -752,14 +752,14 @@ function CreditRoadmapTool() {
               <option value="over5">Over 5 years</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.credit.tin")}>
+          <FieldShell label={t("tools.credit.tin")} error={errors.tin?.message as string | undefined}>
             <Select {...register("tin")}>
               <option value="ssn">SSN</option>
               <option value="itin">ITIN</option>
               <option value="neither">Neither</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.credit.score")}>
+          <FieldShell label={t("tools.credit.score")} error={errors.scoreStatus?.message as string | undefined}>
             <Select {...register("scoreStatus")}>
               <option value="none">No score yet</option>
               <option value="under580">Below 580</option>
@@ -768,7 +768,7 @@ function CreditRoadmapTool() {
               <option value="740plus">740+</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.credit.budget")}>
+          <FieldShell label={t("tools.credit.budget")} error={errors.budget?.message as string | undefined}>
             <Input type="range" min="0" max="300" {...register("budget")} />
           </FieldShell>
         </FormGrid>
@@ -824,7 +824,7 @@ function RemittanceTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof compareRemittances> | null>(null);
-  const {register, handleSubmit} = useForm<RemittanceForm>({
+  const {register, handleSubmit, formState: {errors}} = useForm<RemittanceForm>({
     resolver: zodResolver(remittanceSchema),
     defaultValues: {amount: 300, country: "Mexico", method: "any", frequency: "monthly"}
   });
@@ -846,10 +846,10 @@ function RemittanceTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("tools.remit.amount")}>
+          <FieldShell label={t("tools.remit.amount")} error={errors.amount?.message as string | undefined}>
             <MoneyInput {...register("amount")} />
           </FieldShell>
-          <FieldShell label={t("tools.remit.country")}>
+          <FieldShell label={t("tools.remit.country")} error={errors.country?.message as string | undefined}>
             <Select {...register("country")}>
               {remittanceCountries.map((country) => (
                 <option key={country} value={country}>
@@ -858,7 +858,7 @@ function RemittanceTool() {
               ))}
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.remit.method")}>
+          <FieldShell label={t("tools.remit.method")} error={errors.method?.message as string | undefined}>
             <Select {...register("method")}>
               <option value="any">{t("tools.remit.any")}</option>
               <option value="bank">{t("tools.remit.bank")}</option>
@@ -866,7 +866,7 @@ function RemittanceTool() {
               <option value="cash">{t("tools.remit.cash")}</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.remit.frequency")}>
+          <FieldShell label={t("tools.remit.frequency")} error={errors.frequency?.message as string | undefined}>
             <Select {...register("frequency")}>
               <option value="once">{t("tools.remit.once")}</option>
               <option value="weekly">{t("tools.remit.weekly")}</option>
@@ -932,7 +932,7 @@ function AffordabilityTool() {
   const locale = useLocale() as Locale;
   const [statusInput, setStatusInput] = useState<ImmigrationStatusForBenefits>("mixed");
   const [result, setResult] = useState<ReturnType<typeof calculateAffordability> | null>(null);
-  const {register, handleSubmit} = useForm<AffordabilityForm>({
+  const {register, handleSubmit, formState: {errors}} = useForm<AffordabilityForm>({
     resolver: zodResolver(affordabilitySchema),
     defaultValues: {
       city: "NYC",
@@ -967,7 +967,7 @@ function AffordabilityTool() {
         })}
       >
         <FormGrid>
-          <FieldShell label={t("tools.afford.city")}>
+          <FieldShell label={t("tools.afford.city")} error={errors.city?.message as string | undefined}>
             <Select {...register("city")}>
               {cityCostPresets.map((city) => (
                 <option key={city.city} value={city.city}>
@@ -976,36 +976,36 @@ function AffordabilityTool() {
               ))}
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.afford.income")}>
+          <FieldShell label={t("tools.afford.income")} error={errors.income?.message as string | undefined}>
             <MoneyInput unit="/ mo" {...register("income")} />
           </FieldShell>
-          <FieldShell label={t("tools.afford.household")}>
+          <FieldShell label={t("tools.afford.household")} error={errors.householdSize?.message as string | undefined}>
             <Input type="number" {...register("householdSize")} />
           </FieldShell>
-          <FieldShell label={t("tools.afford.remittances")}>
+          <FieldShell label={t("tools.afford.remittances")} error={errors.remittances?.message as string | undefined}>
             <MoneyInput unit="/ mo" {...register("remittances")} />
           </FieldShell>
-          <FieldShell label={t("tools.afford.health")}>
+          <FieldShell label={t("tools.afford.health")} error={errors.healthInsurance?.message as string | undefined}>
             <Select {...register("healthInsurance")}>
               <option value="employer">Employer</option>
               <option value="marketplace">Marketplace</option>
               <option value="uninsured">Uninsured</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.afford.status")}>
+          <FieldShell label={t("tools.afford.status")} error={errors.status?.message as string | undefined}>
             <Select {...register("status")}>
               <option value="documented">Documented</option>
               <option value="undocumented">Undocumented</option>
               <option value="mixed">Mixed household</option>
             </Select>
           </FieldShell>
-          <FieldShell label={t("tools.afford.debt")}>
+          <FieldShell label={t("tools.afford.debt")} error={errors.debtPayments?.message as string | undefined}>
             <MoneyInput unit="/ mo" {...register("debtPayments")} />
           </FieldShell>
-          <FieldShell label={t("tools.afford.goal")}>
+          <FieldShell label={t("tools.afford.goal")} error={errors.immigrationSavingsGoal?.message as string | undefined}>
             <MoneyInput {...register("immigrationSavingsGoal")} />
           </FieldShell>
-          <FieldShell label={t("tools.afford.months")}>
+          <FieldShell label={t("tools.afford.months")} error={errors.goalMonths?.message as string | undefined}>
             <Input type="number" {...register("goalMonths")} />
           </FieldShell>
         </FormGrid>
