@@ -394,6 +394,20 @@
       "noMatches": "Ningún banco cumple todos tus filtros",
       "adjustFilters": "Prueba quitar la opción de transferencias internacionales, cambiar el idioma a Ambos, o elegir otro tipo de cuenta.",
       "mobile": "Calificación móvil",
+      "steps": {
+        "needs": {
+          "title": "Lo que necesitas",
+          "description": "Qué tipo de cuenta, y si vas a enviar dinero al extranjero."
+        },
+        "ids": {
+          "title": "Tus identificaciones",
+          "description": "Los bancos aceptan combinaciones distintas. Marca todo lo que tengas — más opciones, más resultados."
+        },
+        "about": {
+          "title": "Sobre ti",
+          "description": "El rango de ingreso y el idioma afinan las recomendaciones."
+        }
+      },
       "methodology": "Los bancos se filtran contra los IDs, tipos de cuenta, idioma y necesidades de transferencia internacional que seleccionaste, usando un dataset estático revisado trimestralmente. La aprobación nunca está garantizada y los requisitos a nivel de sucursal pueden variar. Fuente: guía bancaria del CFPB y datos de FDIC."
     },
     "credit": {

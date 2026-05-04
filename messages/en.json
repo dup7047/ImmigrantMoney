@@ -394,6 +394,20 @@
       "noMatches": "No banks matched all of your filters",
       "adjustFilters": "Try unchecking the international-transfers option, switching the language preference back to Both, or selecting a different account type.",
       "mobile": "Mobile rating",
+      "steps": {
+        "needs": {
+          "title": "What you need",
+          "description": "What kind of account, and whether you'll send money abroad."
+        },
+        "ids": {
+          "title": "Your IDs",
+          "description": "Banks accept different combinations. Pick everything you have — more options means more matches."
+        },
+        "about": {
+          "title": "About you",
+          "description": "Income range and language preference fine-tune the suggestions."
+        }
+      },
       "methodology": "Banks are filtered against your selected IDs, account types, language preference, and international-transfer needs from a static dataset reviewed quarterly. Approval is never guaranteed and branch-level requirements still vary. Source: CFPB banking guidance + FDIC banked-status data."
     },
     "credit": {

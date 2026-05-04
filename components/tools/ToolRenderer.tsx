@@ -839,8 +839,9 @@ function BankFinderTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<BankMatch[] | null>(null);
+  const [lastStep, setLastStep] = useState(0);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<BankForm>({
+  const form = useForm<BankForm>({
     resolver: zodResolver(bankSchema),
     defaultValues: {
       accountType: "checking",
@@ -850,6 +851,7 @@ function BankFinderTool() {
       ids: ["passport"]
     }
   });
+  const {register, watch, setValue, formState: {errors}} = form;
   const ids = watch("ids");
   const idLabels: Record<BankIdType, string> = {
     passport: t("tools.bank.passport"),
@@ -868,81 +870,128 @@ function BankFinderTool() {
     );
   }
 
+  const steps = useMemo<WizardStepDef<BankForm>[]>(
+    () => [
+      {
+        id: "needs",
+        title: t("tools.bank.steps.needs.title"),
+        description: t("tools.bank.steps.needs.description"),
+        fieldNames: ["accountType", "sendsMoney"],
+        render: (
+          <div className="grid gap-4">
+            <FieldShell label={t("tools.bank.accountType")} error={errors.accountType?.message as string | undefined}>
+              <Select {...register("accountType")}>
+                <option value="checking">{t("tools.bank.checking")}</option>
+                <option value="savings">{t("tools.bank.savings")}</option>
+                <option value="both">{t("tools.bank.both")}</option>
+              </Select>
+            </FieldShell>
+            <Checkbox label={t("tools.bank.sendMoney")} {...register("sendsMoney")} />
+          </div>
+        )
+      },
+      {
+        id: "ids",
+        title: t("tools.bank.steps.ids.title"),
+        description: t("tools.bank.steps.ids.description"),
+        fieldNames: ["ids"],
+        render: (
+          <div>
+            <p className="mb-3 text-sm font-bold text-ink-800">{t("tools.bank.ids")}</p>
+            <div className="grid gap-2 md:grid-cols-2">
+              {(Object.keys(idLabels) as BankIdType[]).map((id) => (
+                <Checkbox checked={(ids ?? []).includes(id)} key={id} label={idLabels[id]} onChange={(event) => toggleId(id, event.target.checked)} />
+              ))}
+            </div>
+            {errors.ids ? (
+              <p className="mt-2 text-caption font-medium text-critical-600">{errors.ids.message as string}</p>
+            ) : null}
+          </div>
+        )
+      },
+      {
+        id: "about",
+        title: t("tools.bank.steps.about.title"),
+        description: t("tools.bank.steps.about.description"),
+        fieldNames: ["income", "language"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.bank.income")} error={errors.income?.message as string | undefined}>
+              <Select {...register("income")}>
+                <option value="under1000">Under $1,000</option>
+                <option value="1000-2500">$1,000-$2,500</option>
+                <option value="2500-5000">$2,500-$5,000</option>
+                <option value="over5000">Over $5,000</option>
+              </Select>
+            </FieldShell>
+            <FieldShell label={t("tools.bank.language")} error={errors.language?.message as string | undefined}>
+              <Select {...register("language")}>
+                <option value="both">Both</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+              </Select>
+            </FieldShell>
+          </FormGrid>
+        )
+      }
+    ],
+    // toggleId/idLabels recreate per render but only close over `ids`/`setValue`/`t`
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [t, register, errors, ids]
+  );
+
+  function handleWizardSubmit(data: BankForm) {
+    track("tool_complete", {tool: "bank-without-ssn", locale});
+    const matches: BankMatch[] = [];
+    const submittedIds = data.ids ?? [];
+    for (const bank of bankOptions) {
+      const matchedIds = submittedIds.filter((id) => bank.acceptedIds.includes(id));
+      const idMatch = matchedIds.length > 0;
+      const accountMatch =
+        bank.accountTypes.includes(data.accountType) || bank.accountTypes.includes("both");
+      const transferMatch = !data.sendsMoney || bank.internationalTransfers;
+      const languageMatch = data.language !== "es" || bank.spanishSupport;
+      if (!(idMatch && accountMatch && transferMatch && languageMatch)) continue;
+
+      const reasons: string[] = [];
+      for (const id of matchedIds) {
+        reasons.push(t("tools.bank.matchAccepts", {id: idLabels[id]}));
+      }
+      reasons.push(
+        t("tools.bank.matchAccount", {
+          type: t(`tools.bank.${data.accountType}`)
+        })
+      );
+      if (data.sendsMoney && bank.internationalTransfers) {
+        reasons.push(t("tools.bank.matchTransfers"));
+      }
+      if (data.language === "es" && bank.spanishSupport) {
+        reasons.push(t("tools.bank.matchSpanish"));
+      }
+      matches.push({bank, reasons});
+    }
+    setResult(matches);
+  }
+
   return (
     <Panel className="grid gap-6">
-      <form
-        className="grid gap-5"
-        onSubmit={handleSubmit((data) => {
-          track("tool_complete", {tool: "bank-without-ssn", locale});
-          const matches: BankMatch[] = [];
-          const submittedIds = data.ids ?? [];
-          for (const bank of bankOptions) {
-            const matchedIds = submittedIds.filter((id) => bank.acceptedIds.includes(id));
-            const idMatch = matchedIds.length > 0;
-            const accountMatch =
-              bank.accountTypes.includes(data.accountType) || bank.accountTypes.includes("both");
-            const transferMatch = !data.sendsMoney || bank.internationalTransfers;
-            const languageMatch = data.language !== "es" || bank.spanishSupport;
-            if (!(idMatch && accountMatch && transferMatch && languageMatch)) continue;
-
-            const reasons: string[] = [];
-            for (const id of matchedIds) {
-              reasons.push(t("tools.bank.matchAccepts", {id: idLabels[id]}));
-            }
-            reasons.push(
-              t("tools.bank.matchAccount", {
-                type: t(`tools.bank.${data.accountType}`)
-              })
-            );
-            if (data.sendsMoney && bank.internationalTransfers) {
-              reasons.push(t("tools.bank.matchTransfers"));
-            }
-            if (data.language === "es" && bank.spanishSupport) {
-              reasons.push(t("tools.bank.matchSpanish"));
-            }
-            matches.push({bank, reasons});
-          }
-          setResult(matches);
-        })}
-      >
-        <div>
-          <p className="mb-3 text-sm font-bold text-slate-800">{t("tools.bank.ids")}</p>
-          <div className="grid gap-2 md:grid-cols-2">
-            {(Object.keys(idLabels) as BankIdType[]).map((id) => (
-              <Checkbox checked={(ids ?? []).includes(id)} key={id} label={idLabels[id]} onChange={(event) => toggleId(id, event.target.checked)} />
-            ))}
-          </div>
-          {errors.ids ? (
-            <p className="mt-2 text-caption font-medium text-critical-600">{errors.ids.message as string}</p>
-          ) : null}
+      {result === null ? (
+        <Wizard
+          form={form}
+          steps={steps}
+          onSubmit={handleWizardSubmit}
+          submitLabel={t("common.calculate")}
+          initialStep={lastStep}
+          onStepChange={setLastStep}
+        />
+      ) : (
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h3 className="text-heading-3 text-ink-900">{t("common.results")}</h3>
+          <Button onClick={() => setResult(null)} type="button" variant="secondary">
+            {t("common.editAnswers")}
+          </Button>
         </div>
-        <FormGrid>
-          <FieldShell label={t("tools.bank.accountType")} error={errors.accountType?.message as string | undefined}>
-            <Select {...register("accountType")}>
-              <option value="checking">{t("tools.bank.checking")}</option>
-              <option value="savings">{t("tools.bank.savings")}</option>
-              <option value="both">{t("tools.bank.both")}</option>
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.bank.income")} error={errors.income?.message as string | undefined}>
-            <Select {...register("income")}>
-              <option value="under1000">Under $1,000</option>
-              <option value="1000-2500">$1,000-$2,500</option>
-              <option value="2500-5000">$2,500-$5,000</option>
-              <option value="over5000">Over $5,000</option>
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.bank.language")} error={errors.language?.message as string | undefined}>
-            <Select {...register("language")}>
-              <option value="both">Both</option>
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </Select>
-          </FieldShell>
-        </FormGrid>
-        <Checkbox label={t("tools.bank.sendMoney")} {...register("sendsMoney")} />
-        <Button type="submit">{t("common.calculate")}</Button>
-      </form>
+      )}
       {result !== null && result.length === 0 ? (
         <div ref={resultRef} className="grid gap-3 rounded-xl border border-caution-200 bg-caution-50 p-5">
           <h2 className="text-heading-3 text-ink-900">{t("tools.bank.noMatches")}</h2>
