@@ -94,6 +94,19 @@ function WarningList({items}: {items: string[]}) {
   );
 }
 
+const DEDUCTION_TYPES = [
+  "federalTax",
+  "stateTax",
+  "socialSecurity",
+  "medicare",
+  "healthInsurance",
+  "tools",
+  "transportation",
+  "uniform",
+  "breakage",
+  "other"
+] as const satisfies readonly DeductionType[];
+
 const wageSchema = z.object({
   stateCode: z.string().min(2),
   employmentType: z.enum(["hourly", "salaried", "tipped", "cash"]),
@@ -105,7 +118,8 @@ const wageSchema = z.object({
   actualPay: z.coerce.number().min(0).max(25000),
   withholdingAmount: z.coerce.number().min(0).max(10000),
   benefitDeductions: z.coerce.number().min(0).max(10000),
-  unlistedDeductions: z.boolean()
+  unlistedDeductions: z.boolean(),
+  deductions: z.array(z.enum(DEDUCTION_TYPES))
 });
 
 type WageForm = z.infer<typeof wageSchema>;
@@ -113,10 +127,9 @@ type WageForm = z.infer<typeof wageSchema>;
 function WageTheftTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
-  const [deductions, setDeductions] = useState<DeductionType[]>([]);
   const [result, setResult] = useState<ReturnType<typeof calculateWage> | null>(null);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, watch, formState: {errors}} = useForm<WageForm>({
+  const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<WageForm>({
     resolver: zodResolver(wageSchema),
     defaultValues: {
       stateCode: "CA",
@@ -129,9 +142,11 @@ function WageTheftTool() {
       actualPay: 0,
       withholdingAmount: 0,
       benefitDeductions: 0,
-      unlistedDeductions: false
+      unlistedDeductions: false,
+      deductions: []
     }
   });
+  const deductions = watch("deductions");
   const stateCode = watch("stateCode");
   const employmentType = watch("employmentType") as EmploymentType;
   const board = stateLaborBoards.find((item) => item.code === stateCode);
@@ -154,8 +169,11 @@ function WageTheftTool() {
   };
 
   function toggleDeduction(deduction: DeductionType, checked: boolean) {
-    setDeductions((current) =>
-      checked ? [...current, deduction] : current.filter((item) => item !== deduction)
+    const current = deductions ?? [];
+    setValue(
+      "deductions",
+      checked ? [...current, deduction] : current.filter((item) => item !== deduction),
+      {shouldDirty: true}
     );
   }
 
@@ -165,7 +183,13 @@ function WageTheftTool() {
         className="grid gap-6"
         onSubmit={handleSubmit((data) => {
           track("tool_complete", {tool: "wage-theft-checker", locale});
-          setResult(calculateWage({...data, employmentType: data.employmentType as EmploymentType, deductions}));
+          setResult(
+            calculateWage({
+              ...data,
+              employmentType: data.employmentType as EmploymentType,
+              deductions: (data.deductions ?? []) as DeductionType[]
+            })
+          );
         })}
       >
         <FormGrid>
@@ -234,7 +258,7 @@ function WageTheftTool() {
           <div className="grid gap-2 md:grid-cols-2">
             {(Object.keys(deductionLabels) as DeductionType[]).map((deduction) => (
               <Checkbox
-                checked={deductions.includes(deduction)}
+                checked={(deductions ?? []).includes(deduction)}
                 key={deduction}
                 label={deductionLabels[deduction]}
                 onChange={(event) => toggleDeduction(deduction, event.target.checked)}
@@ -734,11 +758,14 @@ function ScamDetectorTool() {
   );
 }
 
+const BANK_ID_TYPES = ["passport", "matricula", "foreign-id", "itin", "state-id"] as const satisfies readonly BankIdType[];
+
 const bankSchema = z.object({
   accountType: z.enum(["checking", "savings", "both"]),
   income: z.string(),
   sendsMoney: z.boolean(),
-  language: z.enum(["en", "es", "both"])
+  language: z.enum(["en", "es", "both"]),
+  ids: z.array(z.enum(BANK_ID_TYPES)).min(1, "Select at least one ID")
 });
 
 type BankForm = z.infer<typeof bankSchema>;
@@ -748,13 +775,19 @@ type BankMatch = {bank: (typeof bankOptions)[number]; reasons: string[]};
 function BankFinderTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
-  const [ids, setIds] = useState<BankIdType[]>(["passport"]);
   const [result, setResult] = useState<BankMatch[] | null>(null);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, formState: {errors}} = useForm<BankForm>({
+  const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<BankForm>({
     resolver: zodResolver(bankSchema),
-    defaultValues: {accountType: "checking", income: "1000-2500", sendsMoney: false, language: "both"}
+    defaultValues: {
+      accountType: "checking",
+      income: "1000-2500",
+      sendsMoney: false,
+      language: "both",
+      ids: ["passport"]
+    }
   });
+  const ids = watch("ids");
   const idLabels: Record<BankIdType, string> = {
     passport: t("tools.bank.passport"),
     matricula: t("tools.bank.matricula"),
@@ -764,7 +797,12 @@ function BankFinderTool() {
   };
 
   function toggleId(id: BankIdType, checked: boolean) {
-    setIds((current) => (checked ? [...current, id] : current.filter((item) => item !== id)));
+    const current = ids ?? [];
+    setValue(
+      "ids",
+      checked ? [...current, id] : current.filter((item) => item !== id),
+      {shouldDirty: true, shouldValidate: true}
+    );
   }
 
   return (
@@ -774,8 +812,9 @@ function BankFinderTool() {
         onSubmit={handleSubmit((data) => {
           track("tool_complete", {tool: "bank-without-ssn", locale});
           const matches: BankMatch[] = [];
+          const submittedIds = data.ids ?? [];
           for (const bank of bankOptions) {
-            const matchedIds = ids.filter((id) => bank.acceptedIds.includes(id));
+            const matchedIds = submittedIds.filter((id) => bank.acceptedIds.includes(id));
             const idMatch = matchedIds.length > 0;
             const accountMatch =
               bank.accountTypes.includes(data.accountType) || bank.accountTypes.includes("both");
@@ -807,9 +846,12 @@ function BankFinderTool() {
           <p className="mb-3 text-sm font-bold text-slate-800">{t("tools.bank.ids")}</p>
           <div className="grid gap-2 md:grid-cols-2">
             {(Object.keys(idLabels) as BankIdType[]).map((id) => (
-              <Checkbox checked={ids.includes(id)} key={id} label={idLabels[id]} onChange={(event) => toggleId(id, event.target.checked)} />
+              <Checkbox checked={(ids ?? []).includes(id)} key={id} label={idLabels[id]} onChange={(event) => toggleId(id, event.target.checked)} />
             ))}
           </div>
+          {errors.ids ? (
+            <p className="mt-2 text-caption font-medium text-critical-600">{errors.ids.message as string}</p>
+          ) : null}
         </div>
         <FormGrid>
           <FieldShell label={t("tools.bank.accountType")} error={errors.accountType?.message as string | undefined}>
