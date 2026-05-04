@@ -273,7 +273,29 @@
       "redFlags": "Red flags detected",
       "notario": "Notario fraud warning: in the U.S., notaries are not immigration lawyers.",
       "aprWarning": "APR over 36% is a high-cost warning sign, even when not illegal in every state.",
-      "report": "Report fraud"
+      "aprHint": "Loans above 36% APR are usually considered high-cost.",
+      "report": "Report fraud",
+      "reportLinks": "Report fraud at ReportFraud.ftc.gov (FTC) or consumerfinance.gov/complaint (CFPB).",
+      "flags": {
+        "loan": {
+          "feesHidden": "Fees were not disclosed upfront",
+          "pressure": "You were pressured to sign today",
+          "licenseUnknown": "Lender license is unknown",
+          "ssnEarly": "They asked for SSN/ITIN before explaining terms"
+        },
+        "immigration": {
+          "notario": "They called themselves a notario",
+          "guarantee": "They guaranteed a visa or result",
+          "blankForms": "They asked you to sign blank forms",
+          "noAccreditation": "They cannot prove attorney or DOJ accreditation"
+        },
+        "tax": {
+          "largerRefund": "They promised a larger refund than others",
+          "percentFee": "They charge a percentage of your refund",
+          "blankReturn": "They asked you to sign a blank return",
+          "noPtin": "They do not have a PTIN"
+        }
+      }
     },
     "bank": {
       "ids": "What ID do you have?",

@@ -273,7 +273,29 @@
       "redFlags": "Señales de alerta detectadas",
       "notario": "Advertencia de fraude notario: en EE.UU., los notarios no son abogados de inmigración.",
       "aprWarning": "APR mayor de 36% es una señal de costo alto, aunque no sea ilegal en todos los estados.",
-      "report": "Reportar fraude"
+      "aprHint": "Los préstamos con APR sobre 36% suelen considerarse de alto costo.",
+      "report": "Reportar fraude",
+      "reportLinks": "Reporta fraude en ReportFraud.ftc.gov (FTC) o consumerfinance.gov/complaint (CFPB).",
+      "flags": {
+        "loan": {
+          "feesHidden": "Las tarifas no se mostraron por adelantado",
+          "pressure": "Te presionaron para firmar hoy",
+          "licenseUnknown": "No se conoce la licencia del prestamista",
+          "ssnEarly": "Pidieron el SSN/ITIN antes de explicar los términos"
+        },
+        "immigration": {
+          "notario": "Se hicieron llamar notario",
+          "guarantee": "Garantizaron una visa o resultado",
+          "blankForms": "Te pidieron firmar formularios en blanco",
+          "noAccreditation": "No pueden probar acreditación de abogado o del DOJ"
+        },
+        "tax": {
+          "largerRefund": "Prometieron un reembolso mayor que otros",
+          "percentFee": "Cobran un porcentaje de tu reembolso",
+          "blankReturn": "Te pidieron firmar una declaración en blanco",
+          "noPtin": "No tienen PTIN"
+        }
+      }
     },
     "bank": {
       "ids": "¿Qué identificación tienes?",

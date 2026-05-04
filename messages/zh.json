@@ -273,7 +273,29 @@
       "redFlags": "发现的危险信号",
       "notario": "公证人欺诈警示：在美国，公证人不是移民律师。",
       "aprWarning": "APR 超过 36% 是高成本的警示信号，即便在某些州并不违法。",
-      "report": "举报欺诈"
+      "aprHint": "APR 高于 36% 的贷款通常被视为高成本。",
+      "report": "举报欺诈",
+      "reportLinks": "可向 ReportFraud.ftc.gov（FTC）或 consumerfinance.gov/complaint（CFPB）举报欺诈。",
+      "flags": {
+        "loan": {
+          "feesHidden": "事先没有说明手续费",
+          "pressure": "被施压要求当天签字",
+          "licenseUnknown": "贷款方的牌照情况不明",
+          "ssnEarly": "在解释条款之前就索要 SSN/ITIN"
+        },
+        "immigration": {
+          "notario": "他们自称是公证人（notario）",
+          "guarantee": "他们保证给到签证或某个结果",
+          "blankForms": "要求你在空白表格上签字",
+          "noAccreditation": "无法证明自己是律师或获得 DOJ 认证"
+        },
+        "tax": {
+          "largerRefund": "承诺比其他人能拿到更多退税",
+          "percentFee": "按退税金额的百分比收费",
+          "blankReturn": "要求你在空白报税表上签字",
+          "noPtin": "没有 PTIN"
+        }
+      }
     },
     "bank": {
       "ids": "你有哪些身份证件？",

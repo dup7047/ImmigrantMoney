@@ -527,26 +527,13 @@ function ScamDetectorTool() {
     defaultValues: {category: "loan", apr: 36}
   });
   const category = watch("category") as ScamCategory;
-  const flagOptions: Record<ScamCategory, {id: string; label: string}[]> = {
-    loan: [
-      {id: "feesHidden", label: "Fees were not disclosed upfront"},
-      {id: "pressure", label: "You were pressured to sign today"},
-      {id: "licenseUnknown", label: "Lender license is unknown"},
-      {id: "ssnEarly", label: "They asked for SSN/ITIN before explaining terms"}
-    ],
-    immigration: [
-      {id: "notario", label: "They called themselves a notario"},
-      {id: "guarantee", label: "They guaranteed a visa or result"},
-      {id: "blankForms", label: "They asked you to sign blank forms"},
-      {id: "noAccreditation", label: "They cannot prove attorney or DOJ accreditation"}
-    ],
-    tax: [
-      {id: "largerRefund", label: "They promised a larger refund than others"},
-      {id: "percentFee", label: "They charge a percentage of your refund"},
-      {id: "blankReturn", label: "They asked you to sign a blank return"},
-      {id: "noPtin", label: "They do not have a PTIN"}
-    ]
+  const flagIds: Record<ScamCategory, string[]> = {
+    loan: ["feesHidden", "pressure", "licenseUnknown", "ssnEarly"],
+    immigration: ["notario", "guarantee", "blankForms", "noAccreditation"],
+    tax: ["largerRefund", "percentFee", "blankReturn", "noPtin"]
   };
+  // i18n labels live under tools.scam.flags.<category>.<flagId>
+  const flagLabel = (cat: ScamCategory, id: string): string => t(`tools.scam.flags.${cat}.${id}`);
 
   function toggleFlag(id: string, checked: boolean) {
     setFlags((current) => (checked ? [...current, id] : current.filter((item) => item !== id)));
@@ -577,14 +564,23 @@ function ScamDetectorTool() {
             </Select>
           </FieldShell>
           {category === "loan" ? (
-            <FieldShell label={t("tools.scam.apr")} error={errors.apr?.message as string | undefined}>
+            <FieldShell
+              label={t("tools.scam.apr")}
+              hint={t("tools.scam.aprHint")}
+              error={errors.apr?.message as string | undefined}
+            >
               <Input type="number" {...register("apr")} />
             </FieldShell>
           ) : null}
         </FormGrid>
         <div className="grid gap-2">
-          {flagOptions[category].map((flag) => (
-            <Checkbox checked={flags.includes(flag.id)} key={flag.id} label={flag.label} onChange={(event) => toggleFlag(flag.id, event.target.checked)} />
+          {flagIds[category].map((id) => (
+            <Checkbox
+              checked={flags.includes(id)}
+              key={id}
+              label={flagLabel(category, id)}
+              onChange={(event) => toggleFlag(id, event.target.checked)}
+            />
           ))}
         </div>
         <Button type="submit">{t("common.calculate")}</Button>
@@ -596,12 +592,24 @@ function ScamDetectorTool() {
             tone={result.level === "high" ? "danger" : result.level === "caution" ? "warning" : "success"}
             value={t(`tools.scam.${result.level}`)}
           />
+          {flags.length > 0 ? (
+            <div className="rounded-xl border border-caution-200 bg-caution-50 p-4">
+              <h3 className="font-bold text-caution-950">{t("tools.scam.redFlags")}</h3>
+              <ul className="mt-2 grid gap-1.5 text-sm text-caution-950">
+                {flags.map((id) => (
+                  <li className="flex gap-2" key={id}>
+                    <span aria-hidden="true">⚠</span>
+                    {flagLabel(category, id)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <WarningList
             items={[
-              ...(flags.length > 0 ? [`${t("tools.scam.redFlags")}: ${flags.join(", ")}`] : []),
               ...(result.notarioWarning ? [t("tools.scam.notario")] : []),
               ...(result.aprWarning ? [t("tools.scam.aprWarning")] : []),
-              "FTC: ReportFraud.ftc.gov · CFPB: consumerfinance.gov/complaint"
+              t("tools.scam.reportLinks")
             ]}
           />
         </div>
