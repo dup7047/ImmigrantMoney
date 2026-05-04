@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   // <title>, <meta description>, hreflang, og:* etc. The perf cost on this
   // site is minimal (pages render quickly) and the SEO / social-share win
   // is real (Lighthouse SEO score 82 → 100).
-  htmlLimitedBots: ".*",
+  htmlLimitedBots: /.*/,
   experimental: {
     optimizePackageImports: ["lucide-react", "recharts"]
   }
