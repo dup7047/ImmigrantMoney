@@ -130,8 +130,9 @@ function WageTheftTool() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [result, setResult] = useState<ReturnType<typeof calculateWage> | null>(null);
+  const [lastStep, setLastStep] = useState(0);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<WageForm>({
+  const form = useForm<WageForm>({
     resolver: zodResolver(wageSchema),
     defaultValues: {
       stateCode: "CA",
@@ -148,6 +149,7 @@ function WageTheftTool() {
       deductions: []
     }
   });
+  const {register, watch, setValue, formState: {errors}} = form;
   const deductions = watch("deductions");
   const stateCode = watch("stateCode");
   const employmentType = watch("employmentType") as EmploymentType;
@@ -179,101 +181,151 @@ function WageTheftTool() {
     );
   }
 
+  // Step 2 fieldNames depend on employment type — recompute when it changes.
+  const expectedFieldNames = useMemo<(keyof WageForm)[]>(() => {
+    const fields: (keyof WageForm)[] = [];
+    if (isHourly) fields.push("hourlyRate", "hoursWorked");
+    if (isSalaried) fields.push("weeklySalary");
+    if (tracksOvertime) fields.push("overtimeHours");
+    if (isTipped) fields.push("tips");
+    return fields;
+  }, [isHourly, isSalaried, isTipped, tracksOvertime]);
+
+  const steps = useMemo<WizardStepDef<WageForm>[]>(
+    () => [
+      {
+        id: "basics",
+        title: t("tools.wage.steps.basics.title"),
+        description: t("tools.wage.steps.basics.description"),
+        fieldNames: ["employmentType", "stateCode"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.wage.employmentType")} error={errors.employmentType?.message as string | undefined}>
+              <Select {...register("employmentType")}>
+                <option value="hourly">{t("tools.wage.hourly")}</option>
+                <option value="salaried">{t("tools.wage.salaried")}</option>
+                <option value="tipped">{t("tools.wage.tipped")}</option>
+                <option value="cash">{t("tools.wage.cash")}</option>
+              </Select>
+            </FieldShell>
+            <FieldShell label={t("fields.state")} error={errors.stateCode?.message as string | undefined}>
+              <Select {...register("stateCode")}>
+                {usStates.map((state) => (
+                  <option key={state.code} value={state.code}>
+                    {state.name}
+                  </option>
+                ))}
+              </Select>
+            </FieldShell>
+          </FormGrid>
+        )
+      },
+      {
+        id: "expected",
+        title: t("tools.wage.steps.expected.title"),
+        description: t("tools.wage.steps.expected.description"),
+        fieldNames: expectedFieldNames,
+        render: (
+          <FormGrid>
+            {isHourly ? (
+              <FieldShell label={t("tools.wage.hourlyRate")} error={errors.hourlyRate?.message as string | undefined}>
+                <MoneyInput step="0.01" unit="/ hr" {...register("hourlyRate")} />
+              </FieldShell>
+            ) : null}
+            {isSalaried ? (
+              <FieldShell label={t("tools.wage.weeklySalary")} error={errors.weeklySalary?.message as string | undefined}>
+                <MoneyInput step="0.01" unit="/ week" {...register("weeklySalary")} />
+              </FieldShell>
+            ) : null}
+            {isHourly ? (
+              <FieldShell label={t("tools.wage.hoursWorked")} error={errors.hoursWorked?.message as string | undefined}>
+                <Input type="number" step="0.25" {...register("hoursWorked")} />
+              </FieldShell>
+            ) : null}
+            {tracksOvertime ? (
+              <FieldShell label={t("tools.wage.overtimeHours")} error={errors.overtimeHours?.message as string | undefined}>
+                <Input type="number" step="0.25" {...register("overtimeHours")} />
+              </FieldShell>
+            ) : null}
+            {isTipped ? (
+              <FieldShell label={t("tools.wage.tips")} error={errors.tips?.message as string | undefined}>
+                <MoneyInput step="0.01" unit="/ week" {...register("tips")} />
+              </FieldShell>
+            ) : null}
+          </FormGrid>
+        )
+      },
+      {
+        id: "actual",
+        title: t("tools.wage.steps.actual.title"),
+        description: t("tools.wage.steps.actual.description"),
+        fieldNames: ["actualPay", "withholdingAmount", "benefitDeductions"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.wage.actualPay")} error={errors.actualPay?.message as string | undefined}>
+              <MoneyInput step="0.01" unit="/ week" {...register("actualPay")} />
+            </FieldShell>
+            <FieldShell label={t("tools.wage.withholding")} error={errors.withholdingAmount?.message as string | undefined}>
+              <MoneyInput step="0.01" unit="/ week" {...register("withholdingAmount")} />
+            </FieldShell>
+            <FieldShell label={t("tools.wage.benefits")} error={errors.benefitDeductions?.message as string | undefined}>
+              <MoneyInput step="0.01" unit="/ week" {...register("benefitDeductions")} />
+            </FieldShell>
+          </FormGrid>
+        )
+      },
+      {
+        id: "deductions",
+        title: t("tools.wage.steps.deductions.title"),
+        description: t("tools.wage.steps.deductions.description"),
+        fieldNames: ["deductions", "unlistedDeductions"],
+        render: (
+          <div className="grid gap-4">
+            <div>
+              <p className="mb-3 text-sm font-bold text-ink-800">{t("tools.wage.deductions")}</p>
+              <div className="grid gap-2 md:grid-cols-2">
+                {(Object.keys(deductionLabels) as DeductionType[]).map((deduction) => (
+                  <Checkbox
+                    checked={(deductions ?? []).includes(deduction)}
+                    key={deduction}
+                    label={deductionLabels[deduction]}
+                    onChange={(event) => toggleDeduction(deduction, event.target.checked)}
+                  />
+                ))}
+              </div>
+            </div>
+            <Checkbox label={t("tools.wage.unlisted")} {...register("unlistedDeductions")} />
+          </div>
+        )
+      }
+    ],
+    // toggleDeduction + deductionLabels are recreated each render but only
+    // close over `deductions`/`setValue`, so depending on `deductions` is enough.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [t, register, errors, expectedFieldNames, isHourly, isSalaried, isTipped, tracksOvertime, deductions]
+  );
+
+  function handleWizardSubmit(data: WageForm) {
+    track("tool_complete", {tool: "wage-theft-checker", locale});
+    setResult(
+      calculateWage({
+        ...data,
+        employmentType: data.employmentType as EmploymentType,
+        deductions: (data.deductions ?? []) as DeductionType[]
+      })
+    );
+  }
+
   return (
     <Panel className="grid gap-6">
-      <form
-        className="grid gap-6"
-        onSubmit={handleSubmit((data) => {
-          track("tool_complete", {tool: "wage-theft-checker", locale});
-          setResult(
-            calculateWage({
-              ...data,
-              employmentType: data.employmentType as EmploymentType,
-              deductions: (data.deductions ?? []) as DeductionType[]
-            })
-          );
-        })}
-      >
-        <FormGrid>
-          {/* 1. Employment type first — drives everything else */}
-          <FieldShell label={t("tools.wage.employmentType")} error={errors.employmentType?.message as string | undefined}>
-            <Select {...register("employmentType")}>
-              <option value="hourly">{t("tools.wage.hourly")}</option>
-              <option value="salaried">{t("tools.wage.salaried")}</option>
-              <option value="tipped">{t("tools.wage.tipped")}</option>
-              <option value="cash">{t("tools.wage.cash")}</option>
-            </Select>
-          </FieldShell>
-          {/* 2. State — needed for minimum-wage lookup */}
-          <FieldShell label={t("fields.state")} error={errors.stateCode?.message as string | undefined}>
-            <Select {...register("stateCode")}>
-              {usStates.map((state) => (
-                <option key={state.code} value={state.code}>
-                  {state.name}
-                </option>
-              ))}
-            </Select>
-          </FieldShell>
-          {/* 3. Pay basis — conditional on type */}
-          {isHourly ? (
-            <FieldShell label={t("tools.wage.hourlyRate")} error={errors.hourlyRate?.message as string | undefined}>
-              <MoneyInput step="0.01" unit="/ hr" {...register("hourlyRate")} />
-            </FieldShell>
-          ) : null}
-          {isSalaried ? (
-            <FieldShell label={t("tools.wage.weeklySalary")} error={errors.weeklySalary?.message as string | undefined}>
-              <MoneyInput step="0.01" unit="/ week" {...register("weeklySalary")} />
-            </FieldShell>
-          ) : null}
-          {/* 4. Hours worked — only relevant for non-salaried */}
-          {isHourly ? (
-            <FieldShell label={t("tools.wage.hoursWorked")} error={errors.hoursWorked?.message as string | undefined}>
-              <Input type="number" step="0.25" {...register("hoursWorked")} />
-            </FieldShell>
-          ) : null}
-          {/* 5. Overtime — only hourly/tipped track it */}
-          {tracksOvertime ? (
-            <FieldShell label={t("tools.wage.overtimeHours")} error={errors.overtimeHours?.message as string | undefined}>
-              <Input type="number" step="0.25" {...register("overtimeHours")} />
-            </FieldShell>
-          ) : null}
-          {/* 6. Tips — only tipped */}
-          {isTipped ? (
-            <FieldShell label={t("tools.wage.tips")} error={errors.tips?.message as string | undefined}>
-              <MoneyInput step="0.01" unit="/ week" {...register("tips")} />
-            </FieldShell>
-          ) : null}
-          {/* 7. What was actually received — always asked */}
-          <FieldShell label={t("tools.wage.actualPay")} error={errors.actualPay?.message as string | undefined}>
-            <MoneyInput step="0.01" unit="/ week" {...register("actualPay")} />
-          </FieldShell>
-          <FieldShell label={t("tools.wage.withholding")} error={errors.withholdingAmount?.message as string | undefined}>
-            <MoneyInput step="0.01" unit="/ week" {...register("withholdingAmount")} />
-          </FieldShell>
-          <FieldShell label={t("tools.wage.benefits")} error={errors.benefitDeductions?.message as string | undefined}>
-            <MoneyInput step="0.01" unit="/ week" {...register("benefitDeductions")} />
-          </FieldShell>
-        </FormGrid>
-
-        <div>
-          <p className="mb-3 text-sm font-bold text-slate-800">{t("tools.wage.deductions")}</p>
-          <div className="grid gap-2 md:grid-cols-2">
-            {(Object.keys(deductionLabels) as DeductionType[]).map((deduction) => (
-              <Checkbox
-                checked={(deductions ?? []).includes(deduction)}
-                key={deduction}
-                label={deductionLabels[deduction]}
-                onChange={(event) => toggleDeduction(deduction, event.target.checked)}
-              />
-            ))}
-          </div>
-        </div>
-        <Checkbox label={t("tools.wage.unlisted")} {...register("unlistedDeductions")} />
-        <Button type="submit">{t("common.calculate")}</Button>
-      </form>
-
       {result ? (
         <div ref={resultRef} className="grid gap-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 className="text-heading-3 text-ink-900">{t("common.results")}</h3>
+            <Button onClick={() => setResult(null)} type="button" variant="secondary">
+              {t("common.editAnswers")}
+            </Button>
+          </div>
           <div className="grid gap-3 md:grid-cols-3">
             <Stat label={t("tools.wage.expectedGross")} value={formatCurrencyPrecise(result.expectedGross, locale)} />
             <Stat label={t("tools.wage.expectedNet")} value={formatCurrencyPrecise(result.expectedNetKnownDeductions, locale)} />
@@ -288,7 +340,7 @@ function WageTheftTool() {
             />
           </div>
           {result.possibleUnderpayment > 0 ? (
-            <p className="rounded-md bg-red-50 p-4 text-sm font-semibold text-red-700">
+            <p className="rounded-md bg-critical-50 p-4 text-sm font-semibold text-critical-700">
               {t("tools.wage.annualLoss")}: {formatCurrencyPrecise(result.annualLoss, locale)}
             </p>
           ) : null}
@@ -302,7 +354,7 @@ function WageTheftTool() {
             ]}
           />
           {board ? (
-            <div className="rounded-md border border-slate-200 bg-slate-50 p-4 text-sm">
+            <div className="rounded-md border border-ink-200 bg-ink-50 p-4 text-sm">
               <p className="font-bold text-ink-900">{t("tools.wage.resources")}</p>
               <div className="mt-2 flex flex-wrap gap-3">
                 <a className="font-semibold text-brand-600 hover:text-brand-700" href={board.reportUrl} rel="noreferrer" target="_blank">
@@ -318,7 +370,16 @@ function WageTheftTool() {
             <p>{t("tools.wage.methodology")}</p>
           </MethodologyNote>
         </div>
-      ) : null}
+      ) : (
+        <Wizard
+          form={form}
+          steps={steps}
+          onSubmit={handleWizardSubmit}
+          submitLabel={t("common.calculate")}
+          initialStep={lastStep}
+          onStepChange={setLastStep}
+        />
+      )}
     </Panel>
   );
 }

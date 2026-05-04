@@ -231,6 +231,24 @@
       "cashNoStub": "El trabajo en efectivo sin talón puede hacer más difícil documentar violaciones. Guarda tus propios registros.",
       "unlistedDeductions": "Deducciones no listadas son una señal de alerta. Pide un estado de pago detallado si puedes.",
       "tipCreditGap": "En trabajo con propinas, propinas más salario en efectivo generalmente deben llegar al salario mínimo aplicable.",
+      "steps": {
+        "basics": {
+          "title": "Lo básico del trabajo",
+          "description": "Cómo te pagan y dónde trabajas — esto define la regla de salario mínimo correcta."
+        },
+        "expected": {
+          "title": "Lo que deberías ganar",
+          "description": "Calcularemos el sueldo bruto que tus horas y tarifa deberían producir."
+        },
+        "actual": {
+          "title": "Lo que realmente recibiste",
+          "description": "Tómalo de tu cheque o depósito más reciente."
+        },
+        "deductions": {
+          "title": "Deducciones",
+          "description": "Marca todo lo que te descontaron del sueldo. Algunas deducciones son ilegales en ciertos estados."
+        }
+      },
       "methodology": "El salario bruto esperado = horas × tasa, con 1.5× para horas sobre el umbral federal de 40/semana. El salario mínimo estatal aplica cuando es mayor que el federal. Para trabajo con propinas, las propinas más el salario en efectivo deben llegar al mínimo aplicable. Fuentes: Departamento de Trabajo de EE.UU. y reglas estatales de salario, última revisión 2026-05-02."
     },
     "itin": {

@@ -231,6 +231,24 @@
       "cashNoStub": "Cash work without a pay stub can make wage violations harder to document. Keep your own written records.",
       "unlistedDeductions": "Unlisted deductions are a red flag. Ask for an itemized pay statement when possible.",
       "tipCreditGap": "For tipped work, tips plus cash wages generally must still reach the applicable minimum wage.",
+      "steps": {
+        "basics": {
+          "title": "Job basics",
+          "description": "How you're paid and where you work — this sets the right minimum-wage rule."
+        },
+        "expected": {
+          "title": "What you should earn",
+          "description": "We'll calculate the gross pay your hours and rate should produce."
+        },
+        "actual": {
+          "title": "What you actually got",
+          "description": "Take this from your most recent pay stub or deposit."
+        },
+        "deductions": {
+          "title": "Deductions",
+          "description": "Check anything that was taken from your pay. Some deductions are illegal in some states."
+        }
+      },
       "methodology": "Expected gross pay = hours × rate, with 1.5× pay for hours over the federal 40/week threshold. State minimum wage applies when higher than federal. For tipped work, tips plus cash wages must reach the applicable minimum. Sources: U.S. Department of Labor and state wage rules, last reviewed 2026-05-02."
     },
     "itin": {
