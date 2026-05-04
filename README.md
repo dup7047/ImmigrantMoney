@@ -6,6 +6,8 @@ Free, trilingual (English / Español / 中文) financial tools for immigrants in
 
 🌐 https://github.com/dup7047/ImmigrantMoney
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdup7047%2FImmigrantMoney)
+
 ---
 
 ## What's in the box
