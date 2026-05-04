@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {track} from "@vercel/analytics";
 import {AlertTriangle, ExternalLink} from "lucide-react";
 import {useLocale, useTranslations} from "next-intl";
 import {useMemo, useState} from "react";
@@ -154,6 +155,7 @@ function WageTheftTool() {
       <form
         className="grid gap-6"
         onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "wage-theft-checker", locale});
           setResult(calculateWage({...data, employmentType: data.employmentType as EmploymentType, deductions}));
         })}
       >
@@ -340,6 +342,7 @@ function ItinTaxGuide() {
       <form
         className="grid gap-5"
         onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "itin-tax-guide", locale});
           setResult(data);
         })}
       >
@@ -425,7 +428,13 @@ function UscisFeeTool() {
 
   return (
     <Panel className="grid gap-6">
-      <form className="grid gap-5" onSubmit={handleSubmit((data) => setResult(calculateUscisFees(data)))}>
+      <form
+        className="grid gap-5"
+        onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "uscis-fee-calculator", locale});
+          setResult(calculateUscisFees(data));
+        })}
+      >
         <FormGrid>
           <FieldShell label={t("tools.uscis.application")}>
             <Select {...register("form")}>
@@ -483,6 +492,7 @@ type ScamForm = z.infer<typeof scamSchema>;
 
 function ScamDetectorTool() {
   const t = useTranslations();
+  const locale = useLocale() as Locale;
   const [flags, setFlags] = useState<string[]>([]);
   const [result, setResult] = useState<ReturnType<typeof calculateScamRisk> | null>(null);
   const {register, handleSubmit, watch} = useForm<ScamForm>({
@@ -517,7 +527,13 @@ function ScamDetectorTool() {
 
   return (
     <Panel className="grid gap-6">
-      <form className="grid gap-5" onSubmit={handleSubmit((data) => setResult(calculateScamRisk({...data, category, yesFlags: flags})))}>
+      <form
+        className="grid gap-5"
+        onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "scam-detector", locale});
+          setResult(calculateScamRisk({...data, category, yesFlags: flags}));
+        })}
+      >
         <FormGrid>
           <FieldShell label={t("tools.scam.category")}>
             <Select
@@ -602,6 +618,7 @@ function BankFinderTool() {
       <form
         className="grid gap-5"
         onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "bank-without-ssn", locale});
           setResult(
             bankOptions.filter((bank) => {
               const idMatch = ids.some((id) => bank.acceptedIds.includes(id));
@@ -709,7 +726,13 @@ function CreditRoadmapTool() {
 
   return (
     <Panel className="grid gap-6">
-      <form className="grid gap-5" onSubmit={handleSubmit((data) => setResult(buildCreditRoadmap(data)))}>
+      <form
+        className="grid gap-5"
+        onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "credit-builder-roadmap", locale});
+          setResult(buildCreditRoadmap(data));
+        })}
+      >
         <FormGrid>
           <FieldShell label={t("tools.credit.visa")}>
             <Select {...register("visaType")}>
@@ -810,7 +833,8 @@ function RemittanceTool() {
     <Panel className="grid gap-6">
       <form
         className="grid gap-5"
-        onSubmit={handleSubmit((data) =>
+        onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "remittance-calculator", locale});
           setResult(
             compareRemittances({
               amount: data.amount,
@@ -818,8 +842,8 @@ function RemittanceTool() {
               method: data.method as DeliveryMethod,
               frequency: data.frequency as Frequency
             })
-          )
-        )}
+          );
+        })}
       >
         <FormGrid>
           <FieldShell label={t("tools.remit.amount")}>
@@ -937,6 +961,7 @@ function AffordabilityTool() {
       <form
         className="grid gap-5"
         onSubmit={handleSubmit((data) => {
+          track("tool_complete", {tool: "affordability-planner", locale});
           setStatusInput(data.status);
           setResult(calculateAffordability(data));
         })}

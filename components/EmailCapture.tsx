@@ -1,5 +1,6 @@
 "use client";
 
+import {track} from "@vercel/analytics";
 import {Mail} from "lucide-react";
 import {useLocale, useTranslations} from "next-intl";
 import {useState, type FormEvent} from "react";
@@ -29,6 +30,7 @@ export function EmailCapture({sourceTool}: {sourceTool: ToolSlug}) {
     if (response.status === 202) {
       setStatus("skipped");
     } else if (response.ok) {
+      track("email_signup", {sourceTool, locale});
       setStatus("saved");
       setEmail("");
       setConsent(false);

@@ -1,3 +1,6 @@
+"use client";
+
+import {track} from "@vercel/analytics";
 import {ExternalLink} from "lucide-react";
 import type {Locale, ToolSlug} from "@/lib/types";
 import {getAffiliateLinksForTool} from "@/data/affiliate-links";
@@ -19,6 +22,7 @@ export function AffiliateLinks({toolSlug, locale}: {toolSlug: ToolSlug; locale: 
             className="group rounded-2xl border border-ink-200 bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-cardHover"
             href={link.href}
             key={link.id}
+            onClick={() => track("affiliate_click", {partner: link.id, tool: toolSlug, locale})}
             rel="nofollow sponsored"
             target="_blank"
           >

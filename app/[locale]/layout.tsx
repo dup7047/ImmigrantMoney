@@ -1,5 +1,4 @@
 import type {Metadata} from "next";
-import Script from "next/script";
 import {NextIntlClientProvider, hasLocale} from "next-intl";
 import {getMessages, getTranslations} from "next-intl/server";
 import {notFound} from "next/navigation";
@@ -33,7 +32,6 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const t = await getTranslations({locale, namespace: "nav"});
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://immigrantmoney.us";
-  const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
   return (
     <NextIntlClientProvider messages={messages}>
@@ -47,9 +45,6 @@ export default async function LocaleLayout({
           sameAs: []
         }}
       />
-      {plausibleDomain ? (
-        <Script data-domain={plausibleDomain} defer src="https://plausible.io/js/script.js" strategy="afterInteractive" />
-      ) : null}
       <div lang={locale as Locale} className="flex min-h-screen flex-col">
         <a className="skip-link" href="#content">{t("skipToContent")}</a>
         <Header />
