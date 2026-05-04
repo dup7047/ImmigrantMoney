@@ -908,35 +908,106 @@ function RemittanceTool() {
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (
-        <div ref={resultRef} className="grid gap-4">
-          <WarningList items={[t("tools.remit.static")]} />
-          <Stat label={t("tools.remit.annualSavings")} value={formatCurrencyPrecise(result.annualSavings, locale)} tone="success" />
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[720px] border-collapse text-sm">
-              <thead>
-                <tr className="border-b text-left">
-                  {["Service", t("tools.remit.fee"), t("tools.remit.rate"), t("tools.remit.received"), t("tools.remit.totalCost"), "Speed"].map((head) => (
-                    <th className="p-3 font-bold text-slate-700" key={head}>
-                      {head}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {result.results.map((row) => (
-                  <tr className="border-b border-slate-100" key={row.service}>
-                    <td className="p-3 font-bold">{row.service}</td>
-                    <td className="p-3">{formatCurrencyPrecise(row.fee, locale)}</td>
-                    <td className="p-3">{row.exchangeRate.toFixed(3)}</td>
-                    <td className="p-3">{row.amountReceived.toFixed(2)}</td>
-                    <td className="p-3">{formatCurrencyPrecise(row.totalCost, locale)}</td>
-                    <td className="p-3">{row.speed}</td>
-                  </tr>
+        (() => {
+          const sorted = [...result.results].sort((a, b) => a.totalCost - b.totalCost);
+          return (
+            <div ref={resultRef} className="grid gap-4">
+              <WarningList items={[t("tools.remit.static")]} />
+              <Stat
+                label={t("tools.remit.annualSavings")}
+                value={formatCurrencyPrecise(result.annualSavings, locale)}
+                tone="success"
+              />
+
+              {/* Mobile: stacked cards, sorted cheapest first */}
+              <div className="grid gap-3 md:hidden">
+                {sorted.map((row, idx) => (
+                  <div
+                    className={`rounded-xl border p-4 ${
+                      idx === 0
+                        ? "border-positive-600 bg-positive-50 ring-2 ring-positive-200"
+                        : "border-ink-200 bg-white"
+                    }`}
+                    key={row.service}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-heading-3 text-ink-900">{row.service}</span>
+                      {idx === 0 ? (
+                        <span className="rounded-full bg-positive-600 px-2.5 py-0.5 text-overline font-bold uppercase text-white">
+                          {t("tools.remit.bestValue")}
+                        </span>
+                      ) : null}
+                    </div>
+                    <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                      <dt className="text-ink-500">{t("tools.remit.totalCost")}</dt>
+                      <dd className="text-right font-semibold text-ink-900">
+                        {formatCurrencyPrecise(row.totalCost, locale)}
+                      </dd>
+                      <dt className="text-ink-500">{t("tools.remit.fee")}</dt>
+                      <dd className="text-right">{formatCurrencyPrecise(row.fee, locale)}</dd>
+                      <dt className="text-ink-500">{t("tools.remit.rate")}</dt>
+                      <dd className="text-right">{row.exchangeRate.toFixed(3)}</dd>
+                      <dt className="text-ink-500">{t("tools.remit.received")}</dt>
+                      <dd className="text-right">{row.amountReceived.toFixed(2)}</dd>
+                      <dt className="text-ink-500">{t("tools.remit.speed")}</dt>
+                      <dd className="text-right">{row.speed}</dd>
+                    </dl>
+                  </div>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+              </div>
+
+              {/* Desktop: table, sorted cheapest first */}
+              <div className="hidden overflow-x-auto md:block">
+                <table className="w-full border-collapse text-sm">
+                  <thead>
+                    <tr className="border-b text-left">
+                      {[
+                        t("tools.remit.service"),
+                        t("tools.remit.fee"),
+                        t("tools.remit.rate"),
+                        t("tools.remit.received"),
+                        t("tools.remit.totalCost"),
+                        t("tools.remit.speed")
+                      ].map((head) => (
+                        <th className="p-3 font-bold text-ink-700" key={head}>
+                          {head}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sorted.map((row, idx) => (
+                      <tr
+                        className={
+                          idx === 0
+                            ? "border-b border-positive-200 bg-positive-50"
+                            : "border-b border-ink-100"
+                        }
+                        key={row.service}
+                      >
+                        <td className="p-3 font-bold">
+                          <span className="inline-flex items-center gap-2">
+                            {row.service}
+                            {idx === 0 ? (
+                              <span className="rounded-full bg-positive-600 px-2 py-0.5 text-[0.625rem] font-bold uppercase tracking-wide text-white">
+                                {t("tools.remit.bestValue")}
+                              </span>
+                            ) : null}
+                          </span>
+                        </td>
+                        <td className="p-3">{formatCurrencyPrecise(row.fee, locale)}</td>
+                        <td className="p-3">{row.exchangeRate.toFixed(3)}</td>
+                        <td className="p-3">{row.amountReceived.toFixed(2)}</td>
+                        <td className="p-3 font-semibold">{formatCurrencyPrecise(row.totalCost, locale)}</td>
+                        <td className="p-3">{row.speed}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          );
+        })()
       ) : null}
     </Panel>
   );

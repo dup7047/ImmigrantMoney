@@ -327,7 +327,10 @@
       "received": "Amount received",
       "totalCost": "Total cost",
       "annualSavings": "Estimated annual savings choosing the lowest-cost option over the highest-cost option",
-      "static": "Static estimates only. Check the provider before sending."
+      "static": "Static estimates only. Check the provider before sending.",
+      "service": "Service",
+      "speed": "Speed",
+      "bestValue": "Best value"
     },
     "afford": {
       "city": "City / metro",

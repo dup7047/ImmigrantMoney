@@ -327,7 +327,10 @@
       "received": "Cantidad recibida",
       "totalCost": "Costo total",
       "annualSavings": "Ahorro anual estimado al elegir la opción de menor costo sobre la de mayor costo",
-      "static": "Estimados estáticos solamente. Revisa el proveedor antes de enviar."
+      "static": "Estimados estáticos solamente. Revisa el proveedor antes de enviar.",
+      "service": "Servicio",
+      "speed": "Tiempo",
+      "bestValue": "Mejor valor"
     },
     "afford": {
       "city": "Ciudad / área metro",
