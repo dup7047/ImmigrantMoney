@@ -52,27 +52,28 @@ export const viewport: Viewport = {
   themeColor: "#1D4ED8"
 };
 
-export default function RootLayout({children}: {children: ReactNode}) {
-  // AdSense client is the publisher ID (ca-pub-...). Setting it loads the
-  // adsbygoogle.js script — needed for AdSense to verify ownership during
-  // application review, and to serve ads once the site is approved.
-  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+// Publisher ID is non-secret — it appears in every served page once ads are
+// active, and in /ads.txt. Hardcoded so the AdSense crawler can verify the
+// site without depending on a deployment-time env var being set.
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "ca-pub-8876675406187697";
 
+export default function RootLayout({children}: {children: ReactNode}) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+      <head>
+        <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
+      </head>
       <body className="font-sans antialiased">
         {children}
         <Analytics />
         <SpeedInsights />
-        {adsenseClient ? (
-          <Script
-            async
-            crossOrigin="anonymous"
-            id="adsense-script"
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-            strategy="afterInteractive"
-          />
-        ) : null}
+        <Script
+          async
+          crossOrigin="anonymous"
+          id="adsense-script"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
