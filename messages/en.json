@@ -24,7 +24,8 @@
     "saved": "Saved. Check your inbox when the roadmap is ready.",
     "skipped": "Email capture is not configured yet.",
     "error": "Something went wrong. Please try again.",
-    "methodologyLabel": "How is this calculated?"
+    "methodologyLabel": "How is this calculated?",
+    "editAnswers": "Edit answers"
   },
   "nav": {
     "tools": "Tools",
@@ -439,6 +440,24 @@
       "basicSection": "Your basics",
       "optionalSection": "Optional details",
       "optionalHint": "skip to use defaults",
+      "steps": {
+        "where": {
+          "title": "Where & who",
+          "description": "Tell us about your city and household — this anchors the cost-of-living baseline."
+        },
+        "income": {
+          "title": "Money in",
+          "description": "Your take-home income after taxes, in the currency you receive it."
+        },
+        "expenses": {
+          "title": "Money out",
+          "description": "Recurring costs that come out before you decide rent. All optional."
+        },
+        "goals": {
+          "title": "Goals",
+          "description": "Saving for legal fees, sponsorship, or family travel? Tell us how much and by when."
+        }
+      },
       "methodology": "Recommended housing budget uses the 30%-of-take-home rule plus city-of-living adjustment. Remittances, debt, health insurance, and immigration savings are subtracted before discretionary spend. Lease cash up front estimates 1.5× monthly rent for first/last/security. Source: KFF immigrant-household research, BLS cost-of-living indices."
     }
   }

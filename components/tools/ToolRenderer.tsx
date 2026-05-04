@@ -26,6 +26,8 @@ import {Button} from "../ui/Button";
 import {Checkbox, FieldShell, Input, MoneyInput, Select} from "../ui/Field";
 import {HelpTip} from "../ui/HelpTip";
 import {Panel, Stat} from "../ui/Panel";
+import {Wizard} from "../wizard";
+import type {WizardStepDef} from "../wizard";
 import {MethodologyNote} from "./MethodologyNote";
 import {useResultScroll} from "./useResultScroll";
 
@@ -1265,8 +1267,9 @@ function AffordabilityTool() {
   const locale = useLocale() as Locale;
   const [statusInput, setStatusInput] = useState<ImmigrationStatusForBenefits>("mixed");
   const [result, setResult] = useState<ReturnType<typeof calculateAffordability> | null>(null);
+  const [lastStep, setLastStep] = useState(0);
   const resultRef = useResultScroll(result);
-  const {register, handleSubmit, formState: {errors}} = useForm<AffordabilityForm>({
+  const form = useForm<AffordabilityForm>({
     resolver: zodResolver(affordabilitySchema),
     defaultValues: {
       city: "NYC",
@@ -1281,6 +1284,7 @@ function AffordabilityTool() {
       goalMonths: 12
     }
   });
+  const {register, formState: {errors}} = form;
 
   const chartData = useMemo(
     () =>
@@ -1290,105 +1294,119 @@ function AffordabilityTool() {
     [result]
   );
 
+  const steps = useMemo<WizardStepDef<AffordabilityForm>[]>(
+    () => [
+      {
+        id: "where",
+        title: t("tools.afford.steps.where.title"),
+        description: t("tools.afford.steps.where.description"),
+        fieldNames: ["city", "householdSize", "status", "hasChildren"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.afford.city")} error={errors.city?.message as string | undefined}>
+              <Select {...register("city")}>
+                {cityCostPresets.map((city) => (
+                  <option key={city.city} value={city.city}>
+                    {city.city}
+                  </option>
+                ))}
+              </Select>
+            </FieldShell>
+            <FieldShell label={t("tools.afford.household")} error={errors.householdSize?.message as string | undefined}>
+              <Input type="number" {...register("householdSize")} />
+            </FieldShell>
+            <FieldShell label={t("tools.afford.status")} error={errors.status?.message as string | undefined}>
+              <Select {...register("status")}>
+                <option value="documented">Documented</option>
+                <option value="undocumented">Undocumented</option>
+                <option value="mixed">Mixed household</option>
+              </Select>
+            </FieldShell>
+            <Checkbox label={t("tools.afford.children")} {...register("hasChildren")} />
+          </FormGrid>
+        )
+      },
+      {
+        id: "income",
+        title: t("tools.afford.steps.income.title"),
+        description: t("tools.afford.steps.income.description"),
+        fieldNames: ["income"],
+        render: (
+          <FieldShell label={t("tools.afford.income")} error={errors.income?.message as string | undefined}>
+            <MoneyInput unit="/ mo" {...register("income")} />
+          </FieldShell>
+        )
+      },
+      {
+        id: "expenses",
+        title: t("tools.afford.steps.expenses.title"),
+        description: t("tools.afford.steps.expenses.description"),
+        fieldNames: ["debtPayments", "remittances", "healthInsurance"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.afford.remittances")} error={errors.remittances?.message as string | undefined}>
+              <MoneyInput unit="/ mo" {...register("remittances")} />
+            </FieldShell>
+            <FieldShell label={t("tools.afford.debt")} error={errors.debtPayments?.message as string | undefined}>
+              <MoneyInput unit="/ mo" {...register("debtPayments")} />
+            </FieldShell>
+            <FieldShell label={t("tools.afford.health")} error={errors.healthInsurance?.message as string | undefined}>
+              <Select {...register("healthInsurance")}>
+                <option value="employer">Employer</option>
+                <option value="marketplace">Marketplace</option>
+                <option value="uninsured">Uninsured</option>
+              </Select>
+            </FieldShell>
+          </FormGrid>
+        )
+      },
+      {
+        id: "goals",
+        title: t("tools.afford.steps.goals.title"),
+        description: t("tools.afford.steps.goals.description"),
+        fieldNames: ["immigrationSavingsGoal", "goalMonths"],
+        render: (
+          <FormGrid>
+            <FieldShell label={t("tools.afford.goal")} error={errors.immigrationSavingsGoal?.message as string | undefined}>
+              <MoneyInput {...register("immigrationSavingsGoal")} />
+            </FieldShell>
+            <FieldShell label={t("tools.afford.months")} error={errors.goalMonths?.message as string | undefined}>
+              <Input type="number" {...register("goalMonths")} />
+            </FieldShell>
+          </FormGrid>
+        )
+      }
+    ],
+    [t, register, errors]
+  );
+
+  function handleWizardSubmit(data: AffordabilityForm) {
+    track("tool_complete", {tool: "affordability-planner", locale});
+    setStatusInput(data.status);
+    setResult(calculateAffordability(data));
+  }
+
   return (
     <Panel className="grid gap-6">
-      <form
-        className="grid gap-5"
-        onSubmit={handleSubmit((data) => {
-          track("tool_complete", {tool: "affordability-planner", locale});
-          setStatusInput(data.status);
-          setResult(calculateAffordability(data));
-        })}
-      >
-        {/* Basic section: open by default — minimum needed for a useful answer */}
-        <details className="group rounded-xl border border-ink-200 bg-white p-4 open:border-brand-200 open:bg-brand-50/30" open>
-          <summary className="cursor-pointer list-none text-heading-3 text-ink-900 marker:hidden">
-            <span className="flex items-center justify-between">
-              {t("tools.afford.basicSection")}
-              <span aria-hidden="true" className="text-brand-600 transition group-open:rotate-45">+</span>
-            </span>
-          </summary>
-          <div className="mt-4">
-            <FormGrid>
-              <FieldShell label={t("tools.afford.city")} error={errors.city?.message as string | undefined}>
-                <Select {...register("city")}>
-                  {cityCostPresets.map((city) => (
-                    <option key={city.city} value={city.city}>
-                      {city.city}
-                    </option>
-                  ))}
-                </Select>
-              </FieldShell>
-              <FieldShell label={t("tools.afford.income")} error={errors.income?.message as string | undefined}>
-                <MoneyInput unit="/ mo" {...register("income")} />
-              </FieldShell>
-              <FieldShell label={t("tools.afford.household")} error={errors.householdSize?.message as string | undefined}>
-                <Input type="number" {...register("householdSize")} />
-              </FieldShell>
-              <FieldShell label={t("tools.afford.status")} error={errors.status?.message as string | undefined}>
-                <Select {...register("status")}>
-                  <option value="documented">Documented</option>
-                  <option value="undocumented">Undocumented</option>
-                  <option value="mixed">Mixed household</option>
-                </Select>
-              </FieldShell>
-            </FormGrid>
-          </div>
-        </details>
-
-        {/* Optional section: collapsed by default. The 30%-rent baseline still
-            works without these; adding them makes the budget more accurate. */}
-        <details className="group rounded-xl border border-ink-200 bg-white p-4 open:border-brand-200 open:bg-brand-50/30">
-          <summary className="cursor-pointer list-none text-heading-3 text-ink-900 marker:hidden">
-            <span className="flex items-center justify-between">
-              <span>
-                {t("tools.afford.optionalSection")}
-                <span className="ml-2 text-caption font-normal text-ink-500">{t("tools.afford.optionalHint")}</span>
-              </span>
-              <span aria-hidden="true" className="text-brand-600 transition group-open:rotate-45">+</span>
-            </span>
-          </summary>
-          <div className="mt-4 grid gap-4">
-            <FormGrid>
-              <FieldShell label={t("tools.afford.remittances")} error={errors.remittances?.message as string | undefined}>
-                <MoneyInput unit="/ mo" {...register("remittances")} />
-              </FieldShell>
-              <FieldShell label={t("tools.afford.health")} error={errors.healthInsurance?.message as string | undefined}>
-                <Select {...register("healthInsurance")}>
-                  <option value="employer">Employer</option>
-                  <option value="marketplace">Marketplace</option>
-                  <option value="uninsured">Uninsured</option>
-                </Select>
-              </FieldShell>
-              <FieldShell label={t("tools.afford.debt")} error={errors.debtPayments?.message as string | undefined}>
-                <MoneyInput unit="/ mo" {...register("debtPayments")} />
-              </FieldShell>
-              <FieldShell label={t("tools.afford.goal")} error={errors.immigrationSavingsGoal?.message as string | undefined}>
-                <MoneyInput {...register("immigrationSavingsGoal")} />
-              </FieldShell>
-              <FieldShell label={t("tools.afford.months")} error={errors.goalMonths?.message as string | undefined}>
-                <Input type="number" {...register("goalMonths")} />
-              </FieldShell>
-            </FormGrid>
-            <Checkbox label={t("tools.afford.children")} {...register("hasChildren")} />
-          </div>
-        </details>
-        <Button type="submit">{t("common.calculate")}</Button>
-      </form>
       {result ? (
         <div ref={resultRef} className="grid gap-5">
-          <Stat
-            label={t("common.results")}
-            tone={result.status === "workable" ? "success" : result.status === "tight" ? "warning" : "danger"}
-            value={t(`tools.afford.${result.status}`)}
-          />
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Stat
+              label={t("common.results")}
+              tone={result.status === "workable" ? "success" : result.status === "tight" ? "warning" : "danger"}
+              value={t(`tools.afford.${result.status}`)}
+            />
+            <Button onClick={() => setResult(null)} type="button" variant="secondary">
+              {t("common.editAnswers")}
+            </Button>
+          </div>
           <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
             <BudgetPieChart data={chartData} />
             <div className="grid gap-2">
               {result.lines
                 .filter((line) => line.amount > 0)
                 .map((line) => (
-                  <div className="flex justify-between rounded-md border border-slate-200 bg-slate-50 p-3 text-sm" key={line.id}>
+                  <div className="flex justify-between rounded-md border border-ink-200 bg-ink-50 p-3 text-sm" key={line.id}>
                     <span>{budgetLabels[line.id] ?? line.id}</span>
                     <strong>{formatCurrency(line.amount, locale)}</strong>
                   </div>
@@ -1406,7 +1424,16 @@ function AffordabilityTool() {
             <p>{t("tools.afford.methodology")}</p>
           </MethodologyNote>
         </div>
-      ) : null}
+      ) : (
+        <Wizard
+          form={form}
+          steps={steps}
+          onSubmit={handleWizardSubmit}
+          submitLabel={t("common.calculate")}
+          initialStep={lastStep}
+          onStepChange={setLastStep}
+        />
+      )}
     </Panel>
   );
 }

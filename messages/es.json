@@ -24,7 +24,8 @@
     "saved": "Guardado. Revisa tu correo cuando la hoja de ruta esté lista.",
     "skipped": "La captura de email aún no está configurada.",
     "error": "Algo salió mal. Inténtalo otra vez.",
-    "methodologyLabel": "¿Cómo se calcula esto?"
+    "methodologyLabel": "¿Cómo se calcula esto?",
+    "editAnswers": "Editar respuestas"
   },
   "nav": {
     "tools": "Herramientas",
@@ -439,6 +440,24 @@
       "basicSection": "Lo básico",
       "optionalSection": "Detalles opcionales",
       "optionalHint": "omite para usar valores por defecto",
+      "steps": {
+        "where": {
+          "title": "Dónde y quién",
+          "description": "Cuéntanos sobre tu ciudad y hogar — esto define la base del costo de vida."
+        },
+        "income": {
+          "title": "Ingresos",
+          "description": "Tu ingreso neto después de impuestos, en la moneda que recibes."
+        },
+        "expenses": {
+          "title": "Gastos",
+          "description": "Costos recurrentes que salen antes de decidir la renta. Todos opcionales."
+        },
+        "goals": {
+          "title": "Metas",
+          "description": "¿Ahorras para trámites legales, patrocinio o viajar a ver familia? Dinos cuánto y para cuándo."
+        }
+      },
       "methodology": "El presupuesto de vivienda usa la regla del 30% del ingreso neto más un ajuste por costo de vida de la ciudad. Remesas, deuda, seguro médico y ahorro migratorio se restan antes del gasto discrecional. El efectivo para firmar contrato estima 1.5× la renta mensual. Fuente: investigación de KFF sobre hogares inmigrantes, índices BLS."
     }
   }

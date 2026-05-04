@@ -24,7 +24,8 @@
     "saved": "已保存。路线图准备好后请查收邮箱。",
     "skipped": "邮箱收集功能尚未配置。",
     "error": "出了点问题。请再试一次。",
-    "methodologyLabel": "这是怎么算出来的？"
+    "methodologyLabel": "这是怎么算出来的？",
+    "editAnswers": "修改回答"
   },
   "nav": {
     "tools": "工具",
@@ -439,6 +440,24 @@
       "basicSection": "基本信息",
       "optionalSection": "可选信息",
       "optionalHint": "跳过则使用默认值",
+      "steps": {
+        "where": {
+          "title": "在哪里、和谁",
+          "description": "告诉我们你所在的城市和家庭情况——这是估算生活成本的基础。"
+        },
+        "income": {
+          "title": "收入",
+          "description": "你税后实际到手的收入，按你领取时的币种填写。"
+        },
+        "expenses": {
+          "title": "支出",
+          "description": "决定房租之前必须先付的固定支出。全部可选填。"
+        },
+        "goals": {
+          "title": "目标",
+          "description": "在为身份费用、担保亲属或回家探亲存钱吗？告诉我们金额和时限。"
+        }
+      },
       "methodology": "建议的住房预算采用「税后收入 30%」原则，并按城市生活成本进行调整。汇款、债务、医疗保险与移民储蓄会先于可自由支配开支扣除。签订租约前所需现金按月租金的 1.5 倍估算。来源：KFF 关于移民家庭的研究、BLS 生活成本指数。"
     }
   }
