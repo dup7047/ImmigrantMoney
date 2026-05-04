@@ -16,4 +16,12 @@ export type WizardProps<TValues extends FieldValues> = {
   submitLabel?: string;
   reviewTitle?: string;
   reviewRender?: (values: TValues) => ReactNode;
+  /**
+   * Step index to restore on mount. Use with `onStepChange` so a parent can
+   * remember where the user was if the wizard unmounts (e.g. after submit
+   * → result panel, then click Edit → wizard remounts at the last step).
+   */
+  initialStep?: number;
+  /** Called whenever the active step changes (after Next or Back). */
+  onStepChange?: (index: number) => void;
 };

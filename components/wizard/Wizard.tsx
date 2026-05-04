@@ -15,21 +15,28 @@ export function Wizard<TValues extends FieldValues>({
   onSubmit,
   submitLabel,
   reviewTitle,
-  reviewRender
+  reviewRender,
+  initialStep = 0,
+  onStepChange
 }: WizardProps<TValues>) {
   const t = useTranslations("wizard");
-  const [stepIndex, setStepIndex] = useState(0);
+  const totalSteps = steps.length + (reviewRender ? 1 : 0);
+  const clampedInitial = Math.max(0, Math.min(initialStep, totalSteps - 1));
+  const [stepIndex, setStepIndex] = useState(clampedInitial);
   const [submitting, setSubmitting] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  const totalSteps = steps.length + (reviewRender ? 1 : 0);
   const isReviewStep = reviewRender ? stepIndex === steps.length : false;
   const isFinalStep = stepIndex === totalSteps - 1;
   const currentStep = !isReviewStep ? steps[stepIndex] : undefined;
 
   useEffect(() => {
     headingRef.current?.focus();
+    onStepChange?.(stepIndex);
+    // Intentionally only depend on stepIndex; calling onStepChange on every
+    // identity change of the callback would cause spurious notifications.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stepIndex]);
 
   async function handleNext() {
