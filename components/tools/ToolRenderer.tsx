@@ -23,7 +23,7 @@ import {calculateWage, type DeductionType, type EmploymentType} from "@/lib/calc
 import type {Locale, ToolSlug} from "@/lib/types";
 import {formatCurrency, formatCurrencyPrecise} from "@/lib/utils";
 import {Button} from "../ui/Button";
-import {Checkbox, FieldShell, Input, Select} from "../ui/Field";
+import {Checkbox, FieldShell, Input, MoneyInput, Select} from "../ui/Field";
 import {Panel, Stat} from "../ui/Panel";
 
 const CreditTimelineChart = dynamic(
@@ -184,22 +184,22 @@ function WageTheftTool() {
             <Input type="number" step="0.25" {...register("overtimeHours")} />
           </FieldShell>
           <FieldShell label={t("tools.wage.hourlyRate")}>
-            <Input type="number" step="0.01" {...register("hourlyRate")} />
+            <MoneyInput step="0.01" unit="/ hr" {...register("hourlyRate")} />
           </FieldShell>
           <FieldShell label={t("tools.wage.weeklySalary")}>
-            <Input type="number" step="0.01" {...register("weeklySalary")} />
+            <MoneyInput step="0.01" unit="/ week" {...register("weeklySalary")} />
           </FieldShell>
           <FieldShell label={t("tools.wage.tips")}>
-            <Input type="number" step="0.01" {...register("tips")} />
+            <MoneyInput step="0.01" unit="/ week" {...register("tips")} />
           </FieldShell>
           <FieldShell label={t("tools.wage.actualPay")}>
-            <Input type="number" step="0.01" {...register("actualPay")} />
+            <MoneyInput step="0.01" unit="/ week" {...register("actualPay")} />
           </FieldShell>
           <FieldShell label={t("tools.wage.withholding")}>
-            <Input type="number" step="0.01" {...register("withholdingAmount")} />
+            <MoneyInput step="0.01" unit="/ week" {...register("withholdingAmount")} />
           </FieldShell>
           <FieldShell label={t("tools.wage.benefits")}>
-            <Input type="number" step="0.01" {...register("benefitDeductions")} />
+            <MoneyInput step="0.01" unit="/ week" {...register("benefitDeductions")} />
           </FieldShell>
         </FormGrid>
 
@@ -449,10 +449,10 @@ function UscisFeeTool() {
             <Input type="number" {...register("familyMembers")} />
           </FieldShell>
           <FieldShell label={t("tools.uscis.savings")}>
-            <Input type="number" {...register("savings")} />
+            <MoneyInput {...register("savings")} />
           </FieldShell>
           <FieldShell label={t("tools.uscis.monthlySavings")}>
-            <Input type="number" {...register("monthlySavings")} />
+            <MoneyInput unit="/ mo" {...register("monthlySavings")} />
           </FieldShell>
         </FormGrid>
         <div className="grid gap-2">
@@ -847,7 +847,7 @@ function RemittanceTool() {
       >
         <FormGrid>
           <FieldShell label={t("tools.remit.amount")}>
-            <Input type="number" {...register("amount")} />
+            <MoneyInput {...register("amount")} />
           </FieldShell>
           <FieldShell label={t("tools.remit.country")}>
             <Select {...register("country")}>
@@ -977,13 +977,13 @@ function AffordabilityTool() {
             </Select>
           </FieldShell>
           <FieldShell label={t("tools.afford.income")}>
-            <Input type="number" {...register("income")} />
+            <MoneyInput unit="/ mo" {...register("income")} />
           </FieldShell>
           <FieldShell label={t("tools.afford.household")}>
             <Input type="number" {...register("householdSize")} />
           </FieldShell>
           <FieldShell label={t("tools.afford.remittances")}>
-            <Input type="number" {...register("remittances")} />
+            <MoneyInput unit="/ mo" {...register("remittances")} />
           </FieldShell>
           <FieldShell label={t("tools.afford.health")}>
             <Select {...register("healthInsurance")}>
@@ -1000,10 +1000,10 @@ function AffordabilityTool() {
             </Select>
           </FieldShell>
           <FieldShell label={t("tools.afford.debt")}>
-            <Input type="number" {...register("debtPayments")} />
+            <MoneyInput unit="/ mo" {...register("debtPayments")} />
           </FieldShell>
           <FieldShell label={t("tools.afford.goal")}>
-            <Input type="number" {...register("immigrationSavingsGoal")} />
+            <MoneyInput {...register("immigrationSavingsGoal")} />
           </FieldShell>
           <FieldShell label={t("tools.afford.months")}>
             <Input type="number" {...register("goalMonths")} />

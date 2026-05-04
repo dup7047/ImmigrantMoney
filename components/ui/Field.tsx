@@ -1,4 +1,4 @@
-import type {InputHTMLAttributes, ReactNode, SelectHTMLAttributes} from "react";
+import {forwardRef, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes} from "react";
 import {cn} from "@/lib/utils";
 
 type FieldShellProps = {
@@ -19,9 +19,10 @@ export function FieldShell({label, error, hint, children}: FieldShellProps) {
   );
 }
 
-export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
+export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(function Input(props, ref) {
   return (
     <input
+      ref={ref}
       className={cn(
         "min-h-11 rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm text-ink-900 shadow-sm outline-none transition placeholder:text-ink-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-100",
         props.className
@@ -29,7 +30,47 @@ export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
       {...props}
     />
   );
-}
+});
+
+/**
+ * Currency-aware input. Renders a `$` prefix and an optional unit suffix
+ * (e.g. "/ week"). Wraps the standard <Input> so RHF `register()` works
+ * unchanged — pass the spread of register() in via `...rest`.
+ *
+ * Visual treatment matches Input (focus ring, border, sizing) so it can sit
+ * next to other Inputs in the same FormGrid without alignment issues.
+ */
+export const MoneyInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement> & {unit?: string}>(
+  function MoneyInput({unit, className, ...rest}, ref) {
+    return (
+      <div
+        className={cn(
+          "flex min-h-11 items-stretch overflow-hidden rounded-lg border border-ink-300 bg-white shadow-sm transition focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-100",
+          className
+        )}
+      >
+        <span
+          aria-hidden="true"
+          className="flex items-center px-3 text-sm font-semibold text-ink-500 bg-ink-50 border-r border-ink-200"
+        >
+          $
+        </span>
+        <input
+          ref={ref}
+          inputMode="decimal"
+          type="number"
+          {...rest}
+          className="min-w-0 flex-1 border-0 bg-transparent px-3 py-2 text-sm text-ink-900 outline-none placeholder:text-ink-400"
+        />
+        {unit ? (
+          <span className="flex items-center px-3 text-caption font-medium text-ink-500 bg-ink-50 border-l border-ink-200">
+            {unit}
+          </span>
+        ) : null}
+      </div>
+    );
+  }
+);
 
 export function Select(props: SelectHTMLAttributes<HTMLSelectElement>) {
   return (
