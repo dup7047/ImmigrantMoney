@@ -61,6 +61,7 @@ export default function RootLayout({children}: {children: ReactNode}) {
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <head>
         <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
+        <meta name="fo-verify" content="1e9826ae-83f8-4b5a-98da-ba578acd4f45" />
         {/* AdSense verification snippet. React 19 hoists <script async/defer>
             tags into a <link rel=preload> only — the actual <script src>
             doesn't appear in the SSR'd HTML, so AdSense's HTML crawler can't
