@@ -23,7 +23,8 @@
     "submit": "Enviar",
     "saved": "Guardado. Revisa tu correo cuando la hoja de ruta esté lista.",
     "skipped": "La captura de email aún no está configurada.",
-    "error": "Algo salió mal. Inténtalo otra vez."
+    "error": "Algo salió mal. Inténtalo otra vez.",
+    "methodologyLabel": "¿Cómo se calcula esto?"
   },
   "nav": {
     "tools": "Herramientas",
@@ -228,7 +229,8 @@
       "nlrb": "Junta Nacional de Relaciones Laborales",
       "cashNoStub": "El trabajo en efectivo sin talón puede hacer más difícil documentar violaciones. Guarda tus propios registros.",
       "unlistedDeductions": "Deducciones no listadas son una señal de alerta. Pide un estado de pago detallado si puedes.",
-      "tipCreditGap": "En trabajo con propinas, propinas más salario en efectivo generalmente deben llegar al salario mínimo aplicable."
+      "tipCreditGap": "En trabajo con propinas, propinas más salario en efectivo generalmente deben llegar al salario mínimo aplicable.",
+      "methodology": "El salario bruto esperado = horas × tasa, con 1.5× para horas sobre el umbral federal de 40/semana. El salario mínimo estatal aplica cuando es mayor que el federal. Para trabajo con propinas, las propinas más el salario en efectivo deben llegar al mínimo aplicable. Fuentes: Departamento de Trabajo de EE.UU. y reglas estatales de salario, última revisión 2026-05-02."
     },
     "itin": {
       "status": "¿Cuál es tu estatus migratorio?",
@@ -294,7 +296,8 @@
       "publicBenefitHint": "Recibes SNAP, Medicaid, TANF, SSI u otro beneficio basado en ingresos",
       "lowIncomeHint": "Ingreso del hogar igual o menor al 150% del nivel federal de pobreza",
       "hardshipHint": "Gasto médico mayor, discapacidad o desalojo inminente",
-      "verifyG1055": "Verifica las tarifas actuales en USCIS G-1055"
+      "verifyG1055": "Verifica las tarifas actuales en USCIS G-1055",
+      "methodology": "Costo total = tarifa USCIS × multiplicador de familiares + biometría. Meses para ahorrar = (total − ahorros actuales) ÷ ahorro mensual. La elegibilidad para exención usa los criterios del Formulario I-912. Confirma siempre las tarifas actuales en USCIS G-1055 antes de enviar."
     },
     "scam": {
       "category": "Categoría",
@@ -312,6 +315,7 @@
       "aprHint": "Los préstamos con APR sobre 36% suelen considerarse de alto costo.",
       "report": "Reportar fraude",
       "reportLinks": "Reporta fraude en ReportFraud.ftc.gov (FTC) o consumerfinance.gov/complaint (CFPB).",
+      "methodology": "El nivel de riesgo pondera cada respuesta de alerta por gravedad. Para préstamos, un APR mayor a 36% añade una alerta de alto costo. Para inmigración, cualquier respuesta de 'notario' o 'garantía' activa una advertencia de fraude notario. Fuentes: reportes Sentinel de la FTC y alertas de USCIS sobre estafas.",
       "flags": {
         "loan": {
           "feesHidden": "Las tarifas no se mostraron por adelantado",
@@ -358,7 +362,8 @@
       "matchSpanish": "Atención en español",
       "noMatches": "Ningún banco cumple todos tus filtros",
       "adjustFilters": "Prueba quitar la opción de transferencias internacionales, cambiar el idioma a Ambos, o elegir otro tipo de cuenta.",
-      "mobile": "Calificación móvil"
+      "mobile": "Calificación móvil",
+      "methodology": "Los bancos se filtran contra los IDs, tipos de cuenta, idioma y necesidades de transferencia internacional que seleccionaste, usando un dataset estático revisado trimestralmente. La aprobación nunca está garantizada y los requisitos a nivel de sucursal pueden variar. Fuente: guía bancaria del CFPB y datos de FDIC."
     },
     "credit": {
       "visa": "Tipo de visa o estatus",
@@ -374,7 +379,8 @@
       "noGuarantee": "No se garantiza ningún aumento de puntaje. Depende de aprobaciones, pagos, uso y reportes.",
       "totalDuration": "Tiempo total estimado",
       "totalDurationValue": "{months} meses",
-      "months": "meses"
+      "months": "meses",
+      "methodology": "Las fases provienen de investigación del CFPB sobre construcción de crédito. Cada fase asume pagos a tiempo y reporte consistente a las agencias de crédito. El tiempo total suma las duraciones por fase. No se garantiza ningún aumento de puntaje — los resultados dependen de aprobaciones, uso del crédito y la frecuencia de los reportes."
     },
     "remit": {
       "amount": "Cantidad a enviar",
@@ -398,7 +404,8 @@
       "static": "Estimados estáticos solamente. Revisa el proveedor antes de enviar.",
       "service": "Servicio",
       "speed": "Tiempo",
-      "bestValue": "Mejor valor"
+      "bestValue": "Mejor valor",
+      "methodology": "Costo total = (cantidad × % de tarifa) + tarifa fija + (cantidad × margen cambiario). El ahorro anual compara la opción más barata con la más cara según tu frecuencia. Las tarifas son estimados estáticos — confirma siempre con el proveedor antes de enviar. Fuente: World Bank Remittance Prices Worldwide y guía del CFPB sobre remesas."
     },
     "afford": {
       "city": "Ciudad / área metro",
@@ -419,7 +426,8 @@
       "resources": "Puntos de inicio para recursos gratis",
       "basicSection": "Lo básico",
       "optionalSection": "Detalles opcionales",
-      "optionalHint": "omite para usar valores por defecto"
+      "optionalHint": "omite para usar valores por defecto",
+      "methodology": "El presupuesto de vivienda usa la regla del 30% del ingreso neto más un ajuste por costo de vida de la ciudad. Remesas, deuda, seguro médico y ahorro migratorio se restan antes del gasto discrecional. El efectivo para firmar contrato estima 1.5× la renta mensual. Fuente: investigación de KFF sobre hogares inmigrantes, índices BLS."
     }
   }
 }

@@ -25,6 +25,7 @@ import {formatCurrency, formatCurrencyPrecise} from "@/lib/utils";
 import {Button} from "../ui/Button";
 import {Checkbox, FieldShell, Input, MoneyInput, Select} from "../ui/Field";
 import {Panel, Stat} from "../ui/Panel";
+import {MethodologyNote} from "./MethodologyNote";
 import {useResultScroll} from "./useResultScroll";
 
 const CreditTimelineChart = dynamic(
@@ -286,6 +287,9 @@ function WageTheftTool() {
               </div>
             </div>
           ) : null}
+          <MethodologyNote>
+            <p>{t("tools.wage.methodology")}</p>
+          </MethodologyNote>
         </div>
       ) : null}
     </Panel>
@@ -589,6 +593,9 @@ function UscisFeeTool() {
               t("tools.uscis.verify")
             ]}
           />
+          <MethodologyNote>
+            <p>{t("tools.uscis.methodology")}</p>
+          </MethodologyNote>
         </div>
       ) : null}
     </Panel>
@@ -698,6 +705,9 @@ function ScamDetectorTool() {
               t("tools.scam.reportLinks")
             ]}
           />
+          <MethodologyNote>
+            <p>{t("tools.scam.methodology")}</p>
+          </MethodologyNote>
         </div>
       ) : null}
     </Panel>
@@ -851,6 +861,9 @@ function BankFinderTool() {
               </Panel>
             ))}
           </div>
+          <MethodologyNote>
+            <p>{t("tools.bank.methodology")}</p>
+          </MethodologyNote>
         </div>
       ) : null}
     </Panel>
@@ -984,6 +997,9 @@ function CreditRoadmapTool() {
               ))}
             </div>
           </section>
+          <MethodologyNote>
+            <p>{t("tools.credit.methodology")}</p>
+          </MethodologyNote>
         </div>
       ) : null}
     </Panel>
@@ -1105,6 +1121,10 @@ function RemittanceTool() {
                   </div>
                 ))}
               </div>
+
+              <MethodologyNote>
+                <p>{t("tools.remit.methodology")}</p>
+              </MethodologyNote>
 
               {/* Desktop: table, sorted cheapest first */}
               <div className="hidden overflow-x-auto md:block">
@@ -1320,6 +1340,9 @@ function AffordabilityTool() {
               "FeedingAmerica.org · findahealthcenter.hrsa.gov · LawHelp.org"
             ]}
           />
+          <MethodologyNote>
+            <p>{t("tools.afford.methodology")}</p>
+          </MethodologyNote>
         </div>
       ) : null}
     </Panel>

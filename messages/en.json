@@ -23,7 +23,8 @@
     "submit": "Submit",
     "saved": "Saved. Check your inbox when the roadmap is ready.",
     "skipped": "Email capture is not configured yet.",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "methodologyLabel": "How is this calculated?"
   },
   "nav": {
     "tools": "Tools",
@@ -228,7 +229,8 @@
       "nlrb": "National Labor Relations Board",
       "cashNoStub": "Cash work without a pay stub can make wage violations harder to document. Keep your own written records.",
       "unlistedDeductions": "Unlisted deductions are a red flag. Ask for an itemized pay statement when possible.",
-      "tipCreditGap": "For tipped work, tips plus cash wages generally must still reach the applicable minimum wage."
+      "tipCreditGap": "For tipped work, tips plus cash wages generally must still reach the applicable minimum wage.",
+      "methodology": "Expected gross pay = hours × rate, with 1.5× pay for hours over the federal 40/week threshold. State minimum wage applies when higher than federal. For tipped work, tips plus cash wages must reach the applicable minimum. Sources: U.S. Department of Labor and state wage rules, last reviewed 2026-05-02."
     },
     "itin": {
       "status": "What is your immigration status?",
@@ -294,7 +296,8 @@
       "publicBenefitHint": "Receive SNAP, Medicaid, TANF, SSI, or another means-tested benefit",
       "lowIncomeHint": "Household income at or below 150% of the federal poverty guidelines",
       "hardshipHint": "Major medical, disability, or imminent eviction",
-      "verifyG1055": "Verify current fees on USCIS G-1055"
+      "verifyG1055": "Verify current fees on USCIS G-1055",
+      "methodology": "Total cost = USCIS form fee × family-member multiplier + biometrics. Months to save = (total − current savings) ÷ monthly savings. Fee waiver eligibility uses Form I-912 criteria. Always confirm current fees on USCIS G-1055 before filing."
     },
     "scam": {
       "category": "Category",
@@ -312,6 +315,7 @@
       "aprHint": "Loans above 36% APR are usually considered high-cost.",
       "report": "Report fraud",
       "reportLinks": "Report fraud at ReportFraud.ftc.gov (FTC) or consumerfinance.gov/complaint (CFPB).",
+      "methodology": "Risk score weights each red-flag answer by severity. For loans, APR above 36% adds an extra high-cost flag. For immigration, any 'notario' or 'guarantee' answer triggers a notario fraud warning. Sources: FTC Sentinel reports and USCIS scam alerts.",
       "flags": {
         "loan": {
           "feesHidden": "Fees were not disclosed upfront",
@@ -358,7 +362,8 @@
       "matchSpanish": "Spanish-language support",
       "noMatches": "No banks matched all of your filters",
       "adjustFilters": "Try unchecking the international-transfers option, switching the language preference back to Both, or selecting a different account type.",
-      "mobile": "Mobile rating"
+      "mobile": "Mobile rating",
+      "methodology": "Banks are filtered against your selected IDs, account types, language preference, and international-transfer needs from a static dataset reviewed quarterly. Approval is never guaranteed and branch-level requirements still vary. Source: CFPB banking guidance + FDIC banked-status data."
     },
     "credit": {
       "visa": "Visa or status type",
@@ -374,7 +379,8 @@
       "noGuarantee": "No score increase is guaranteed. Results depend on approvals, payments, utilization, and reporting.",
       "totalDuration": "Estimated total time",
       "totalDurationValue": "{months} months",
-      "months": "months"
+      "months": "months",
+      "methodology": "Phases come from CFPB credit-building research. Each phase assumes on-time payments and consistent credit-bureau reporting. Total time stacks the phase durations. No score increase is guaranteed — actual results depend on issuer approvals, utilization, and reporting cadence."
     },
     "remit": {
       "amount": "Amount to send",
@@ -398,7 +404,8 @@
       "static": "Static estimates only. Check the provider before sending.",
       "service": "Service",
       "speed": "Speed",
-      "bestValue": "Best value"
+      "bestValue": "Best value",
+      "methodology": "Total cost = (amount × percent fee) + flat fee + (amount × exchange-rate markup). Annual savings compares the cheapest option against the most expensive over your selected frequency. Service rates are static estimates — always confirm with the provider before sending. Source: World Bank Remittance Prices Worldwide and CFPB remittance guidance."
     },
     "afford": {
       "city": "City / metro",
@@ -419,7 +426,8 @@
       "resources": "Free resource starting points",
       "basicSection": "Your basics",
       "optionalSection": "Optional details",
-      "optionalHint": "skip to use defaults"
+      "optionalHint": "skip to use defaults",
+      "methodology": "Recommended housing budget uses the 30%-of-take-home rule plus city-of-living adjustment. Remittances, debt, health insurance, and immigration savings are subtracted before discretionary spend. Lease cash up front estimates 1.5× monthly rent for first/last/security. Source: KFF immigrant-household research, BLS cost-of-living indices."
     }
   }
 }
