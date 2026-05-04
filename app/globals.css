@@ -23,11 +23,17 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  /* Single fixed-attachment gradient avoids per-scroll repaints. */
   background:
-    radial-gradient(circle at 15% -10%, rgba(29, 78, 216, 0.10), transparent 38%),
-    radial-gradient(circle at 95% 5%, rgba(124, 58, 237, 0.08), transparent 36%),
-    linear-gradient(180deg, #f8fafc 0%, #ffffff 46%, #f8fafc 100%);
+    radial-gradient(circle at 15% -10%, rgba(29, 78, 216, 0.08), transparent 40%) #f8fafc;
+  background-attachment: fixed;
   color: var(--ink-900);
+}
+
+/* Below-the-fold sections paint only when scrolled near. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
 }
 
 a {

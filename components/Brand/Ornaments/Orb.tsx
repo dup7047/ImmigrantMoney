@@ -1,28 +1,24 @@
 import {cn} from "@/lib/utils";
 
-export function Orb({className, tone = "brand"}: {className?: string; tone?: "brand" | "accent" | "positive"}) {
-  const stops =
-    tone === "accent"
-      ? {from: "#A78BFA", to: "#7C3AED"}
-      : tone === "positive"
-        ? {from: "#34D399", to: "#059669"}
-        : {from: "#60A5FA", to: "#1D4ED8"};
+const TONE_GRADIENTS = {
+  brand: "radial-gradient(circle, rgba(96,165,250,0.45) 0%, rgba(29,78,216,0) 70%)",
+  accent: "radial-gradient(circle, rgba(167,139,250,0.50) 0%, rgba(124,58,237,0) 70%)",
+  positive: "radial-gradient(circle, rgba(52,211,153,0.45) 0%, rgba(5,150,105,0) 70%)"
+} as const;
 
+// CSS-only orb. Replaced earlier SVG radialGradient version that triggered
+// per-frame paints on Chrome. Compositor-promoted via translateZ + paint
+// containment so scroll & hover don't repaint it.
+export function Orb({className, tone = "brand"}: {className?: string; tone?: keyof typeof TONE_GRADIENTS}) {
   return (
-    <svg
+    <div
       aria-hidden="true"
-      className={cn("absolute pointer-events-none", className)}
-      fill="none"
-      viewBox="0 0 240 240"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="120" cy="120" fill="url(#orb-gradient)" r="110" />
-      <defs>
-        <radialGradient cx="0" cy="0" gradientTransform="translate(60 60) scale(180)" gradientUnits="userSpaceOnUse" id="orb-gradient" r="1">
-          <stop stopColor={stops.from} stopOpacity=".6" />
-          <stop offset="1" stopColor={stops.to} stopOpacity="0" />
-        </radialGradient>
-      </defs>
-    </svg>
+      className={cn("pointer-events-none absolute rounded-full", className)}
+      style={{
+        background: TONE_GRADIENTS[tone],
+        transform: "translateZ(0)",
+        contain: "paint"
+      }}
+    />
   );
 }

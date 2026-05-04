@@ -21,7 +21,10 @@ export function Header() {
   const tCategories = useTranslations("categories");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink-200/80 bg-white/85 backdrop-blur-md">
+    <header
+      className="sticky top-0 z-40 border-b border-ink-200/80 bg-white/95"
+      style={{transform: "translateZ(0)", willChange: "transform"}}
+    >
       <div className="container-pad mx-auto flex max-w-7xl items-center justify-between gap-4 py-3">
         <Link aria-label="ImmigrantMoney" className="flex items-center" href="/">
           <Logo size={34} />

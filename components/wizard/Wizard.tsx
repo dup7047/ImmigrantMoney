@@ -146,7 +146,10 @@ export function Wizard<TValues extends FieldValues>({
       </div>
 
       {/* Mobile sticky bottom bar */}
-      <div className="sticky bottom-0 z-30 -mx-4 mt-4 flex items-center justify-between gap-3 border-t border-ink-200 bg-white/95 px-4 py-3 shadow-[0_-8px_24px_rgba(15,23,42,0.06)] backdrop-blur md:hidden">
+      <div
+        className="sticky bottom-0 z-30 -mx-4 mt-4 flex items-center justify-between gap-3 border-t border-ink-200 bg-white px-4 py-3 shadow-[0_-8px_24px_rgba(15,23,42,0.06)] md:hidden"
+        style={{transform: "translateZ(0)"}}
+      >
         <Button
           className="flex-1"
           disabled={stepIndex === 0 || submitting}

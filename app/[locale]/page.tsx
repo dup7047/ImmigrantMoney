@@ -80,7 +80,7 @@ export default async function HomePage({params}: {params: Promise<{locale: Local
             </div>
           </div>
 
-          <div className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white/80 p-5 shadow-card backdrop-blur">
+          <div className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white p-5 shadow-card">
             <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
               <Sparkles className="h-4 w-4" />
             </span>
@@ -93,7 +93,7 @@ export default async function HomePage({params}: {params: Promise<{locale: Local
         <JourneyTeaser locale={locale} />
       </div>
 
-      <section className="container-pad mx-auto grid max-w-7xl gap-12 pb-20 pt-4" id="tools">
+      <section className="cv-auto container-pad mx-auto grid max-w-7xl gap-12 pb-20 pt-4" id="tools">
         <div className="max-w-2xl">
           <p className="text-overline font-semibold uppercase text-brand-700">{t("home.toolsEyebrow")}</p>
           <h2 className="mt-1 font-display text-heading-1 tracking-tight text-ink-900 md:text-display-2">
@@ -106,7 +106,7 @@ export default async function HomePage({params}: {params: Promise<{locale: Local
         ))}
       </section>
 
-      <section className="border-y border-ink-200 bg-white">
+      <section className="cv-auto border-y border-ink-200 bg-white">
         <div className="container-pad mx-auto grid max-w-7xl gap-10 py-16 lg:grid-cols-[1fr_440px]">
           <div>
             <p className="text-overline font-semibold uppercase text-brand-700">{t("home.aboutEyebrow")}</p>
