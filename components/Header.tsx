@@ -61,7 +61,7 @@ export function Header() {
         <div className="border-t border-ink-200 bg-white p-4 lg:hidden">
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <LanguageSwitcher />
-            <Link className="ml-auto" href="/start" onClick={() => setOpen(false)}>
+            <Link aria-label={tNav("startAriaLabel")} className="ml-auto" href="/start" onClick={() => setOpen(false)}>
               <Button size="md">
                 <Sparkles aria-hidden="true" className="h-4 w-4" />
                 {tNav("start")}
