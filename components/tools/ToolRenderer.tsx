@@ -1108,50 +1108,79 @@ function AffordabilityTool() {
           setResult(calculateAffordability(data));
         })}
       >
-        <FormGrid>
-          <FieldShell label={t("tools.afford.city")} error={errors.city?.message as string | undefined}>
-            <Select {...register("city")}>
-              {cityCostPresets.map((city) => (
-                <option key={city.city} value={city.city}>
-                  {city.city}
-                </option>
-              ))}
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.afford.income")} error={errors.income?.message as string | undefined}>
-            <MoneyInput unit="/ mo" {...register("income")} />
-          </FieldShell>
-          <FieldShell label={t("tools.afford.household")} error={errors.householdSize?.message as string | undefined}>
-            <Input type="number" {...register("householdSize")} />
-          </FieldShell>
-          <FieldShell label={t("tools.afford.remittances")} error={errors.remittances?.message as string | undefined}>
-            <MoneyInput unit="/ mo" {...register("remittances")} />
-          </FieldShell>
-          <FieldShell label={t("tools.afford.health")} error={errors.healthInsurance?.message as string | undefined}>
-            <Select {...register("healthInsurance")}>
-              <option value="employer">Employer</option>
-              <option value="marketplace">Marketplace</option>
-              <option value="uninsured">Uninsured</option>
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.afford.status")} error={errors.status?.message as string | undefined}>
-            <Select {...register("status")}>
-              <option value="documented">Documented</option>
-              <option value="undocumented">Undocumented</option>
-              <option value="mixed">Mixed household</option>
-            </Select>
-          </FieldShell>
-          <FieldShell label={t("tools.afford.debt")} error={errors.debtPayments?.message as string | undefined}>
-            <MoneyInput unit="/ mo" {...register("debtPayments")} />
-          </FieldShell>
-          <FieldShell label={t("tools.afford.goal")} error={errors.immigrationSavingsGoal?.message as string | undefined}>
-            <MoneyInput {...register("immigrationSavingsGoal")} />
-          </FieldShell>
-          <FieldShell label={t("tools.afford.months")} error={errors.goalMonths?.message as string | undefined}>
-            <Input type="number" {...register("goalMonths")} />
-          </FieldShell>
-        </FormGrid>
-        <Checkbox label={t("tools.afford.children")} {...register("hasChildren")} />
+        {/* Basic section: open by default — minimum needed for a useful answer */}
+        <details className="group rounded-xl border border-ink-200 bg-white p-4 open:border-brand-200 open:bg-brand-50/30" open>
+          <summary className="cursor-pointer list-none text-heading-3 text-ink-900 marker:hidden">
+            <span className="flex items-center justify-between">
+              {t("tools.afford.basicSection")}
+              <span aria-hidden="true" className="text-brand-600 transition group-open:rotate-45">+</span>
+            </span>
+          </summary>
+          <div className="mt-4">
+            <FormGrid>
+              <FieldShell label={t("tools.afford.city")} error={errors.city?.message as string | undefined}>
+                <Select {...register("city")}>
+                  {cityCostPresets.map((city) => (
+                    <option key={city.city} value={city.city}>
+                      {city.city}
+                    </option>
+                  ))}
+                </Select>
+              </FieldShell>
+              <FieldShell label={t("tools.afford.income")} error={errors.income?.message as string | undefined}>
+                <MoneyInput unit="/ mo" {...register("income")} />
+              </FieldShell>
+              <FieldShell label={t("tools.afford.household")} error={errors.householdSize?.message as string | undefined}>
+                <Input type="number" {...register("householdSize")} />
+              </FieldShell>
+              <FieldShell label={t("tools.afford.status")} error={errors.status?.message as string | undefined}>
+                <Select {...register("status")}>
+                  <option value="documented">Documented</option>
+                  <option value="undocumented">Undocumented</option>
+                  <option value="mixed">Mixed household</option>
+                </Select>
+              </FieldShell>
+            </FormGrid>
+          </div>
+        </details>
+
+        {/* Optional section: collapsed by default. The 30%-rent baseline still
+            works without these; adding them makes the budget more accurate. */}
+        <details className="group rounded-xl border border-ink-200 bg-white p-4 open:border-brand-200 open:bg-brand-50/30">
+          <summary className="cursor-pointer list-none text-heading-3 text-ink-900 marker:hidden">
+            <span className="flex items-center justify-between">
+              <span>
+                {t("tools.afford.optionalSection")}
+                <span className="ml-2 text-caption font-normal text-ink-500">{t("tools.afford.optionalHint")}</span>
+              </span>
+              <span aria-hidden="true" className="text-brand-600 transition group-open:rotate-45">+</span>
+            </span>
+          </summary>
+          <div className="mt-4 grid gap-4">
+            <FormGrid>
+              <FieldShell label={t("tools.afford.remittances")} error={errors.remittances?.message as string | undefined}>
+                <MoneyInput unit="/ mo" {...register("remittances")} />
+              </FieldShell>
+              <FieldShell label={t("tools.afford.health")} error={errors.healthInsurance?.message as string | undefined}>
+                <Select {...register("healthInsurance")}>
+                  <option value="employer">Employer</option>
+                  <option value="marketplace">Marketplace</option>
+                  <option value="uninsured">Uninsured</option>
+                </Select>
+              </FieldShell>
+              <FieldShell label={t("tools.afford.debt")} error={errors.debtPayments?.message as string | undefined}>
+                <MoneyInput unit="/ mo" {...register("debtPayments")} />
+              </FieldShell>
+              <FieldShell label={t("tools.afford.goal")} error={errors.immigrationSavingsGoal?.message as string | undefined}>
+                <MoneyInput {...register("immigrationSavingsGoal")} />
+              </FieldShell>
+              <FieldShell label={t("tools.afford.months")} error={errors.goalMonths?.message as string | undefined}>
+                <Input type="number" {...register("goalMonths")} />
+              </FieldShell>
+            </FormGrid>
+            <Checkbox label={t("tools.afford.children")} {...register("hasChildren")} />
+          </div>
+        </details>
         <Button type="submit">{t("common.calculate")}</Button>
       </form>
       {result ? (

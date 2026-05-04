@@ -355,7 +355,10 @@
       "workable": "Este presupuesto parece viable.",
       "tight": "Este presupuesto está ajustado.",
       "shortfall": "Este presupuesto tiene déficit.",
-      "resources": "Puntos de inicio para recursos gratis"
+      "resources": "Puntos de inicio para recursos gratis",
+      "basicSection": "Lo básico",
+      "optionalSection": "Detalles opcionales",
+      "optionalHint": "omite para usar valores por defecto"
     }
   }
 }

@@ -355,7 +355,10 @@
       "workable": "这份预算看起来是可行的。",
       "tight": "这份预算比较紧。",
       "shortfall": "这份预算存在缺口。",
-      "resources": "免费的资源起点"
+      "resources": "免费的资源起点",
+      "basicSection": "基本信息",
+      "optionalSection": "可选信息",
+      "optionalHint": "跳过则使用默认值"
     }
   }
 }

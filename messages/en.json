@@ -355,7 +355,10 @@
       "workable": "This budget appears workable.",
       "tight": "This budget is tight.",
       "shortfall": "This budget has a shortfall.",
-      "resources": "Free resource starting points"
+      "resources": "Free resource starting points",
+      "basicSection": "Your basics",
+      "optionalSection": "Optional details",
+      "optionalHint": "skip to use defaults"
     }
   }
 }
