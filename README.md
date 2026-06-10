@@ -1,6 +1,8 @@
 # ImmigrantMoney
 
-**Free, trilingual (English / Español / 中文) financial tools for immigrants in the United States.** No account required, no data stored — every calculator runs in the browser.
+**Financial guidance shouldn't require a Social Security number, perfect English, or trusting a stranger with your data.**
+
+Free, trilingual (English / Español / 中文) financial tools for immigrants in the United States — no account required, no data stored, every calculator runs in the browser.
 
 ### 🌐 Live: **[immigrantmoney.us](https://immigrantmoney.us)**
 
@@ -15,6 +17,14 @@
 > ⚠️ Educational only. ImmigrantMoney provides general information, not legal, tax, immigration, or financial advice. Always verify current rules with a licensed professional.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdup7047%2FImmigrantMoney)
+
+---
+
+## Why this exists
+
+Tens of millions of immigrants in the US face financial decisions that standard budgeting advice never covers: paychecks missing legally-owed overtime, banks that turn you away without an SSN, a credit system that can't see you, taxes filed through an ITIN, four-figure USCIS fees, remittance services quietly taking a cut of every transfer — and scams engineered specifically for newcomers. The information to navigate all of this exists, but it's scattered across government PDFs, written in dense legal English, and increasingly gated behind apps that demand your personal data.
+
+ImmigrantMoney's mission is to close that gap: eight plain-language calculators, fully translated into English, Spanish, and Chinese, with every legal and financial figure cited to a primary source (IRS, DOL, USCIS, CFPB) and a visible last-reviewed date. And because the people who need these tools most are often the most cautious about where their information goes, the architecture makes trust structural rather than promised — every calculation runs in the browser, with no accounts and nothing stored.
 
 ---
 
