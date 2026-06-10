@@ -1,7 +1,7 @@
 create table if not exists public.leads (
   id uuid primary key default gen_random_uuid(),
   email text not null,
-  locale text not null check (locale in ('en', 'es')),
+  locale text not null check (locale in ('en', 'es', 'zh')),
   source_tool text not null,
   created_at timestamptz not null default now()
 );

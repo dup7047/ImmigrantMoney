@@ -408,8 +408,6 @@ function ItinTaxGuide() {
   const statusKeys = ["undocumented", "daca", "tps", "workVisa", "student", "greenCard", "other"] as const;
   const tinKeys = ["ssn", "itin", "neither", "notSure"] as const;
   const workedKeys = ["w2", "cash", "no"] as const;
-  const yesNoSureKeys = ["yes", "no", "notSure"] as const;
-  const yesNoKeys = ["yes", "no"] as const;
 
   const fields = [
     <FieldShell key="status" label={t("tools.itin.status")} error={errors.status?.message as string | undefined}>

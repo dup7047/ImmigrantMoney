@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "ImmigrantMoney",
     template: "%s | ImmigrantMoney"
   },
-  description: "Free bilingual financial tools for immigrants in the United States.",
+  description: "Free trilingual financial tools for immigrants in the United States.",
   robots: {
     index: true,
     follow: true
